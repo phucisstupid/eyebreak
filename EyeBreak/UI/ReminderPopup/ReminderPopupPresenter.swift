@@ -72,35 +72,3 @@ final class ReminderPopupPresenter {
         return panel
     }
 }
-
-@MainActor
-struct ReminderWindowRouter {
-    enum Action: Equatable {
-        case open
-        case dismiss
-        case none
-    }
-
-    private(set) var desiredPresentation = false
-    private(set) var isWindowVisible = false
-
-    mutating func updateDesiredPresentation(_ desiredPresentation: Bool) -> Action {
-        self.desiredPresentation = desiredPresentation
-
-        if desiredPresentation {
-            return isWindowVisible ? .none : .open
-        }
-
-        return isWindowVisible ? .dismiss : .none
-    }
-
-    mutating func updateWindowVisibility(_ isWindowVisible: Bool) -> Action {
-        self.isWindowVisible = isWindowVisible
-
-        if !isWindowVisible, desiredPresentation {
-            return .open
-        }
-
-        return .none
-    }
-}

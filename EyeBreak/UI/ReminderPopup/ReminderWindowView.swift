@@ -28,28 +28,3 @@ struct ReminderWindowView: View {
         )
     }
 }
-
-@MainActor
-struct ReminderWindowSceneView: View {
-    @ObservedObject var model: AppModel
-    let onWindowVisibilityChange: @MainActor (Bool) -> Void
-
-    var body: some View {
-        Group {
-            if let reminderWindowState = model.reminderWindowState {
-                ReminderWindowView(
-                    breakType: reminderWindowState.breakType,
-                    breakDuration: reminderWindowState.breakDuration,
-                    idleDuration: reminderWindowState.idleDuration,
-                    idleThreshold: reminderWindowState.idleThreshold,
-                    onStartNow: model.startBreakNow,
-                    onSkip: model.skipCurrentReminder
-                )
-            } else {
-                EmptyView()
-            }
-        }
-        .onAppear { onWindowVisibilityChange(true) }
-        .onDisappear { onWindowVisibilityChange(false) }
-    }
-}
