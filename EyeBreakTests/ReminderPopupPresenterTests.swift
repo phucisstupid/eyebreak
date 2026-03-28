@@ -4,7 +4,7 @@ import XCTest
 
 @MainActor
 final class ReminderPopupPresenterTests: XCTestCase {
-    func test_renderCreatesNonActivatingStatusBarPanel() {
+    func test_renderCreatesNonActivatingStatusBarPanel() throws {
         let presenter = ReminderPopupPresenter()
 
         presenter.render(

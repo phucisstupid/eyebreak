@@ -3,13 +3,9 @@ import SwiftUI
 
 @main
 struct EyeBreakApp: App {
-    static let reminderWindowID = "reminder"
-
-    @Environment(\.dismissWindow) private var dismissWindow
-    @Environment(\.openWindow) private var openWindow
     @StateObject private var appModel: AppModel
-    @State private var reminderWindowRouter = ReminderWindowRouter()
     private let breakOverlayPresenter = BreakOverlayPresenter()
+    private let reminderPopupPresenter = ReminderPopupPresenter()
     private let lifecycleController: AppLifecycleController
 
     init() {
@@ -37,23 +33,12 @@ struct EyeBreakApp: App {
                 quit: { NSApp.terminate(nil) }
             )
         }
-        .onChange(of: appModel.isReminderWindowPresented, initial: true) { _, isPresented in
-            applyReminderWindowAction(
-                reminderWindowRouter.updateDesiredPresentation(isPresented)
-            )
+        .onChange(of: appModel.reminderWindowState, initial: true) { _, state in
+            renderReminderPopup(state)
         }
         .onChange(of: appModel.breakOverlayState, initial: true) { _, state in
             renderBreakOverlay(state)
         }
-
-        WindowGroup(id: Self.reminderWindowID) {
-            ReminderWindowSceneView(
-                model: appModel,
-                onWindowVisibilityChange: handleReminderWindowVisibilityChange
-            )
-        }
-        .defaultSize(width: 328, height: 170)
-        .windowResizability(.contentSize)
 
         Settings {
             PreferencesView(
@@ -64,21 +49,16 @@ struct EyeBreakApp: App {
         }
     }
 
-    private func handleReminderWindowVisibilityChange(_ isVisible: Bool) {
-        applyReminderWindowAction(
-            reminderWindowRouter.updateWindowVisibility(isVisible)
+    private func renderReminderPopup(_ state: AppModel.ReminderWindowState?) {
+        reminderPopupPresenter.render(
+            isPresented: state != nil,
+            breakType: state?.breakType ?? .short,
+            breakDuration: state?.breakDuration ?? 0,
+            idleDuration: state?.idleDuration ?? 0,
+            idleThreshold: state?.idleThreshold ?? 1,
+            onStartNow: appModel.startBreakNow,
+            onSkip: appModel.skipCurrentReminder
         )
-    }
-
-    private func applyReminderWindowAction(_ action: ReminderWindowRouter.Action) {
-        switch action {
-        case .open:
-            openWindow(id: Self.reminderWindowID)
-        case .dismiss:
-            dismissWindow(id: Self.reminderWindowID)
-        case .none:
-            break
-        }
     }
 
     private func renderBreakOverlay(_ state: AppModel.BreakOverlayState?) {
@@ -138,37 +118,5 @@ final class AppLifecycleController {
                 self?.handleWillTerminate()
             }
         }
-    }
-}
-
-@MainActor
-struct ReminderWindowRouter {
-    enum Action: Equatable {
-        case open
-        case dismiss
-        case none
-    }
-
-    private(set) var desiredPresentation = false
-    private(set) var isWindowVisible = false
-
-    mutating func updateDesiredPresentation(_ desiredPresentation: Bool) -> Action {
-        self.desiredPresentation = desiredPresentation
-
-        if desiredPresentation {
-            return isWindowVisible ? .none : .open
-        }
-
-        return isWindowVisible ? .dismiss : .none
-    }
-
-    mutating func updateWindowVisibility(_ isWindowVisible: Bool) -> Action {
-        self.isWindowVisible = isWindowVisible
-
-        if !isWindowVisible, desiredPresentation {
-            return .open
-        }
-
-        return .none
     }
 }
