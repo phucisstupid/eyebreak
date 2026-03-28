@@ -23,7 +23,15 @@ final class ReminderPopupPresenter {
             return
         }
 
-        guard let frame = NSScreen.main?.visibleFrame else { return }
+        guard
+            let frame = PresentationScreenSelector.preferredFrame(
+                primaryFrame: NSScreen.screens.first?.visibleFrame,
+                activeFrame: NSScreen.main?.visibleFrame,
+                fallbackFrames: Array(NSScreen.screens.dropFirst().map(\.visibleFrame))
+            )
+        else {
+            return
+        }
         let size = CGSize(width: 320, height: 128)
         let origin = CGPoint(x: frame.midX - size.width / 2, y: frame.maxY - size.height - 12)
         let panel = panel ?? makePanel(frame: CGRect(origin: origin, size: size))

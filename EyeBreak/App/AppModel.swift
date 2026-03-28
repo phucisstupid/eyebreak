@@ -13,7 +13,6 @@ extension LaunchAtLoginController: LaunchAtLoginControlling {}
 final class AppModel: ObservableObject {
     @Published private(set) var snapshot: AppSnapshot
     @Published private(set) var settings: AppSettings
-    @Published private(set) var isReminderWindowPresented: Bool
 
     private let coordinator: any AppCoordinating
     private let launchAtLoginController: any LaunchAtLoginControlling
@@ -62,8 +61,6 @@ final class AppModel: ObservableObject {
         let initialSnapshot = snapshot ?? coordinator.snapshot
         self.settings = initialSettings
         self.snapshot = initialSnapshot
-
-        isReminderWindowPresented = Self.isReminderWindowPresented(for: initialSnapshot)
 
         startObservingStateChanges()
     }
@@ -140,7 +137,6 @@ final class AppModel: ObservableObject {
     private func applyState(snapshot: AppSnapshot, settings: AppSettings) {
         self.snapshot = snapshot
         self.settings = settings
-        isReminderWindowPresented = Self.isReminderWindowPresented(for: snapshot)
     }
 
     private func stopObservingStateChanges() {
@@ -164,11 +160,6 @@ final class AppModel: ObservableObject {
             }
         )
     }
-
-    private static func isReminderWindowPresented(for snapshot: AppSnapshot) -> Bool {
-        snapshot.phase == .waitingForIdle
-    }
-
     struct ReminderWindowState: Equatable {
         let breakType: BreakType
         let breakDuration: TimeInterval

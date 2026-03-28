@@ -13,7 +13,15 @@ final class AppModelTests: XCTestCase {
         let model = AppModel.makeForTests(coordinator: coordinator)
 
         XCTAssertEqual(model.snapshot.phase, .waitingForIdle)
-        XCTAssertTrue(model.isReminderWindowPresented)
+        XCTAssertEqual(
+            model.reminderWindowState,
+            AppModel.ReminderWindowState(
+                breakType: .short,
+                breakDuration: 20,
+                idleDuration: 0,
+                idleThreshold: 5
+            )
+        )
         XCTAssertNil(model.breakOverlayState)
     }
 
@@ -25,7 +33,15 @@ final class AppModelTests: XCTestCase {
             .waitingForIdle(progress: 1_200, breakCount: 0, nextBreakType: .short)
         )
 
-        XCTAssertTrue(model.isReminderWindowPresented)
+        XCTAssertEqual(
+            model.reminderWindowState,
+            AppModel.ReminderWindowState(
+                breakType: .short,
+                breakDuration: 20,
+                idleDuration: 0,
+                idleThreshold: 5
+            )
+        )
         XCTAssertNil(model.breakOverlayState)
     }
 
@@ -35,7 +51,7 @@ final class AppModelTests: XCTestCase {
 
         coordinator.emitStateChange(.fixtureBreakInProgress(remaining: 20))
 
-        XCTAssertFalse(model.isReminderWindowPresented)
+        XCTAssertNil(model.reminderWindowState)
         XCTAssertEqual(model.breakOverlayState?.remainingSeconds, 20)
         XCTAssertEqual(model.breakOverlayState?.totalSeconds, 20)
     }
@@ -56,7 +72,7 @@ final class AppModelTests: XCTestCase {
         wait(for: [expectation], timeout: 1)
         coordinator.removeStateChangeObserver(token)
 
-        XCTAssertTrue(model.isReminderWindowPresented)
+        XCTAssertNotNil(model.reminderWindowState)
         XCTAssertEqual(observedSnapshots.count, 1)
         XCTAssertEqual(observedSnapshots.first?.phase, .waitingForIdle)
     }
@@ -97,7 +113,7 @@ final class AppModelTests: XCTestCase {
         coordinator.emitStateChange(
             .waitingForIdle(progress: 1_200, breakCount: 0, nextBreakType: .short))
 
-        XCTAssertTrue(model.isReminderWindowPresented)
+        XCTAssertNotNil(model.reminderWindowState)
         XCTAssertNil(model.breakOverlayState)
     }
 

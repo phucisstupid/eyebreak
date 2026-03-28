@@ -59,4 +59,30 @@ final class ReminderPopupPresenterTests: XCTestCase {
             accuracy: 0.001
         )
     }
+
+    func test_renderHidesExistingPanelWhenPresentationIsDisabled() {
+        let presenter = ReminderPopupPresenter()
+
+        presenter.render(
+            isPresented: true,
+            breakType: .short,
+            breakDuration: 20,
+            idleDuration: 0,
+            idleThreshold: 5,
+            onStartNow: {},
+            onSkip: {}
+        )
+
+        presenter.render(
+            isPresented: false,
+            breakType: .short,
+            breakDuration: 0,
+            idleDuration: 0,
+            idleThreshold: 1,
+            onStartNow: {},
+            onSkip: {}
+        )
+
+        XCTAssertFalse(presenter.panelForTesting?.isVisible ?? true)
+    }
 }
