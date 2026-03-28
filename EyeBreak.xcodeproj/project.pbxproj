@@ -50,6 +50,7 @@
 		000000000000000000000125 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000124 /* AppModel.swift */; };
 		000000000000000000000130 /* ReminderWindowViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000131 /* ReminderWindowViewTests.swift */; };
 		000000000000000000000132 /* BreakOverlayPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000133 /* BreakOverlayPresenterTests.swift */; };
+		000000000000000000000136 /* ReminderPopupPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000137 /* ReminderPopupPresenterTests.swift */; };
 		000000000000000000000134 /* ReminderWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000135 /* ReminderWindowView.swift */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +109,7 @@
 		000000000000000000000124 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/App/AppModel.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000131 /* ReminderWindowViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/ReminderWindowViewTests.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000133 /* BreakOverlayPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/BreakOverlayPresenterTests.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000137 /* ReminderPopupPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/ReminderPopupPresenterTests.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000135 /* ReminderWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/ReminderPopup/ReminderWindowView.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000020 /* EyeBreak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = EyeBreak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		000000000000000000000021 /* EyeBreakTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = EyeBreakTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,6 +290,7 @@
 				000000000000000000000133 /* BreakOverlayPresenterTests.swift */,
 				000000000000000000000127 /* MenuBarContentViewTests.swift */,
 				000000000000000000000083 /* MenuContentBuilderTests.swift */,
+				000000000000000000000137 /* ReminderPopupPresenterTests.swift */,
 				000000000000000000000119 /* PreferencesViewTests.swift */,
 				000000000000000000000131 /* ReminderWindowViewTests.swift */,
 				00000000000000000000011B /* SystemIdleTimeProviderTests.swift */,
@@ -431,6 +434,7 @@
 				000000000000000000000132 /* BreakOverlayPresenterTests.swift in Sources */,
 				000000000000000000000126 /* MenuBarContentViewTests.swift in Sources */,
 				000000000000000000000082 /* MenuContentBuilderTests.swift in Sources */,
+				000000000000000000000136 /* ReminderPopupPresenterTests.swift in Sources */,
 				00000000000000000000011A /* PreferencesViewTests.swift in Sources */,
 				000000000000000000000130 /* ReminderWindowViewTests.swift in Sources */,
 				00000000000000000000011C /* SystemIdleTimeProviderTests.swift in Sources */,
