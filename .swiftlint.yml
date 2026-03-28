@@ -1,0 +1,30 @@
+included:
+  - EyeBreak
+  - EyeBreakTests
+
+excluded:
+  - EyeBreak.xcodeproj
+
+disabled_rules:
+  - todo
+  - trailing_whitespace
+
+opt_in_rules:
+  - empty_count
+  - first_where
+  - force_unwrapping
+  - redundant_nil_coalescing
+  - sorted_imports
+  - unused_import
+
+line_length:
+  warning: 100
+  error: 120
+
+type_body_length:
+  warning: 250
+  error: 350
+
+file_length:
+  warning: 500
+  error: 700

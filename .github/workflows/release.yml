@@ -1,0 +1,41 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build-and-release:
+    runs-on: macos-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build Release app
+        run: xcodebuild -project EyeBreak.xcodeproj -scheme EyeBreak -configuration Release -destination 'platform=macOS' build
+
+      - name: Package app
+        run: |
+          APP_PATH=$(find ~/Library/Developer/Xcode/DerivedData -path '*Build/Products/Release/EyeBreak.app' -print -quit)
+          ditto -c -k --sequesterRsrc --keepParent "$APP_PATH" EyeBreak-macOS.zip
+
+      - name: Upload release artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: EyeBreak-macOS
+          path: EyeBreak-macOS.zip
+
+      - name: Publish GitHub release asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          prerelease: true
+          body: |
+            Unsigned macOS prerelease build.
+
+            This archive is not notarized and may be blocked by Gatekeeper on a default macOS system.
+          files: EyeBreak-macOS.zip
