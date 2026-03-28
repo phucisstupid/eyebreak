@@ -4,12 +4,12 @@ import XCTest
 
 @MainActor
 final class ReminderPopupPresenterTests: XCTestCase {
-    func test_showCreatesNonActivatingPanelOnMainDisplay() {
+    func test_renderCreatesNonActivatingStatusBarPanel() {
         let presenter = ReminderPopupPresenter()
 
         presenter.render(
             isPresented: true,
-            breakType: .short,
+            breakType: BreakType.short,
             breakDuration: 20,
             idleDuration: 0,
             idleThreshold: 5,
@@ -18,8 +18,8 @@ final class ReminderPopupPresenterTests: XCTestCase {
         )
 
         let panel = try XCTUnwrap(presenter.panelForTesting)
-        XCTAssertEqual(panel.styleMask.contains(.nonactivatingPanel), true)
-        XCTAssertEqual(panel.level, .statusBar)
+        XCTAssertEqual(panel.styleMask.contains(NSWindow.StyleMask.nonactivatingPanel), true)
+        XCTAssertEqual(panel.level, NSWindow.Level.statusBar)
     }
 
     func test_renderReusesExistingHostingViewInsteadOfRecreatingWindow() {
@@ -27,7 +27,7 @@ final class ReminderPopupPresenterTests: XCTestCase {
 
         presenter.render(
             isPresented: true,
-            breakType: .short,
+            breakType: BreakType.short,
             breakDuration: 20,
             idleDuration: 0,
             idleThreshold: 5,
@@ -39,7 +39,7 @@ final class ReminderPopupPresenterTests: XCTestCase {
 
         presenter.render(
             isPresented: true,
-            breakType: .long,
+            breakType: BreakType.long,
             breakDuration: 60,
             idleDuration: 3,
             idleThreshold: 5,
@@ -49,5 +49,14 @@ final class ReminderPopupPresenterTests: XCTestCase {
 
         XCTAssertTrue(firstPanel === presenter.panelForTesting)
         XCTAssertTrue(firstHostingView === presenter.hostingViewForTesting)
+        XCTAssertEqual(presenter.hostingViewForTesting?.rootView.breakType, BreakType.long)
+        XCTAssertEqual(presenter.hostingViewForTesting?.rootView.breakDuration, 60)
+        XCTAssertEqual(presenter.hostingViewForTesting?.rootView.idleDuration, 3)
+        XCTAssertEqual(presenter.hostingViewForTesting?.rootView.idleThreshold, 5)
+        XCTAssertEqual(
+            presenter.hostingViewForTesting?.rootView.progressValue ?? 0,
+            0.4,
+            accuracy: 0.001
+        )
     }
 }
