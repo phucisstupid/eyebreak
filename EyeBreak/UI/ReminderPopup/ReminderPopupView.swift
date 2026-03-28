@@ -10,49 +10,49 @@ struct ReminderPopupView: View {
     let onSkip: @MainActor () -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("EyeBreak")
-                .font(.caption.weight(.semibold))
-                .textCase(.uppercase)
-                .foregroundStyle(.secondary)
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 8) {
+                Image(systemName: "eye")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.secondary)
 
-            VStack(alignment: .leading, spacing: 6) {
                 Text("Break ready")
                     .font(.headline.weight(.semibold))
                     .foregroundStyle(.primary)
-
-                Text(
-                    "A \(breakType.title.lowercased()) break will start when you're "
-                        + "idle for a moment. It lasts \(durationLabel)."
-                )
-                .font(.callout)
-                .foregroundStyle(.secondary)
-                .fixedSize(horizontal: false, vertical: true)
             }
 
-            HStack(spacing: 10) {
+            Text(
+                "A \(breakType.title.lowercased()) break will start when you're "
+                    + "idle for a moment. It lasts \(durationLabel)."
+            )
+            .font(.callout)
+            .foregroundStyle(.secondary)
+            .fixedSize(horizontal: false, vertical: true)
+
+            HStack(spacing: 8) {
                 Button("Start break now", action: onStartNow)
+                    .buttonStyle(.bordered)
                     .controlSize(.small)
 
                 Button("Skip for now", action: onSkip)
-                    .buttonStyle(.borderedProminent)
+                    .buttonStyle(.bordered)
                     .controlSize(.small)
             }
 
             ProgressLineView(progressValue: progressValue)
+                .padding(.top, 2)
         }
-        .padding(18)
+        .padding(14)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .background(
-            RoundedRectangle(cornerRadius: 22, style: .continuous)
-                .fill(.regularMaterial)
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .fill(Color(nsColor: .windowBackgroundColor))
                 .overlay(
-                    RoundedRectangle(cornerRadius: 22, style: .continuous)
-                        .strokeBorder(Color.primary.opacity(0.08), lineWidth: 1)
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .strokeBorder(Color(nsColor: .separatorColor).opacity(0.55), lineWidth: 0.5)
                 )
-                .shadow(color: Color.black.opacity(0.12), radius: 16, y: 10)
         )
-        .padding(4)
+        .padding(2)
     }
 
     var progressValue: Double {
@@ -89,14 +89,14 @@ struct ProgressLineView: View {
 
             ZStack(alignment: .leading) {
                 Capsule()
-                    .fill(Color.primary.opacity(0.12))
+                    .fill(Color(nsColor: .separatorColor).opacity(0.28))
 
                 Capsule()
-                    .fill(Color.primary.opacity(0.55))
+                    .fill(Color.accentColor.opacity(0.78))
                     .frame(width: width)
             }
         }
-        .frame(height: 4)
+        .frame(height: 3)
         .accessibilityHidden(true)
     }
 }

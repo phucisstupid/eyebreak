@@ -2,7 +2,7 @@ import SwiftUI
 
 @MainActor
 struct PreferencesView: View {
-    static let nativeWindowSize = CGSize(width: 520, height: 360)
+    static let nativeWindowSize = CGSize(width: 480, height: 330)
 
     @FocusState private var focusedField: Field?
     @State private var settings: AppSettings
@@ -32,51 +32,47 @@ struct PreferencesView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Preferences")
-                .font(.title2.weight(.semibold))
+        Form {
+            Section("Reminders") {
+                numericFieldRow(
+                    title: "Active interval", text: $activeIntervalText, unit: "minutes",
+                    field: .activeInterval)
+                numericFieldRow(
+                    title: "Idle threshold", text: $idleThresholdText, unit: "seconds",
+                    field: .idleThreshold)
+            }
 
-            Form {
-                Section("Reminders") {
-                    numericFieldRow(
-                        title: "Active interval", text: $activeIntervalText, unit: "minutes",
-                        field: .activeInterval)
-                    numericFieldRow(
-                        title: "Idle threshold", text: $idleThresholdText, unit: "seconds",
-                        field: .idleThreshold)
-                }
+            Section("Breaks") {
+                numericFieldRow(
+                    title: "Short break", text: $shortBreakText, unit: "seconds",
+                    field: .shortBreak)
+                numericFieldRow(
+                    title: "Long break", text: $longBreakText, unit: "seconds",
+                    field: .longBreak)
+                numericFieldRow(
+                    title: "Long break frequency", text: $longBreakFrequencyText,
+                    unit: "breaks", field: .longBreakFrequency)
+            }
 
-                Section("Breaks") {
-                    numericFieldRow(
-                        title: "Short break", text: $shortBreakText, unit: "seconds",
-                        field: .shortBreak)
-                    numericFieldRow(
-                        title: "Long break", text: $longBreakText, unit: "seconds",
-                        field: .longBreak)
-                    numericFieldRow(
-                        title: "Long break frequency", text: $longBreakFrequencyText,
-                        unit: "breaks", field: .longBreakFrequency)
-                }
+            Section("Startup") {
+                Toggle("Launch at login", isOn: launchAtLoginBinding)
 
-                Section("Startup") {
-                    Toggle("Launch at login", isOn: launchAtLoginBinding)
-
-                    if let launchAtLoginMessage {
-                        Text(launchAtLoginMessage)
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
-                    }
+                if let launchAtLoginMessage {
+                    Text(launchAtLoginMessage)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
             }
-            .formStyle(.grouped)
         }
-        .padding(20)
+        .formStyle(.grouped)
+        .scrollContentBackground(.hidden)
+        .padding(.horizontal, 4)
+        .padding(.vertical, 6)
         .frame(
             minWidth: Self.nativeWindowSize.width,
             minHeight: Self.nativeWindowSize.height,
             alignment: .topLeading
         )
-        .background(Color(nsColor: .windowBackgroundColor))
         .onChange(of: focusedField) { previousField, nextField in
             guard let previousField, previousField != nextField else {
                 return
@@ -93,11 +89,13 @@ struct PreferencesView: View {
         field: Field
     ) -> some View {
         LabeledContent(title) {
-            HStack(spacing: 8) {
+            HStack(spacing: 6) {
                 TextField("", text: text)
                     .textFieldStyle(.roundedBorder)
+                    .controlSize(.small)
+                    .font(.body.monospacedDigit())
                     .multilineTextAlignment(.trailing)
-                    .frame(width: 64)
+                    .frame(width: 56)
                     .focused($focusedField, equals: field)
                     .onSubmit {
                         commit(field: field)
@@ -105,6 +103,7 @@ struct PreferencesView: View {
 
                 Text(unit)
                     .foregroundStyle(.secondary)
+                    .font(.callout)
             }
         }
     }

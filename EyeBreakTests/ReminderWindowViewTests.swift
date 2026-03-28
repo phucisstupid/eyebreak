@@ -29,4 +29,17 @@ final class ReminderWindowViewTests: XCTestCase {
 
         XCTAssertEqual(view.progressValue, 0.6, accuracy: 0.001)
     }
+
+    func test_reminderPopupViewProgressValueClampsWithinBounds() {
+        XCTAssertEqual(
+            ReminderPopupView.progressValue(idleDuration: -1, idleThreshold: 5),
+            1,
+            accuracy: 0.001
+        )
+        XCTAssertEqual(
+            ReminderPopupView.progressValue(idleDuration: 8, idleThreshold: 5),
+            0,
+            accuracy: 0.001
+        )
+    }
 }

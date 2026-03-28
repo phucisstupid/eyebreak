@@ -14,8 +14,8 @@ final class PreferencesViewTests: XCTestCase {
 
         let size = PreferencesView.nativeWindowSize
 
-        XCTAssertEqual(size.width, 520, accuracy: 0.5)
-        XCTAssertEqual(size.height, 360, accuracy: 0.5)
+        XCTAssertEqual(size.width, 480, accuracy: 0.5)
+        XCTAssertEqual(size.height, 330, accuracy: 0.5)
     }
 
     func test_launchAtLoginToggleRoutesThroughPreferencesViewAndAppModel() {
