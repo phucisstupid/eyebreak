@@ -2,7 +2,8 @@ import SwiftUI
 
 @MainActor
 struct PreferencesView: View {
-    static let nativeWindowSize = CGSize(width: 480, height: 330)
+    static let nativeWindowSize = CGSize(width: 360, height: 250)
+    static let numericFieldWidth: CGFloat = 44
 
     @FocusState private var focusedField: Field?
     @State private var settings: AppSettings
@@ -66,8 +67,8 @@ struct PreferencesView: View {
         }
         .formStyle(.grouped)
         .scrollContentBackground(.hidden)
-        .padding(.horizontal, 4)
-        .padding(.vertical, 6)
+        .padding(.horizontal, 2)
+        .padding(.vertical, 4)
         .frame(
             minWidth: Self.nativeWindowSize.width,
             minHeight: Self.nativeWindowSize.height,
@@ -89,13 +90,13 @@ struct PreferencesView: View {
         field: Field
     ) -> some View {
         LabeledContent(title) {
-            HStack(spacing: 6) {
+            HStack(spacing: 4) {
                 TextField("", text: text)
                     .textFieldStyle(.roundedBorder)
                     .controlSize(.small)
                     .font(.body.monospacedDigit())
                     .multilineTextAlignment(.trailing)
-                    .frame(width: 56)
+                    .frame(width: Self.numericFieldWidth)
                     .focused($focusedField, equals: field)
                     .onSubmit {
                         commit(field: field)
