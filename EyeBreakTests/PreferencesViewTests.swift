@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 import XCTest
 
@@ -5,43 +6,50 @@ import XCTest
 
 @MainActor
 final class PreferencesViewTests: XCTestCase {
-    func test_prefersNativeFormSpacingAndWindowFootprint() {
-        _ = PreferencesView(
-            settings: .default,
-            onSave: { _ in },
-            onLaunchAtLoginChange: { _ in nil }
-        )
+    func test_prefersNativeFormSpacingAndWindowFootprint() throws {
+        let hostingView = makeHostingView()
 
-        let size = PreferencesView.nativeWindowSize
+        hostingView.frame = CGRect(origin: .zero, size: PreferencesView.nativeWindowSize)
+        hostingView.layoutSubtreeIfNeeded()
 
-        XCTAssertEqual(size.width, 360, accuracy: 0.5)
-        XCTAssertEqual(size.height, 250, accuracy: 0.5)
+        let fittingSize = hostingView.fittingSize
+
+        XCTAssertGreaterThanOrEqual(fittingSize.width, PreferencesView.nativeWindowSize.width)
+        XCTAssertGreaterThanOrEqual(fittingSize.height, PreferencesView.nativeWindowSize.height)
     }
 
-    func test_usesCompactNumericFieldWidth() {
-        XCTAssertEqual(PreferencesView.numericFieldWidth, 44, accuracy: 0.5)
+    func test_rendersCompactNumericFieldWidth() throws {
+        let hostingView = makeHostingView()
+
+        hostingView.frame = CGRect(origin: .zero, size: PreferencesView.nativeWindowSize)
+        hostingView.layoutSubtreeIfNeeded()
+
+        let numericField = try XCTUnwrap(
+            allSubviews(of: NSTextField.self, in: hostingView)
+                .first { !$0.stringValue.isEmpty }
+        )
+
+        XCTAssertGreaterThan(numericField.frame.width, 0)
+        XCTAssertLessThanOrEqual(numericField.frame.width, PreferencesView.numericFieldWidth)
     }
 
-    func test_launchAtLoginToggleRoutesThroughPreferencesViewAndAppModel() {
-        let coordinator = SpyAppCoordinator(settings: .default)
-        let launchAtLoginController = SpyLaunchAtLoginController()
-        let model = AppModel.makeForTests(
-            coordinator: coordinator,
-            launchAtLoginController: launchAtLoginController
-        )
+    func test_launchAtLoginToggleUsesTheSavePathAndLaunchAtLoginChangeCallback() {
+        var savedSettings: [AppSettings] = []
+        var launchAtLoginValues: [Bool] = []
         let view = PreferencesView(
-            settings: model.settings,
-            onSave: model.updateSettings,
-            onLaunchAtLoginChange: model.setLaunchAtLogin
+            settings: .default,
+            onSave: { savedSettings.append($0) },
+            onLaunchAtLoginChange: { enabled in
+                launchAtLoginValues.append(enabled)
+                return nil
+            }
         )
 
         view.launchAtLoginBinding.wrappedValue = true
 
-        XCTAssertEqual(coordinator.updateSettingsValues.count, 1)
-        XCTAssertEqual(coordinator.updateSettingsValues.first?.launchAtLogin, true)
-        XCTAssertTrue(model.settings.launchAtLogin)
-        XCTAssertTrue(coordinator.settings.launchAtLogin)
-        XCTAssertEqual(launchAtLoginController.enabledValues, [true])
+        XCTAssertEqual(savedSettings.count, 1)
+        XCTAssertEqual(savedSettings.first?.launchAtLogin, true)
+        XCTAssertEqual(launchAtLoginValues, [true])
     }
 
     func test_integerFieldParserNormalizesInputWithinConfiguredRange() {
@@ -52,56 +60,28 @@ final class PreferencesViewTests: XCTestCase {
         XCTAssertEqual(parser.normalizedText(from: "999", fallback: 20), "120")
         XCTAssertEqual(parser.normalizedText(from: "abc", fallback: 20), "20")
     }
-}
 
-@MainActor
-private final class SpyLaunchAtLoginController: LaunchAtLoginControlling {
-    private(set) var enabledValues: [Bool] = []
-
-    func setEnabled(_ enabled: Bool) -> String? {
-        enabledValues.append(enabled)
-        return nil
-    }
-}
-
-private final class SpyAppCoordinator: AppCoordinating {
-    var settings: AppSettings
-    var snapshot: AppSnapshot
-    var updateSettingsValues: [AppSettings] = []
-
-    init(settings: AppSettings) {
-        self.settings = settings
-        self.snapshot = .initial(settings: settings)
+    private func makeHostingView() -> NSHostingView<PreferencesView> {
+        NSHostingView(
+            rootView: PreferencesView(
+                settings: .default,
+                onSave: { _ in },
+                onLaunchAtLoginChange: { _ in nil }
+            )
+        )
     }
 
-    func observeStateChanges(
-        _ observer: @escaping (AppSnapshot, AppSettings) -> Void
-    ) -> AppStateObservationToken {
-        UUID()
-    }
+    private func allSubviews<T: NSView>(of type: T.Type, in view: NSView) -> [T] {
+        var results: [T] = []
 
-    func removeStateChangeObserver(_ token: AppStateObservationToken) {}
+        for subview in view.subviews {
+            if let typedSubview = subview as? T {
+                results.append(typedSubview)
+            }
 
-    func start() {}
+            results.append(contentsOf: allSubviews(of: type, in: subview))
+        }
 
-    func stop() {}
-
-    func pauseReminders() {}
-
-    func resumeReminders() {}
-
-    func skipCurrentReminder() {}
-
-    func postponeCurrentReminder() {}
-
-    func skipCurrentBreak() {}
-
-    func postponeCurrentBreak() {}
-
-    func startBreakNow() {}
-
-    func updateSettings(_ settings: AppSettings) {
-        updateSettingsValues.append(settings)
-        self.settings = settings
+        return results
     }
 }

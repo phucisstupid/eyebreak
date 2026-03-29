@@ -181,7 +181,7 @@ struct PreferencesView: View {
         Binding(
             get: { settings.launchAtLogin },
             set: { newValue in
-                settings.launchAtLogin = newValue
+                updateSettings { $0.launchAtLogin = newValue }
                 launchAtLoginMessage = onLaunchAtLoginChange(newValue)
             }
         )
