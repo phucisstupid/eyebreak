@@ -47,10 +47,12 @@ struct EyeBreakApp: App {
     private func renderReminderPopup(_ state: AppModel.ReminderWindowState?) {
         reminderPopupPresenter.render(
             isPresented: state != nil,
-            breakType: state?.breakType ?? .short,
-            breakDuration: state?.breakDuration ?? 0,
-            idleDuration: state?.idleDuration ?? 0,
-            idleThreshold: state?.idleThreshold ?? 1,
+            state: .init(
+                breakType: state?.breakType ?? .short,
+                breakDuration: state?.breakDuration ?? 0,
+                idleDuration: state?.idleDuration ?? 0,
+                idleThreshold: state?.idleThreshold ?? 1
+            ),
             onSkip: appModel.skipCurrentReminder,
             onPostpone: appModel.postponeCurrentReminder
         )

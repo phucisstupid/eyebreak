@@ -81,14 +81,17 @@ final class AppCoordinatorTests: XCTestCase {
                 breakSessionState: nil,
                 schedulerState: .running(progress: 300),
                 idleDuration: 0,
-                postpone: ReminderPostpone(startedAt: .init(timeIntervalSince1970: 0), duration: 300)
+                postpone: ReminderPostpone(
+                    startedAt: .init(timeIntervalSince1970: 0), duration: 300)
             )
         )
 
         coordinator.startBreakNow()
 
         XCTAssertEqual(coordinator.store.snapshot.phase, .breakInProgress)
-        XCTAssertEqual(coordinator.store.snapshot.breakSessionState?.startedAt, Date(timeIntervalSince1970: 84))
+        XCTAssertEqual(
+            coordinator.store.snapshot.breakSessionState?.startedAt, Date(timeIntervalSince1970: 84)
+        )
         XCTAssertEqual(coordinator.store.snapshot.schedulerState, .running(progress: 300))
         XCTAssertNil(coordinator.store.snapshot.postpone)
     }

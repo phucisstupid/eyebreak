@@ -90,9 +90,9 @@ struct MenuBarContentView: View {
                 Button("Start this break now") {
                     startBreakNow(dismissMenu: dismiss.callAsFunction)
                 }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.small)
-                    .disabled(!menuContent.canStartBreakNow)
+                .buttonStyle(.borderedProminent)
+                .controlSize(.small)
+                .disabled(!menuContent.canStartBreakNow)
 
                 Button {
                     togglePauseResume(dismissMenu: dismiss.callAsFunction)

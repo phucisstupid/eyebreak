@@ -10,10 +10,12 @@ final class ReminderPopupPresenterTests: XCTestCase {
 
         presenter.render(
             isPresented: true,
-            breakType: BreakType.short,
-            breakDuration: 20,
-            idleDuration: 0,
-            idleThreshold: 5,
+            state: .init(
+                breakType: .short,
+                breakDuration: 20,
+                idleDuration: 0,
+                idleThreshold: 5
+            ),
             onSkip: {},
             onPostpone: {}
         )
@@ -28,10 +30,12 @@ final class ReminderPopupPresenterTests: XCTestCase {
 
         presenter.render(
             isPresented: true,
-            breakType: BreakType.short,
-            breakDuration: 20,
-            idleDuration: 0,
-            idleThreshold: 5,
+            state: .init(
+                breakType: .short,
+                breakDuration: 20,
+                idleDuration: 0,
+                idleThreshold: 5
+            ),
             onSkip: {},
             onPostpone: {}
         )
@@ -40,10 +44,12 @@ final class ReminderPopupPresenterTests: XCTestCase {
 
         presenter.render(
             isPresented: true,
-            breakType: BreakType.long,
-            breakDuration: 60,
-            idleDuration: 3,
-            idleThreshold: 5,
+            state: .init(
+                breakType: .long,
+                breakDuration: 60,
+                idleDuration: 3,
+                idleThreshold: 5
+            ),
             onSkip: {},
             onPostpone: {}
         )
@@ -66,20 +72,24 @@ final class ReminderPopupPresenterTests: XCTestCase {
 
         presenter.render(
             isPresented: true,
-            breakType: .short,
-            breakDuration: 20,
-            idleDuration: 0,
-            idleThreshold: 5,
+            state: .init(
+                breakType: .short,
+                breakDuration: 20,
+                idleDuration: 0,
+                idleThreshold: 5
+            ),
             onSkip: {},
             onPostpone: {}
         )
 
         presenter.render(
             isPresented: false,
-            breakType: .short,
-            breakDuration: 0,
-            idleDuration: 0,
-            idleThreshold: 1,
+            state: .init(
+                breakType: .short,
+                breakDuration: 0,
+                idleDuration: 0,
+                idleThreshold: 1
+            ),
             onSkip: {},
             onPostpone: {}
         )

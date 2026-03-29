@@ -215,7 +215,11 @@ final class AppCoordinator: AppCoordinating {
         publishState()
     }
 
-    private func adjustedSnapshot(
+    deinit { stop() }
+}
+
+extension AppCoordinator {
+    fileprivate func adjustedSnapshot(
         _ snapshot: AppSnapshot,
         for settings: AppSettings
     ) -> AppSnapshot {
@@ -250,7 +254,7 @@ final class AppCoordinator: AppCoordinating {
         return nextSnapshot
     }
 
-    private func reduceHeartbeat(
+    fileprivate func reduceHeartbeat(
         snapshot: AppSnapshot,
         delta: TimeInterval,
         idleDuration: TimeInterval,
@@ -306,7 +310,7 @@ final class AppCoordinator: AppCoordinating {
         return nextSnapshot
     }
 
-    private func phase(for snapshot: AppSnapshot) -> AppPhase {
+    fileprivate func phase(for snapshot: AppSnapshot) -> AppPhase {
         if snapshot.breakSessionState != nil {
             return .breakInProgress
         }
@@ -321,7 +325,7 @@ final class AppCoordinator: AppCoordinating {
         }
     }
 
-    private func publishState() {
+    fileprivate func publishState() {
         let snapshot = store.snapshot
         let settings = store.settings
 
@@ -329,6 +333,4 @@ final class AppCoordinator: AppCoordinating {
             observer(snapshot, settings)
         }
     }
-
-    deinit { stop() }
 }

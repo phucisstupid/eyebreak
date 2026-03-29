@@ -1,6 +1,6 @@
 import AppKit
-import XCTest
 import SwiftUI
+import XCTest
 
 @testable import EyeBreak
 
@@ -36,7 +36,8 @@ final class SettingsPopupPresenterTests: XCTestCase {
         XCTAssertTrue(panel.delegate === presenter)
 
         let delegate = try XCTUnwrap(panel.delegate as? SettingsPopupPresenter)
-        delegate.windowDidResignKey(Notification(name: NSWindow.didResignKeyNotification, object: panel))
+        delegate.windowDidResignKey(
+            Notification(name: NSWindow.didResignKeyNotification, object: panel))
 
         XCTAssertFalse(panel.isVisible)
     }
@@ -193,7 +194,8 @@ final class SettingsPopupPresenterTests: XCTestCase {
         )
         let panel = try XCTUnwrap(presenter.panel)
 
-        presenter.windowDidResignKey(Notification(name: NSWindow.didResignKeyNotification, object: panel))
+        presenter.windowDidResignKey(
+            Notification(name: NSWindow.didResignKeyNotification, object: panel))
 
         XCTAssertTrue(presenter.panel === panel)
         XCTAssertFalse(panel.isVisible)
@@ -210,7 +212,8 @@ final class SettingsPopupPresenterTests: XCTestCase {
         )
         let panel = try XCTUnwrap(presenter.panel)
 
-        presenter.windowDidResignKey(Notification(name: NSWindow.didResignKeyNotification, object: panel))
+        presenter.windowDidResignKey(
+            Notification(name: NSWindow.didResignKeyNotification, object: panel))
 
         presenter.present(
             settings: .default,

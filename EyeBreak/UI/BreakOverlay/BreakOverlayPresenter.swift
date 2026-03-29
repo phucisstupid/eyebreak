@@ -128,12 +128,12 @@ final class BreakOverlayPresenter {
     func handleEscapeKeyPress() {
         let pressedAt = now()
 
-        if let lastEscapePressAt,
-            pressedAt.timeIntervalSince(lastEscapePressAt) <= Self.escapeConfirmationWindow
-        {
-            self.lastEscapePressAt = nil
-            skipAction?()
-            return
+        if let lastEscapePressAt {
+            if pressedAt.timeIntervalSince(lastEscapePressAt) <= Self.escapeConfirmationWindow {
+                self.lastEscapePressAt = nil
+                skipAction?()
+                return
+            }
         }
 
         lastEscapePressAt = pressedAt

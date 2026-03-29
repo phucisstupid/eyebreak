@@ -7,14 +7,14 @@ final class SettingsPopupPresenter: NSObject, NSWindowDelegate {
     private static let trailingInset: CGFloat = 16
 
     private(set) var panel: NSPanel?
-    private var isPresentationSuppressedUntilExplicitHide = false
+    private var isSuppressedUntilExplicitPresent = false
 
     func present(
         settings: AppSettings,
         onSave: @escaping (AppSettings) -> Void,
         onLaunchAtLoginChange: @escaping @MainActor (Bool) -> String?
     ) {
-        isPresentationSuppressedUntilExplicitHide = false
+        isSuppressedUntilExplicitPresent = false
         render(
             isPresented: true,
             settings: settings,
@@ -31,7 +31,7 @@ final class SettingsPopupPresenter: NSObject, NSWindowDelegate {
     ) {
         guard isPresented else {
             panel?.orderOut(nil)
-            isPresentationSuppressedUntilExplicitHide = false
+            isSuppressedUntilExplicitPresent = false
             return
         }
 
@@ -50,7 +50,7 @@ final class SettingsPopupPresenter: NSObject, NSWindowDelegate {
         hostingView.autoresizingMask = [.width, .height]
         panel.contentView = hostingView
 
-        if !isPresentationSuppressedUntilExplicitHide {
+        if !isSuppressedUntilExplicitPresent {
             NSApp.activate(ignoringOtherApps: true)
             panel.makeKeyAndOrderFront(nil)
         }
@@ -60,7 +60,7 @@ final class SettingsPopupPresenter: NSObject, NSWindowDelegate {
 
     func windowDidResignKey(_ notification: Notification) {
         panel?.orderOut(nil)
-        isPresentationSuppressedUntilExplicitHide = true
+        isSuppressedUntilExplicitPresent = true
     }
 
     private func makePanel(frame: CGRect) -> NSPanel {

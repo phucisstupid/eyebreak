@@ -3,6 +3,13 @@ import SwiftUI
 
 @MainActor
 final class ReminderPopupPresenter {
+    struct PresentationState: Equatable {
+        let breakType: BreakType
+        let breakDuration: TimeInterval
+        let idleDuration: TimeInterval
+        let idleThreshold: TimeInterval
+    }
+
     private var panel: NSPanel?
     private var hostingView: NSHostingView<ReminderWindowView>?
 
@@ -11,10 +18,7 @@ final class ReminderPopupPresenter {
 
     func render(
         isPresented: Bool,
-        breakType: BreakType,
-        breakDuration: TimeInterval,
-        idleDuration: TimeInterval,
-        idleThreshold: TimeInterval,
+        state: PresentationState,
         onSkip: @escaping @MainActor () -> Void,
         onPostpone: @escaping @MainActor () -> Void
     ) {
@@ -39,10 +43,10 @@ final class ReminderPopupPresenter {
             hostingView
             ?? NSHostingView(
                 rootView: ReminderWindowView(
-                    breakType: breakType,
-                    breakDuration: breakDuration,
-                    idleDuration: idleDuration,
-                    idleThreshold: idleThreshold,
+                    breakType: state.breakType,
+                    breakDuration: state.breakDuration,
+                    idleDuration: state.idleDuration,
+                    idleThreshold: state.idleThreshold,
                     onSkip: onSkip,
                     onPostpone: onPostpone
                 ))
@@ -51,10 +55,10 @@ final class ReminderPopupPresenter {
         hostingView.frame = CGRect(origin: .zero, size: size)
         hostingView.autoresizingMask = [.width, .height]
         hostingView.rootView = ReminderWindowView(
-            breakType: breakType,
-            breakDuration: breakDuration,
-            idleDuration: idleDuration,
-            idleThreshold: idleThreshold,
+            breakType: state.breakType,
+            breakDuration: state.breakDuration,
+            idleDuration: state.idleDuration,
+            idleThreshold: state.idleThreshold,
             onSkip: onSkip,
             onPostpone: onPostpone
         )
