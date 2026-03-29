@@ -56,20 +56,29 @@ final class MenuBarContentViewTests: XCTestCase {
 
     func test_settingsCommandDismissesMenuBeforeOpeningSettings() {
         let model = AppModel.makeForTests()
-        var callOrder: [String] = []
+        var dismissed = false
+        var returnedFromShowSettings = false
+        let settingsOpenedExpectation = expectation(
+            description: "settings opens on a later main-loop turn"
+        )
         let view = MenuBarContentView(
             model: model,
             quit: {},
             openSettings: {
-                callOrder.append("settings")
+                XCTAssertTrue(dismissed)
+                XCTAssertTrue(returnedFromShowSettings)
+                settingsOpenedExpectation.fulfill()
             }
         )
 
         view.showSettings(dismissMenu: {
-            callOrder.append("dismiss")
+            dismissed = true
         })
 
-        XCTAssertEqual(callOrder, ["dismiss", "settings"])
+        returnedFromShowSettings = true
+
+        XCTAssertTrue(dismissed)
+        wait(for: [settingsOpenedExpectation], timeout: 1)
     }
 
     func test_menuBarRootViewUsesInjectedSettingsAction() {

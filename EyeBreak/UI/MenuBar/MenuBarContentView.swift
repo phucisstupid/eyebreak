@@ -79,7 +79,9 @@ struct MenuBarContentView: View {
 
     func showSettings(dismissMenu: () -> Void = {}) {
         dismissMenu()
-        openSettings()
+        DispatchQueue.main.async {
+            openSettings()
+        }
     }
 
     var body: some View {
