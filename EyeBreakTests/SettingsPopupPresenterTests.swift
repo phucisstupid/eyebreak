@@ -42,6 +42,44 @@ final class SettingsPopupPresenterTests: XCTestCase {
         XCTAssertTrue(firstPanel === presenter.panel)
     }
 
+    func test_renderReplacesTheContentViewOnEachPresentation() throws {
+        let presenter = SettingsPopupPresenter()
+
+        presenter.render(
+            isPresented: true,
+            settings: .default,
+            onSave: { _ in },
+            onLaunchAtLoginChange: { _ in nil }
+        )
+        let panel = try XCTUnwrap(presenter.panel)
+        let firstContentView = try XCTUnwrap(panel.contentView)
+
+        presenter.render(
+            isPresented: true,
+            settings: .default,
+            onSave: { _ in },
+            onLaunchAtLoginChange: { _ in nil }
+        )
+
+        let secondContentView = try XCTUnwrap(panel.contentView)
+        XCTAssertFalse(firstContentView === secondContentView)
+        XCTAssertNotNil(secondContentView as? NSHostingView<PreferencesView>)
+    }
+
+    func test_renderCreatesANonClosablePanel() throws {
+        let presenter = SettingsPopupPresenter()
+
+        presenter.render(
+            isPresented: true,
+            settings: .default,
+            onSave: { _ in },
+            onLaunchAtLoginChange: { _ in nil }
+        )
+        let panel = try XCTUnwrap(presenter.panel)
+
+        XCTAssertFalse(panel.styleMask.contains(.closable))
+    }
+
     func test_renderPreservesTheExistingPanelOriginWhenReusingThePanel() throws {
         let presenter = SettingsPopupPresenter()
 

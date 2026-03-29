@@ -3,7 +3,6 @@ import SwiftUI
 
 @MainActor
 final class SettingsPopupPresenter: NSObject, NSWindowDelegate {
-    private var hostingView: NSHostingView<PreferencesView>?
     private(set) var panel: NSPanel?
     private var isPresentationSuppressedUntilExplicitHide = false
 
@@ -21,27 +20,18 @@ final class SettingsPopupPresenter: NSObject, NSWindowDelegate {
 
         let size = PreferencesView.nativeWindowSize
         let panel = panel ?? makePanel(frame: CGRect(origin: .zero, size: size))
-        let hostingView =
-            hostingView
-            ?? NSHostingView(
-                rootView: PreferencesView(
-                    settings: settings,
-                    onSave: onSave,
-                    onLaunchAtLoginChange: onLaunchAtLoginChange
-                )
+        let hostingView = NSHostingView(
+            rootView: PreferencesView(
+                settings: settings,
+                onSave: onSave,
+                onLaunchAtLoginChange: onLaunchAtLoginChange
             )
+        )
 
         panel.setFrame(CGRect(origin: panel.frame.origin, size: size), display: true)
         hostingView.frame = CGRect(origin: .zero, size: size)
         hostingView.autoresizingMask = [.width, .height]
-        hostingView.rootView = PreferencesView(
-            settings: settings,
-            onSave: onSave,
-            onLaunchAtLoginChange: onLaunchAtLoginChange
-        )
-        if panel.contentView !== hostingView {
-            panel.contentView = hostingView
-        }
+        panel.contentView = hostingView
 
         if !isPresentationSuppressedUntilExplicitHide {
             NSApp.activate(ignoringOtherApps: true)
@@ -49,7 +39,6 @@ final class SettingsPopupPresenter: NSObject, NSWindowDelegate {
         }
 
         self.panel = panel
-        self.hostingView = hostingView
     }
 
     func windowDidResignKey(_ notification: Notification) {
@@ -60,7 +49,7 @@ final class SettingsPopupPresenter: NSObject, NSWindowDelegate {
     private func makePanel(frame: CGRect) -> NSPanel {
         let panel = NSPanel(
             contentRect: frame,
-            styleMask: [.titled, .closable, .fullSizeContentView],
+            styleMask: [.titled, .fullSizeContentView],
             backing: .buffered,
             defer: false
         )
