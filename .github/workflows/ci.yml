@@ -14,15 +14,6 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Install Swift tooling
-        run: brew install swiftlint swift-format
-
-      - name: Lint with swift-format
-        run: swift-format lint -r EyeBreak EyeBreakTests
-
-      - name: Lint with SwiftLint
-        run: swiftlint lint
-
       - name: Build app
         run: xcodebuild -project EyeBreak.xcodeproj -scheme EyeBreak -destination 'platform=macOS' build
 

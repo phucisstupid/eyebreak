@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -eu
+
+swift-format format -ir EyeBreak EyeBreakTests
+swift-format lint -r EyeBreak EyeBreakTests
+swiftlint lint

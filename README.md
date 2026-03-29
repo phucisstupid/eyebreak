@@ -47,6 +47,12 @@ Run SwiftLint:
 swiftlint lint
 ```
 
+Enable the tracked pre-commit hook so formatting and linting stay local:
+
+```bash
+git config core.hooksPath .githooks
+```
+
 Create a GitHub release artifact by pushing a version tag:
 
 ```bash
@@ -90,6 +96,7 @@ The reminder popup uses a non-activating AppKit panel hosted with SwiftUI conten
 
 ## Release Notes
 
-- Pull requests and pushes run GitHub Actions checks for formatting, linting, build, and tests.
+- Formatting and linting run locally through the tracked pre-commit hook.
+- Pull requests and pushes run GitHub Actions build and test checks.
 - Version tags publish unsigned prerelease `.zip` and `.dmg` artifacts that are ready for download and manual testing.
 - Because the artifact is not notarized, macOS Gatekeeper may warn or block it on a default system.
