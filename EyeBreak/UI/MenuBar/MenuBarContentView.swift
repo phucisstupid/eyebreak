@@ -77,6 +77,11 @@ struct MenuBarContentView: View {
         }
     }
 
+    func showSettings(dismissMenu: () -> Void = {}) {
+        dismissMenu()
+        openSettings()
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 8) {
@@ -115,8 +120,7 @@ struct MenuBarContentView: View {
             Divider()
 
             Button("Settings") {
-                openSettings()
-                dismiss()
+                showSettings(dismissMenu: dismiss.callAsFunction)
             }
 
             Button("Skip current reminder") {
