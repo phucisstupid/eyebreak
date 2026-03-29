@@ -2,37 +2,25 @@ import AppKit
 import SwiftUI
 
 struct MenuBarRootView: View {
-    @Environment(\.openSettings) private var openSettings
-
     @ObservedObject var model: AppModel
     let quit: () -> Void
-    let openSettingsOverride: (() -> Void)?
+    let openSettings: () -> Void
 
     init(
         model: AppModel,
         quit: @escaping () -> Void,
-        openSettingsOverride: (() -> Void)? = nil
+        openSettings: @escaping () -> Void = {}
     ) {
         self.model = model
         self.quit = quit
-        self.openSettingsOverride = openSettingsOverride
-    }
-
-    func openSettingsWindow() {
-        if let openSettingsOverride {
-            openSettingsOverride()
-            return
-        }
-
-        openSettings()
-        NSApp.activate(ignoringOtherApps: true)
+        self.openSettings = openSettings
     }
 
     var body: some View {
         MenuBarContentView(
             model: model,
             quit: quit,
-            openSettingsWindow: openSettingsWindow
+            openSettings: openSettings
         )
     }
 }
@@ -42,18 +30,18 @@ struct MenuBarContentView: View {
 
     @ObservedObject var model: AppModel
     let quit: () -> Void
-    let openSettingsWindow: () -> Void
+    let openSettings: () -> Void
 
     private let contentBuilder = MenuContentBuilder()
 
     init(
         model: AppModel,
         quit: @escaping () -> Void,
-        openSettingsWindow: @escaping () -> Void = {}
+        openSettings: @escaping () -> Void = {}
     ) {
         self.model = model
         self.quit = quit
-        self.openSettingsWindow = openSettingsWindow
+        self.openSettings = openSettings
     }
 
     var menuContent: MenuContent {
@@ -127,7 +115,7 @@ struct MenuBarContentView: View {
             Divider()
 
             Button("Settings") {
-                openSettingsWindow()
+                openSettings()
                 dismiss()
             }
 

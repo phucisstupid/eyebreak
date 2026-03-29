@@ -6,6 +6,20 @@ final class SettingsPopupPresenter: NSObject, NSWindowDelegate {
     private(set) var panel: NSPanel?
     private var isPresentationSuppressedUntilExplicitHide = false
 
+    func present(
+        settings: AppSettings,
+        onSave: @escaping (AppSettings) -> Void,
+        onLaunchAtLoginChange: @escaping @MainActor (Bool) -> String?
+    ) {
+        isPresentationSuppressedUntilExplicitHide = false
+        render(
+            isPresented: true,
+            settings: settings,
+            onSave: onSave,
+            onLaunchAtLoginChange: onLaunchAtLoginChange
+        )
+    }
+
     func render(
         isPresented: Bool,
         settings: AppSettings,

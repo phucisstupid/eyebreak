@@ -6,6 +6,7 @@ struct EyeBreakApp: App {
     @StateObject private var appModel: AppModel
     private let breakOverlayPresenter = BreakOverlayPresenter()
     private let reminderPopupPresenter = ReminderPopupPresenter()
+    private let settingsPopupPresenter = SettingsPopupPresenter()
     private let lifecycleController: AppLifecycleController
 
     init() {
@@ -30,7 +31,8 @@ struct EyeBreakApp: App {
         MenuBarExtra("EyeBreak", systemImage: "eye") {
             MenuBarRootView(
                 model: appModel,
-                quit: { NSApp.terminate(nil) }
+                quit: { NSApp.terminate(nil) },
+                openSettings: showSettingsPopup
             )
         }
         .menuBarExtraStyle(.window)
@@ -39,14 +41,6 @@ struct EyeBreakApp: App {
         }
         .onChange(of: appModel.breakOverlayState, initial: true) { _, state in
             renderBreakOverlay(state)
-        }
-
-        Settings {
-            PreferencesView(
-                settings: appModel.settings,
-                onSave: appModel.updateSettings,
-                onLaunchAtLoginChange: appModel.setLaunchAtLogin
-            )
         }
     }
 
@@ -69,6 +63,14 @@ struct EyeBreakApp: App {
             totalSeconds: state?.totalSeconds ?? 0,
             onSkip: appModel.skipCurrentBreak,
             onPostpone: appModel.postponeCurrentBreak
+        )
+    }
+
+    private func showSettingsPopup() {
+        settingsPopupPresenter.present(
+            settings: appModel.settings,
+            onSave: appModel.updateSettings,
+            onLaunchAtLoginChange: appModel.setLaunchAtLogin
         )
     }
 

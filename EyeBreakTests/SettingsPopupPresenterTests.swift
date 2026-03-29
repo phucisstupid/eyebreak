@@ -210,7 +210,7 @@ final class SettingsPopupPresenterTests: XCTestCase {
         XCTAssertFalse(panel.isVisible)
     }
 
-    func test_renderDoesNotReopenAfterResignKeyUntilPresentationIsExplicitlyDisabledAndEnabledAgain() throws {
+    func test_presentReopensAfterResignKeyWithoutNeedingAPresentationStateReset() throws {
         let presenter = SettingsPopupPresenter()
 
         presenter.render(
@@ -223,23 +223,7 @@ final class SettingsPopupPresenterTests: XCTestCase {
 
         presenter.windowDidResignKey(Notification(name: NSWindow.didResignKeyNotification, object: panel))
 
-        presenter.render(
-            isPresented: true,
-            settings: .default,
-            onSave: { _ in },
-            onLaunchAtLoginChange: { _ in nil }
-        )
-        XCTAssertFalse(panel.isVisible)
-
-        presenter.render(
-            isPresented: false,
-            settings: .default,
-            onSave: { _ in },
-            onLaunchAtLoginChange: { _ in nil }
-        )
-
-        presenter.render(
-            isPresented: true,
+        presenter.present(
             settings: .default,
             onSave: { _ in },
             onLaunchAtLoginChange: { _ in nil }

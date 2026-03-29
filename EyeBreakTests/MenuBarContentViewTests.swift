@@ -46,10 +46,10 @@ final class MenuBarContentViewTests: XCTestCase {
         let view = MenuBarContentView(
             model: model,
             quit: {},
-            openSettingsWindow: { settingsOpened = true }
+            openSettings: { settingsOpened = true }
         )
 
-        view.openSettingsWindow()
+        view.openSettings()
 
         XCTAssertTrue(settingsOpened)
     }
@@ -60,10 +60,10 @@ final class MenuBarContentViewTests: XCTestCase {
         let view = MenuBarRootView(
             model: model,
             quit: {},
-            openSettingsOverride: { settingsOpened = true }
+            openSettings: { settingsOpened = true }
         )
 
-        view.openSettingsWindow()
+        view.openSettings()
 
         XCTAssertTrue(settingsOpened)
     }
