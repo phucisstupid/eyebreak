@@ -3,6 +3,9 @@ import SwiftUI
 
 @MainActor
 final class SettingsPopupPresenter: NSObject, NSWindowDelegate {
+    private static let topInset: CGFloat = 12
+    private static let trailingInset: CGFloat = 16
+
     private(set) var panel: NSPanel?
     private var isPresentationSuppressedUntilExplicitHide = false
 
@@ -33,7 +36,7 @@ final class SettingsPopupPresenter: NSObject, NSWindowDelegate {
         }
 
         let size = PreferencesView.nativeWindowSize
-        let panel = panel ?? makePanel(frame: CGRect(origin: .zero, size: size))
+        let panel = panel ?? makePanel(frame: defaultFrame(for: size))
         let hostingView = NSHostingView(
             rootView: PreferencesView(
                 settings: settings,
@@ -76,5 +79,18 @@ final class SettingsPopupPresenter: NSObject, NSWindowDelegate {
         panel.collectionBehavior = [.canJoinAllSpaces, .transient]
         panel.delegate = self
         return panel
+    }
+
+    private func defaultFrame(for size: CGSize) -> CGRect {
+        let visibleFrame = NSScreen.main?.visibleFrame ?? CGRect(origin: .zero, size: size)
+        let origin = Self.defaultOrigin(for: size, in: visibleFrame)
+        return CGRect(origin: origin, size: size)
+    }
+
+    static func defaultOrigin(for size: CGSize, in visibleFrame: CGRect) -> CGPoint {
+        CGPoint(
+            x: visibleFrame.maxX - size.width - trailingInset,
+            y: visibleFrame.maxY - size.height - topInset
+        )
     }
 }

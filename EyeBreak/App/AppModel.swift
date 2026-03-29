@@ -136,9 +136,6 @@ final class AppModel: ObservableObject {
 
     @discardableResult
     func setLaunchAtLogin(_ enabled: Bool) -> String? {
-        var updatedSettings = settings
-        updatedSettings.launchAtLogin = enabled
-        updateSettings(updatedSettings)
         return launchAtLoginController.setEnabled(enabled)
     }
 

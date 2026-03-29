@@ -21,13 +21,30 @@ jobs:
       - name: Package app
         run: |
           APP_PATH=$(find ~/Library/Developer/Xcode/DerivedData -path '*Build/Products/Release/EyeBreak.app' -print -quit)
+          if [ -z "$APP_PATH" ]; then
+            echo "Release app not found in DerivedData"
+            exit 1
+          fi
+
           ditto -c -k --sequesterRsrc --keepParent "$APP_PATH" EyeBreak-macOS.zip
+
+          STAGING_DIR=$(mktemp -d)
+          cp -R "$APP_PATH" "$STAGING_DIR/"
+          hdiutil create \
+            -volname "EyeBreak" \
+            -srcfolder "$STAGING_DIR" \
+            -ov \
+            -format UDZO \
+            EyeBreak-macOS.dmg
+          rm -rf "$STAGING_DIR"
 
       - name: Upload release artifact
         uses: actions/upload-artifact@v4
         with:
           name: EyeBreak-macOS
-          path: EyeBreak-macOS.zip
+          path: |
+            EyeBreak-macOS.zip
+            EyeBreak-macOS.dmg
 
       - name: Publish GitHub release asset
         uses: softprops/action-gh-release@v2
@@ -37,5 +54,7 @@ jobs:
           body: |
             Unsigned macOS prerelease build.
 
-            This archive is not notarized and may be blocked by Gatekeeper on a default macOS system.
-          files: EyeBreak-macOS.zip
+            These artifacts are not notarized and may be blocked by Gatekeeper on a default macOS system.
+          files: |
+            EyeBreak-macOS.zip
+            EyeBreak-macOS.dmg

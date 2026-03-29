@@ -54,7 +54,7 @@ git tag v0.1.0
 git push origin v0.1.0
 ```
 
-Tagged releases build the app in Release configuration, package `EyeBreak.app` into `EyeBreak-macOS.zip`, upload the zip as a workflow artifact, and publish it as an unsigned GitHub prerelease asset.
+Tagged releases build the app in Release configuration, package `EyeBreak.app` into both `EyeBreak-macOS.zip` and `EyeBreak-macOS.dmg`, upload both as workflow artifacts, and publish them as unsigned GitHub prerelease assets.
 
 ## Architecture
 
@@ -64,6 +64,7 @@ EyeBreak stays small by keeping scheduling logic in plain Swift and treating UI 
 - `AppModel` exposes coordinator state and actions to SwiftUI views.
 - `AppCoordinator` owns the app snapshot and applies heartbeat, reminder, break, and sleep/wake transitions.
 - `BreakScheduler` tracks active-time progress and decides when reminders should appear.
+- `SettingsPopupPresenter` is the AppKit bridge for the compact settings popup while `PreferencesView` keeps the form content in SwiftUI.
 - `ReminderPopupPresenter` is the AppKit bridge for the top-of-screen reminder banner while `ReminderPopupView` keeps the content in SwiftUI.
 - `BreakOverlayPresenter` is the AppKit bridge that renders the full-screen break experience.
 
@@ -78,16 +79,17 @@ EyeBreak stays small by keeping scheduling logic in plain Swift and treating UI 
 5. If idle time reaches the configured threshold while the app is waiting, the coordinator starts a break session and shows the break overlay.
 6. Break timing is tracked separately by `BreakSessionManager`, which handles short and long break selection and countdown.
 
-The reminder popup uses a non-activating AppKit panel hosted with SwiftUI content so it can behave like a lightweight macOS banner instead of a normal app window. The break overlay is also AppKit-backed so it can cover the selected screen reliably.
+The reminder popup uses a non-activating AppKit panel hosted with SwiftUI content so it can behave like a lightweight macOS banner instead of a normal app window. The settings popup also uses a compact AppKit panel so it behaves like a menu bar utility surface instead of a standard preferences window. The break overlay is also AppKit-backed so it can cover the selected screen reliably.
 
 ## Limitations
 
 - Launch-at-login behavior can differ in unsigned debug builds, even though the preference is still saved.
+- The settings surface is intentionally AppKit-backed so it can open as a compact floating popup instead of a standard SwiftUI settings window.
 - The break overlay still uses AppKit for reliable full-screen behavior across displays.
-- The release workflow produces a GitHub-ready artifact, not a notarized build.
+- The release workflow produces GitHub-ready `.zip` and `.dmg` artifacts, not notarized builds.
 
 ## Release Notes
 
 - Pull requests and pushes run GitHub Actions checks for formatting, linting, build, and tests.
-- Version tags publish an unsigned prerelease zip that is ready for download and manual testing.
+- Version tags publish unsigned prerelease `.zip` and `.dmg` artifacts that are ready for download and manual testing.
 - Because the artifact is not notarized, macOS Gatekeeper may warn or block it on a default system.

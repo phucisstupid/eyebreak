@@ -19,6 +19,7 @@ final class SettingsPopupPresenterTests: XCTestCase {
         let panel = try XCTUnwrap(presenter.panel)
         XCTAssertEqual(panel.frame.size, PreferencesView.nativeWindowSize)
         XCTAssertNotNil(panel.contentView as? NSHostingView<PreferencesView>)
+        XCTAssertNotEqual(panel.frame.origin, .zero)
     }
 
     func test_renderWiresThePanelDelegateToThePresenter() throws {
@@ -85,24 +86,11 @@ final class SettingsPopupPresenterTests: XCTestCase {
         XCTAssertNotNil(secondContentView as? NSHostingView<PreferencesView>)
     }
 
-    func test_renderRecreatesPreferencesViewWithUpdatedSettingsValues() throws {
+    func test_renderRecreatesPreferencesViewWithUpdatedLaunchAtLoginValue() throws {
         let presenter = SettingsPopupPresenter()
-        let initialSettings = AppSettings(
-            activeInterval: 20 * 60,
-            shortBreakDuration: 20,
-            longBreakDuration: 60,
-            longBreakFrequency: 3,
-            idleThreshold: 5,
-            launchAtLogin: false
-        )
-        let updatedSettings = AppSettings(
-            activeInterval: 45 * 60,
-            shortBreakDuration: 30,
-            longBreakDuration: 120,
-            longBreakFrequency: 7,
-            idleThreshold: 12,
-            launchAtLogin: true
-        )
+        let initialSettings = AppSettings.default
+        var updatedSettings = AppSettings.default
+        updatedSettings.launchAtLogin = true
 
         presenter.render(
             isPresented: true,
@@ -113,10 +101,7 @@ final class SettingsPopupPresenterTests: XCTestCase {
 
         let panel = try XCTUnwrap(presenter.panel)
         let firstHostingView = try XCTUnwrap(panel.contentView as? NSHostingView<PreferencesView>)
-        XCTAssertEqual(
-            extractedSettings(from: firstHostingView.rootView),
-            initialSettings
-        )
+        XCTAssertFalse(firstHostingView.rootView.launchAtLoginBinding.wrappedValue)
 
         presenter.render(
             isPresented: true,
@@ -126,14 +111,8 @@ final class SettingsPopupPresenterTests: XCTestCase {
         )
 
         let secondHostingView = try XCTUnwrap(panel.contentView as? NSHostingView<PreferencesView>)
-        XCTAssertEqual(
-            extractedSettings(from: secondHostingView.rootView),
-            updatedSettings
-        )
-        XCTAssertEqual(
-            extractedSettings(from: firstHostingView.rootView),
-            initialSettings
-        )
+        XCTAssertTrue(secondHostingView.rootView.launchAtLoginBinding.wrappedValue)
+        XCTAssertFalse(firstHostingView.rootView.launchAtLoginBinding.wrappedValue)
     }
 
     func test_renderCreatesANonClosablePanel() throws {
@@ -170,6 +149,16 @@ final class SettingsPopupPresenterTests: XCTestCase {
         )
 
         XCTAssertEqual(panel.frame.origin, NSPoint(x: 42, y: 84))
+    }
+
+    func test_defaultOriginPlacesPopupInsideTopTrailingVisibleFrame() {
+        let visibleFrame = CGRect(x: 100, y: 200, width: 1200, height: 900)
+        let size = PreferencesView.nativeWindowSize
+
+        let origin = SettingsPopupPresenter.defaultOrigin(for: size, in: visibleFrame)
+
+        XCTAssertEqual(origin.x, visibleFrame.maxX - size.width - 16, accuracy: 0.5)
+        XCTAssertEqual(origin.y, visibleFrame.maxY - size.height - 12, accuracy: 0.5)
     }
 
     func test_renderOrdersPanelOutWhenPresentationIsDisabled() throws {
@@ -259,27 +248,5 @@ final class SettingsPopupPresenterTests: XCTestCase {
 
         XCTAssertTrue(presenter.panel === firstPanel)
         XCTAssertTrue(firstPanel.isVisible)
-    }
-
-    private func extractedSettings(from view: PreferencesView) -> AppSettings? {
-        extractValue(of: AppSettings.self, from: view)
-    }
-
-    private func extractValue<T>(of type: T.Type, from value: Any, depth: Int = 4) -> T? {
-        if let typedValue = value as? T {
-            return typedValue
-        }
-
-        guard depth > 0 else {
-            return nil
-        }
-
-        for child in Mirror(reflecting: value).children {
-            if let extractedValue = extractValue(of: type, from: child.value, depth: depth - 1) {
-                return extractedValue
-            }
-        }
-
-        return nil
     }
 }

@@ -47,6 +47,27 @@ final class PreferencesViewTests: XCTestCase {
         XCTAssertEqual(launchAtLoginValues, [true])
     }
 
+    func test_launchAtLoginToggleUpdatesAppModelOnlyOnce() {
+        let coordinator = PreferencesSpyAppCoordinator(settings: .default)
+        let launchAtLoginController = PreferencesSpyLaunchAtLoginController()
+        let model = AppModel.makeForTests(
+            coordinator: coordinator,
+            launchAtLoginController: launchAtLoginController
+        )
+        let view = PreferencesView(
+            settings: model.settings,
+            onSave: model.updateSettings,
+            onLaunchAtLoginChange: model.setLaunchAtLogin
+        )
+
+        view.launchAtLoginBinding.wrappedValue = true
+
+        XCTAssertEqual(coordinator.updateSettingsValues.count, 1)
+        XCTAssertEqual(coordinator.updateSettingsValues.first?.launchAtLogin, true)
+        XCTAssertTrue(model.settings.launchAtLogin)
+        XCTAssertEqual(launchAtLoginController.enabledValues, [true])
+    }
+
     func test_integerFieldParserNormalizesInputWithinConfiguredRange() {
         let parser = PreferencesIntegerFieldParser(range: 1...120)
 
@@ -78,5 +99,57 @@ final class PreferencesViewTests: XCTestCase {
         }
 
         return results
+    }
+}
+
+private final class PreferencesSpyAppCoordinator: AppCoordinating {
+    var settings: AppSettings
+    var snapshot: AppSnapshot
+    var updateSettingsValues: [AppSettings] = []
+
+    init(settings: AppSettings) {
+        self.settings = settings
+        self.snapshot = .initial(settings: settings)
+    }
+
+    func observeStateChanges(
+        _ observer: @escaping (AppSnapshot, AppSettings) -> Void
+    ) -> AppStateObservationToken {
+        UUID()
+    }
+
+    func removeStateChangeObserver(_ token: AppStateObservationToken) {}
+
+    func start() {}
+
+    func stop() {}
+
+    func pauseReminders() {}
+
+    func resumeReminders() {}
+
+    func skipCurrentReminder() {}
+
+    func postponeCurrentReminder() {}
+
+    func skipCurrentBreak() {}
+
+    func postponeCurrentBreak() {}
+
+    func startBreakNow() {}
+
+    func updateSettings(_ settings: AppSettings) {
+        self.settings = settings
+        updateSettingsValues.append(settings)
+    }
+}
+
+private final class PreferencesSpyLaunchAtLoginController: LaunchAtLoginControlling {
+    var enabledValues: [Bool] = []
+
+    @discardableResult
+    func setEnabled(_ enabled: Bool) -> String? {
+        enabledValues.append(enabled)
+        return nil
     }
 }
