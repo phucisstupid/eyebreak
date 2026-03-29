@@ -66,6 +66,117 @@ final class AppCoordinatorTests: XCTestCase {
         XCTAssertEqual(coordinator.store.snapshot.remainingBreakSeconds, 20)
     }
 
+    func test_startBreakNowBeginsBreakFromRunningPhase() {
+        let coordinator = AppCoordinator(
+            settingsStore: InMemorySettingsStore(),
+            idleTimeProvider: StubIdleTimeProvider(idleTime: 0),
+            now: { Date(timeIntervalSince1970: 84) }
+        )
+
+        coordinator.replaceSnapshotForTesting(
+            AppSnapshot(
+                phase: .running,
+                breakCount: 1,
+                nextBreakType: .short,
+                breakSessionState: nil,
+                schedulerState: .running(progress: 300),
+                idleDuration: 0,
+                postpone: ReminderPostpone(startedAt: .init(timeIntervalSince1970: 0), duration: 300)
+            )
+        )
+
+        coordinator.startBreakNow()
+
+        XCTAssertEqual(coordinator.store.snapshot.phase, .breakInProgress)
+        XCTAssertEqual(coordinator.store.snapshot.breakSessionState?.startedAt, Date(timeIntervalSince1970: 84))
+        XCTAssertEqual(coordinator.store.snapshot.schedulerState, .running(progress: 300))
+        XCTAssertNil(coordinator.store.snapshot.postpone)
+    }
+
+    func test_postponeCurrentReminderClearsWaitingStateAndStartsFiveMinutePostpone() {
+        let coordinator = AppCoordinator(
+            settingsStore: InMemorySettingsStore(),
+            idleTimeProvider: StubIdleTimeProvider(idleTime: 0),
+            now: { Date(timeIntervalSince1970: 100) }
+        )
+
+        coordinator.replaceSnapshotForTesting(
+            .waitingForIdle(progress: 1_200, breakCount: 0, nextBreakType: .short)
+        )
+
+        coordinator.postponeCurrentReminder()
+
+        XCTAssertEqual(coordinator.store.snapshot.phase, .running)
+        XCTAssertEqual(coordinator.store.snapshot.schedulerState, .running(progress: 0))
+        XCTAssertEqual(
+            coordinator.store.snapshot.postpone,
+            ReminderPostpone(startedAt: .init(timeIntervalSince1970: 100), duration: 300)
+        )
+    }
+
+    func test_skipCurrentBreakEndsBreakWithoutPostponingReminder() {
+        let coordinator = AppCoordinator(
+            settingsStore: InMemorySettingsStore(),
+            idleTimeProvider: StubIdleTimeProvider(idleTime: 0)
+        )
+
+        coordinator.replaceSnapshotForTesting(
+            AppSnapshot(
+                phase: .breakInProgress,
+                breakCount: 0,
+                nextBreakType: .short,
+                breakSessionState: BreakSessionState(
+                    breakType: .short,
+                    remainingDuration: 15,
+                    startedAt: .init(timeIntervalSince1970: 0)
+                ),
+                schedulerState: .running(progress: 1_200),
+                idleDuration: 5,
+                postpone: nil
+            )
+        )
+
+        coordinator.skipCurrentBreak()
+
+        XCTAssertEqual(coordinator.store.snapshot.phase, .running)
+        XCTAssertNil(coordinator.store.snapshot.breakSessionState)
+        XCTAssertNil(coordinator.store.snapshot.postpone)
+        XCTAssertEqual(coordinator.store.snapshot.schedulerState, .running(progress: 0))
+    }
+
+    func test_postponeCurrentBreakCreatesFiveMinutePostpone() {
+        let coordinator = AppCoordinator(
+            settingsStore: InMemorySettingsStore(),
+            idleTimeProvider: StubIdleTimeProvider(idleTime: 0),
+            now: { Date(timeIntervalSince1970: 250) }
+        )
+
+        coordinator.replaceSnapshotForTesting(
+            AppSnapshot(
+                phase: .breakInProgress,
+                breakCount: 0,
+                nextBreakType: .short,
+                breakSessionState: BreakSessionState(
+                    breakType: .short,
+                    remainingDuration: 15,
+                    startedAt: .init(timeIntervalSince1970: 0)
+                ),
+                schedulerState: .running(progress: 1_200),
+                idleDuration: 5,
+                postpone: nil
+            )
+        )
+
+        coordinator.postponeCurrentBreak()
+
+        XCTAssertEqual(coordinator.store.snapshot.phase, .running)
+        XCTAssertNil(coordinator.store.snapshot.breakSessionState)
+        XCTAssertEqual(
+            coordinator.store.snapshot.postpone,
+            ReminderPostpone(startedAt: .init(timeIntervalSince1970: 250), duration: 300)
+        )
+    }
+
     func test_activePostponeDoesNotOverwritePausedPhase() {
         let coordinator = AppCoordinator(
             settingsStore: InMemorySettingsStore(),

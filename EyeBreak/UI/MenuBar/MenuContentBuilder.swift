@@ -14,6 +14,7 @@ final class MenuContentBuilder {
             waitingForIdleLine: waitingForIdleLine(for: snapshot),
             breakCountLine: "Current break count: \(snapshot.breakCount)",
             nextBreakTypeLine: "Next break type: \(nextBreakType(for: snapshot).menuLabel)",
+            canStartBreakNow: snapshot.phase != .breakInProgress && snapshot.phase != .paused,
             canPause: snapshot.phase != .paused && snapshot.phase != .breakInProgress,
             canResume: snapshot.phase == .paused,
             canSkipReminder: snapshot.phase == .waitingForIdle

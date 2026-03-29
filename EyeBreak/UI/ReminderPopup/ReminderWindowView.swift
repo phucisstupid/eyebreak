@@ -6,8 +6,8 @@ struct ReminderWindowView: View {
     let breakDuration: TimeInterval
     let idleDuration: TimeInterval
     let idleThreshold: TimeInterval
-    let onStartNow: @MainActor () -> Void
     let onSkip: @MainActor () -> Void
+    let onPostpone: @MainActor () -> Void
 
     var body: some View {
         ReminderPopupView(
@@ -15,8 +15,8 @@ struct ReminderWindowView: View {
             breakDuration: breakDuration,
             idleDuration: idleDuration,
             idleThreshold: idleThreshold,
-            onStartNow: onStartNow,
-            onSkip: onSkip
+            onSkip: onSkip,
+            onPostpone: onPostpone
         )
         .frame(minWidth: 320, idealWidth: 320)
     }

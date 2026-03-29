@@ -17,7 +17,9 @@ protocol AppCoordinating: AnyObject {
     func pauseReminders()
     func resumeReminders()
     func skipCurrentReminder()
+    func postponeCurrentReminder()
     func skipCurrentBreak()
+    func postponeCurrentBreak()
     func startBreakNow()
     func updateSettings(_ settings: AppSettings)
 }

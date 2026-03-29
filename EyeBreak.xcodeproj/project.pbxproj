@@ -3,56 +3,56 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 71;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		000000000000000000000040 /* EyeBreakApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000010 /* EyeBreakApp.swift */; };
-		000000000000000000000042 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000012 /* AppCoordinator.swift */; };
-		000000000000000000000046 /* AppPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000018 /* AppPhase.swift */; };
-		000000000000000000000047 /* BreakType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000019 /* BreakType.swift */; };
-		000000000000000000000048 /* AppSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000001A /* AppSnapshot.swift */; };
-		000000000000000000000049 /* AppStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000001B /* AppStateStore.swift */; };
-		00000000000000000000004A /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000001C /* AppSettings.swift */; };
-		00000000000000000000004B /* SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000001D /* SettingsStore.swift */; };
-		00000000000000000000004C /* UserDefaultsSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000001E /* UserDefaultsSettingsStore.swift */; };
-		00000000000000000000004D /* BreakScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000001F /* BreakScheduler.swift */; };
-		00000000000000000000005B /* BreakSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000025 /* BreakSessionManager.swift */; };
-		00000000000000000000005C /* BreakSessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000026 /* BreakSessionState.swift */; };
-		00000000000000000000005D /* ReminderPostpone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000027 /* ReminderPostpone.swift */; };
-		00000000000000000000004E /* SchedulerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000022 /* SchedulerEvent.swift */; };
-		00000000000000000000004F /* SchedulerCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000023 /* SchedulerCommand.swift */; };
-		000000000000000000000043 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000014 /* Assets.xcassets */; };
-		000000000000000000000044 /* AppSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000016 /* AppSettingsTests.swift */; };
-		000000000000000000000045 /* AppStateStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000017 /* AppStateStoreTests.swift */; };
-		000000000000000000000059 /* BreakSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000024 /* BreakSchedulerTests.swift */; };
-		00000000000000000000005E /* BreakSessionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000028 /* BreakSessionManagerTests.swift */; };
-		000000000000000000000082 /* MenuContentBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000083 /* MenuContentBuilderTests.swift */; };
-		000000000000000000000084 /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000085 /* AppCoordinatorTests.swift */; };
-		000000000000000000000086 /* Heartbeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000087 /* Heartbeat.swift */; };
-		000000000000000000000088 /* ActivityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000089 /* ActivityMonitor.swift */; };
-		00000000000000000000008A /* IdleTimeProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000008B /* IdleTimeProviding.swift */; };
-		00000000000000000000008C /* SystemIdleTimeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000008D /* SystemIdleTimeProvider.swift */; };
-		00000000000000000000008E /* SleepWakeObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000008F /* SleepWakeObserver.swift */; };
-		000000000000000000000090 /* MenuContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000091 /* MenuContent.swift */; };
-		000000000000000000000092 /* MenuContentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000093 /* MenuContentBuilder.swift */; };
-		000000000000000000000128 /* MenuBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000129 /* MenuBarContentView.swift */; };
-		000000000000000000000103 /* ReminderPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000102 /* ReminderPopupView.swift */; };
-		000000000000000000000105 /* BreakOverlayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000104 /* BreakOverlayPresenter.swift */; };
-		000000000000000000000138 /* ReminderPopupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000139 /* ReminderPopupPresenter.swift */; };
-		000000000000000000000107 /* BreakOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000106 /* BreakOverlayView.swift */; };
-		000000000000000000000109 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000108 /* PreferencesView.swift */; };
-		000000000000000000000113 /* LaunchAtLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000112 /* LaunchAtLoginController.swift */; };
-		00000000000000000000011A /* PreferencesViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000119 /* PreferencesViewTests.swift */; };
-		00000000000000000000011C /* SystemIdleTimeProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000011B /* SystemIdleTimeProviderTests.swift */; };
-		000000000000000000000121 /* AppModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000120 /* AppModelTests.swift */; };
-		000000000000000000000126 /* MenuBarContentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000127 /* MenuBarContentViewTests.swift */; };
-		000000000000000000000123 /* AppCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000122 /* AppCoordinating.swift */; };
-		000000000000000000000125 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000124 /* AppModel.swift */; };
-		000000000000000000000130 /* ReminderWindowViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000131 /* ReminderWindowViewTests.swift */; };
-		000000000000000000000132 /* BreakOverlayPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000133 /* BreakOverlayPresenterTests.swift */; };
-		000000000000000000000136 /* ReminderPopupPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000137 /* ReminderPopupPresenterTests.swift */; };
-		000000000000000000000134 /* ReminderWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000135 /* ReminderWindowView.swift */; };
+		000000000000000000000040 /* EyeBreak/App/EyeBreakApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000010 /* EyeBreak/App/EyeBreakApp.swift */; };
+		000000000000000000000042 /* EyeBreak/App/AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000012 /* EyeBreak/App/AppCoordinator.swift */; };
+		000000000000000000000043 /* EyeBreak/Resources/Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000014 /* EyeBreak/Resources/Assets.xcassets */; };
+		000000000000000000000044 /* EyeBreakTests/AppSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000016 /* EyeBreakTests/AppSettingsTests.swift */; };
+		000000000000000000000045 /* EyeBreakTests/AppStateStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000017 /* EyeBreakTests/AppStateStoreTests.swift */; };
+		000000000000000000000046 /* EyeBreak/Core/Models/AppPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000018 /* EyeBreak/Core/Models/AppPhase.swift */; };
+		000000000000000000000047 /* EyeBreak/Core/Models/BreakType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000019 /* EyeBreak/Core/Models/BreakType.swift */; };
+		000000000000000000000048 /* EyeBreak/Core/Models/AppSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000001A /* EyeBreak/Core/Models/AppSnapshot.swift */; };
+		000000000000000000000049 /* EyeBreak/App/AppStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000001B /* EyeBreak/App/AppStateStore.swift */; };
+		00000000000000000000004A /* EyeBreak/Infrastructure/AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000001C /* EyeBreak/Infrastructure/AppSettings.swift */; };
+		00000000000000000000004B /* EyeBreak/Infrastructure/SettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000001D /* EyeBreak/Infrastructure/SettingsStore.swift */; };
+		00000000000000000000004C /* EyeBreak/Infrastructure/UserDefaultsSettingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000001E /* EyeBreak/Infrastructure/UserDefaultsSettingsStore.swift */; };
+		00000000000000000000004D /* EyeBreak/Core/Services/BreakScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000001F /* EyeBreak/Core/Services/BreakScheduler.swift */; };
+		00000000000000000000004E /* EyeBreak/Core/Services/SchedulerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000022 /* EyeBreak/Core/Services/SchedulerEvent.swift */; };
+		00000000000000000000004F /* EyeBreak/Core/Services/SchedulerCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000023 /* EyeBreak/Core/Services/SchedulerCommand.swift */; };
+		000000000000000000000059 /* EyeBreakTests/BreakSchedulerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000024 /* EyeBreakTests/BreakSchedulerTests.swift */; };
+		00000000000000000000005B /* EyeBreak/Core/Services/BreakSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000025 /* EyeBreak/Core/Services/BreakSessionManager.swift */; };
+		00000000000000000000005C /* EyeBreak/Core/Models/BreakSessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000026 /* EyeBreak/Core/Models/BreakSessionState.swift */; };
+		00000000000000000000005D /* EyeBreak/Core/Models/ReminderPostpone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000027 /* EyeBreak/Core/Models/ReminderPostpone.swift */; };
+		00000000000000000000005E /* EyeBreakTests/BreakSessionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000028 /* EyeBreakTests/BreakSessionManagerTests.swift */; };
+		000000000000000000000082 /* EyeBreakTests/MenuContentBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000083 /* EyeBreakTests/MenuContentBuilderTests.swift */; };
+		000000000000000000000084 /* EyeBreakTests/AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000085 /* EyeBreakTests/AppCoordinatorTests.swift */; };
+		000000000000000000000086 /* EyeBreak/App/Heartbeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000087 /* EyeBreak/App/Heartbeat.swift */; };
+		000000000000000000000088 /* EyeBreak/Core/Services/ActivityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000089 /* EyeBreak/Core/Services/ActivityMonitor.swift */; };
+		00000000000000000000008A /* EyeBreak/Core/Services/IdleTimeProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000008B /* EyeBreak/Core/Services/IdleTimeProviding.swift */; };
+		00000000000000000000008C /* EyeBreak/Infrastructure/SystemIdleTimeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000008D /* EyeBreak/Infrastructure/SystemIdleTimeProvider.swift */; };
+		00000000000000000000008E /* EyeBreak/Infrastructure/SleepWakeObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000008F /* EyeBreak/Infrastructure/SleepWakeObserver.swift */; };
+		000000000000000000000090 /* EyeBreak/UI/MenuBar/MenuContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000091 /* EyeBreak/UI/MenuBar/MenuContent.swift */; };
+		000000000000000000000092 /* EyeBreak/UI/MenuBar/MenuContentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000093 /* EyeBreak/UI/MenuBar/MenuContentBuilder.swift */; };
+		000000000000000000000103 /* EyeBreak/UI/ReminderPopup/ReminderPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000102 /* EyeBreak/UI/ReminderPopup/ReminderPopupView.swift */; };
+		000000000000000000000105 /* EyeBreak/UI/BreakOverlay/BreakOverlayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000104 /* EyeBreak/UI/BreakOverlay/BreakOverlayPresenter.swift */; };
+		000000000000000000000107 /* EyeBreak/UI/BreakOverlay/BreakOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000106 /* EyeBreak/UI/BreakOverlay/BreakOverlayView.swift */; };
+		000000000000000000000109 /* EyeBreak/UI/Preferences/PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000108 /* EyeBreak/UI/Preferences/PreferencesView.swift */; };
+		000000000000000000000113 /* EyeBreak/Infrastructure/LaunchAtLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000112 /* EyeBreak/Infrastructure/LaunchAtLoginController.swift */; };
+		00000000000000000000011A /* EyeBreakTests/PreferencesViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000119 /* EyeBreakTests/PreferencesViewTests.swift */; };
+		00000000000000000000011C /* EyeBreakTests/SystemIdleTimeProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000011B /* EyeBreakTests/SystemIdleTimeProviderTests.swift */; };
+		000000000000000000000121 /* EyeBreakTests/AppModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000120 /* EyeBreakTests/AppModelTests.swift */; };
+		000000000000000000000123 /* EyeBreak/App/AppCoordinating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000122 /* EyeBreak/App/AppCoordinating.swift */; };
+		000000000000000000000125 /* EyeBreak/App/AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000124 /* EyeBreak/App/AppModel.swift */; };
+		000000000000000000000126 /* EyeBreakTests/MenuBarContentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000127 /* EyeBreakTests/MenuBarContentViewTests.swift */; };
+		000000000000000000000128 /* EyeBreak/UI/MenuBar/MenuBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000129 /* EyeBreak/UI/MenuBar/MenuBarContentView.swift */; };
+		000000000000000000000130 /* EyeBreakTests/ReminderWindowViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000131 /* EyeBreakTests/ReminderWindowViewTests.swift */; };
+		000000000000000000000132 /* EyeBreakTests/BreakOverlayPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000133 /* EyeBreakTests/BreakOverlayPresenterTests.swift */; };
+		000000000000000000000134 /* EyeBreak/UI/ReminderPopup/ReminderWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000135 /* EyeBreak/UI/ReminderPopup/ReminderWindowView.swift */; };
+		000000000000000000000136 /* EyeBreakTests/ReminderPopupPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000137 /* EyeBreakTests/ReminderPopupPresenterTests.swift */; };
+		000000000000000000000138 /* EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000139 /* EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,70 +60,62 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 000000000000000000000000 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 000000000000000000000030 /* EyeBreak */;
+			remoteGlobalIDString = 000000000000000000000030;
 			remoteInfo = EyeBreak;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		000000000000000000000010 /* EyeBreakApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/App/EyeBreakApp.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000012 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/App/AppCoordinator.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000087 /* Heartbeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/App/Heartbeat.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = EyeBreak/Info.plist; sourceTree = SOURCE_ROOT; };
-		000000000000000000000014 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = EyeBreak/Resources/Assets.xcassets; sourceTree = SOURCE_ROOT; };
-		000000000000000000000018 /* AppPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Models/AppPhase.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000019 /* BreakType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Models/BreakType.swift; sourceTree = SOURCE_ROOT; };
-		00000000000000000000001A /* AppSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Models/AppSnapshot.swift; sourceTree = SOURCE_ROOT; };
-		00000000000000000000001B /* AppStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/App/AppStateStore.swift; sourceTree = SOURCE_ROOT; };
-		00000000000000000000001C /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Infrastructure/AppSettings.swift; sourceTree = SOURCE_ROOT; };
-		00000000000000000000001D /* SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Infrastructure/SettingsStore.swift; sourceTree = SOURCE_ROOT; };
-		00000000000000000000001E /* UserDefaultsSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Infrastructure/UserDefaultsSettingsStore.swift; sourceTree = SOURCE_ROOT; };
-		00000000000000000000001F /* BreakScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Services/BreakScheduler.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000089 /* ActivityMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Services/ActivityMonitor.swift; sourceTree = SOURCE_ROOT; };
-		00000000000000000000008B /* IdleTimeProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Services/IdleTimeProviding.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000025 /* BreakSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Services/BreakSessionManager.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000026 /* BreakSessionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Models/BreakSessionState.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000027 /* ReminderPostpone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Models/ReminderPostpone.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000022 /* SchedulerEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Services/SchedulerEvent.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000023 /* SchedulerCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Services/SchedulerCommand.swift; sourceTree = SOURCE_ROOT; };
-		00000000000000000000008D /* SystemIdleTimeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Infrastructure/SystemIdleTimeProvider.swift; sourceTree = SOURCE_ROOT; };
-		00000000000000000000008F /* SleepWakeObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Infrastructure/SleepWakeObserver.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000091 /* MenuContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/MenuBar/MenuContent.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000093 /* MenuContentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/MenuBar/MenuContentBuilder.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000016 /* AppSettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/AppSettingsTests.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000017 /* AppStateStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/AppStateStoreTests.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000024 /* BreakSchedulerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/BreakSchedulerTests.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000028 /* BreakSessionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/BreakSessionManagerTests.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000083 /* MenuContentBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/MenuContentBuilderTests.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000085 /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/AppCoordinatorTests.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000129 /* MenuBarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/MenuBar/MenuBarContentView.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000102 /* ReminderPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/ReminderPopup/ReminderPopupView.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000104 /* BreakOverlayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/BreakOverlay/BreakOverlayPresenter.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000106 /* BreakOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/BreakOverlay/BreakOverlayView.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000108 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/Preferences/PreferencesView.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000112 /* LaunchAtLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Infrastructure/LaunchAtLoginController.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000119 /* PreferencesViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/PreferencesViewTests.swift; sourceTree = SOURCE_ROOT; };
-		00000000000000000000011B /* SystemIdleTimeProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/SystemIdleTimeProviderTests.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000120 /* AppModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/AppModelTests.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000127 /* MenuBarContentViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/MenuBarContentViewTests.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000122 /* AppCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/App/AppCoordinating.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000124 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/App/AppModel.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000131 /* ReminderWindowViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/ReminderWindowViewTests.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000133 /* BreakOverlayPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/BreakOverlayPresenterTests.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000137 /* ReminderPopupPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/ReminderPopupPresenterTests.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000135 /* ReminderWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/ReminderPopup/ReminderWindowView.swift; sourceTree = SOURCE_ROOT; };
-		000000000000000000000139 /* ReminderPopupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000010 /* EyeBreak/App/EyeBreakApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/App/EyeBreakApp.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000012 /* EyeBreak/App/AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/App/AppCoordinator.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000013 /* EyeBreak/Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = EyeBreak/Info.plist; sourceTree = SOURCE_ROOT; };
+		000000000000000000000014 /* EyeBreak/Resources/Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = EyeBreak/Resources/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		000000000000000000000016 /* EyeBreakTests/AppSettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/AppSettingsTests.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000017 /* EyeBreakTests/AppStateStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/AppStateStoreTests.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000018 /* EyeBreak/Core/Models/AppPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Models/AppPhase.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000019 /* EyeBreak/Core/Models/BreakType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Models/BreakType.swift; sourceTree = SOURCE_ROOT; };
+		00000000000000000000001A /* EyeBreak/Core/Models/AppSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Models/AppSnapshot.swift; sourceTree = SOURCE_ROOT; };
+		00000000000000000000001B /* EyeBreak/App/AppStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/App/AppStateStore.swift; sourceTree = SOURCE_ROOT; };
+		00000000000000000000001C /* EyeBreak/Infrastructure/AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Infrastructure/AppSettings.swift; sourceTree = SOURCE_ROOT; };
+		00000000000000000000001D /* EyeBreak/Infrastructure/SettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Infrastructure/SettingsStore.swift; sourceTree = SOURCE_ROOT; };
+		00000000000000000000001E /* EyeBreak/Infrastructure/UserDefaultsSettingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Infrastructure/UserDefaultsSettingsStore.swift; sourceTree = SOURCE_ROOT; };
+		00000000000000000000001F /* EyeBreak/Core/Services/BreakScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Services/BreakScheduler.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000020 /* EyeBreak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = EyeBreak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		000000000000000000000021 /* EyeBreakTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = EyeBreakTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		000000000000000000000022 /* EyeBreak/Core/Services/SchedulerEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Services/SchedulerEvent.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000023 /* EyeBreak/Core/Services/SchedulerCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Services/SchedulerCommand.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000024 /* EyeBreakTests/BreakSchedulerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/BreakSchedulerTests.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000025 /* EyeBreak/Core/Services/BreakSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Services/BreakSessionManager.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000026 /* EyeBreak/Core/Models/BreakSessionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Models/BreakSessionState.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000027 /* EyeBreak/Core/Models/ReminderPostpone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Models/ReminderPostpone.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000028 /* EyeBreakTests/BreakSessionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/BreakSessionManagerTests.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000083 /* EyeBreakTests/MenuContentBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/MenuContentBuilderTests.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000085 /* EyeBreakTests/AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/AppCoordinatorTests.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000087 /* EyeBreak/App/Heartbeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/App/Heartbeat.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000089 /* EyeBreak/Core/Services/ActivityMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Services/ActivityMonitor.swift; sourceTree = SOURCE_ROOT; };
+		00000000000000000000008B /* EyeBreak/Core/Services/IdleTimeProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Core/Services/IdleTimeProviding.swift; sourceTree = SOURCE_ROOT; };
+		00000000000000000000008D /* EyeBreak/Infrastructure/SystemIdleTimeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Infrastructure/SystemIdleTimeProvider.swift; sourceTree = SOURCE_ROOT; };
+		00000000000000000000008F /* EyeBreak/Infrastructure/SleepWakeObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Infrastructure/SleepWakeObserver.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000091 /* EyeBreak/UI/MenuBar/MenuContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/MenuBar/MenuContent.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000093 /* EyeBreak/UI/MenuBar/MenuContentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/MenuBar/MenuContentBuilder.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000102 /* EyeBreak/UI/ReminderPopup/ReminderPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/ReminderPopup/ReminderPopupView.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000104 /* EyeBreak/UI/BreakOverlay/BreakOverlayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/BreakOverlay/BreakOverlayPresenter.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000106 /* EyeBreak/UI/BreakOverlay/BreakOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/BreakOverlay/BreakOverlayView.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000108 /* EyeBreak/UI/Preferences/PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/Preferences/PreferencesView.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000112 /* EyeBreak/Infrastructure/LaunchAtLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/Infrastructure/LaunchAtLoginController.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000119 /* EyeBreakTests/PreferencesViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/PreferencesViewTests.swift; sourceTree = SOURCE_ROOT; };
+		00000000000000000000011B /* EyeBreakTests/SystemIdleTimeProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/SystemIdleTimeProviderTests.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000120 /* EyeBreakTests/AppModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/AppModelTests.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000122 /* EyeBreak/App/AppCoordinating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/App/AppCoordinating.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000124 /* EyeBreak/App/AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/App/AppModel.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000127 /* EyeBreakTests/MenuBarContentViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/MenuBarContentViewTests.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000129 /* EyeBreak/UI/MenuBar/MenuBarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/MenuBar/MenuBarContentView.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000131 /* EyeBreakTests/ReminderWindowViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/ReminderWindowViewTests.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000133 /* EyeBreakTests/BreakOverlayPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/BreakOverlayPresenterTests.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000135 /* EyeBreak/UI/ReminderPopup/ReminderWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/ReminderPopup/ReminderWindowView.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000137 /* EyeBreakTests/ReminderPopupPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/ReminderPopupPresenterTests.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000139 /* EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
-
-/* Begin PBXTargetDependency section */
-		000000000000000000000081 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 000000000000000000000030 /* EyeBreak */;
-			targetProxy = 000000000000000000000080 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		000000000000000000000050 /* Frameworks */ = {
@@ -150,6 +142,7 @@
 				00000000000000000000000B /* EyeBreakTests */,
 				000000000000000000000020 /* EyeBreak.app */,
 				000000000000000000000021 /* EyeBreakTests.xctest */,
+				8FBC11542F780941000037BA /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,7 +154,7 @@
 				000000000000000000000007 /* Infrastructure */,
 				000000000000000000000094 /* UI */,
 				000000000000000000000008 /* Resources */,
-				000000000000000000000013 /* Info.plist */,
+				000000000000000000000013 /* EyeBreak/Info.plist */,
 			);
 			path = EyeBreak;
 			sourceTree = "<group>";
@@ -169,11 +162,11 @@
 		000000000000000000000003 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				000000000000000000000010 /* EyeBreakApp.swift */,
-				000000000000000000000122 /* AppCoordinating.swift */,
-				000000000000000000000012 /* AppCoordinator.swift */,
-				000000000000000000000124 /* AppModel.swift */,
-				000000000000000000000087 /* Heartbeat.swift */,
+				000000000000000000000010 /* EyeBreak/App/EyeBreakApp.swift */,
+				000000000000000000000122 /* EyeBreak/App/AppCoordinating.swift */,
+				000000000000000000000012 /* EyeBreak/App/AppCoordinator.swift */,
+				000000000000000000000124 /* EyeBreak/App/AppModel.swift */,
+				000000000000000000000087 /* EyeBreak/App/Heartbeat.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -190,39 +183,67 @@
 		000000000000000000000006 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				000000000000000000000018 /* AppPhase.swift */,
-				000000000000000000000019 /* BreakType.swift */,
-				00000000000000000000001A /* AppSnapshot.swift */,
-				000000000000000000000026 /* BreakSessionState.swift */,
-				000000000000000000000027 /* ReminderPostpone.swift */,
+				000000000000000000000018 /* EyeBreak/Core/Models/AppPhase.swift */,
+				000000000000000000000019 /* EyeBreak/Core/Models/BreakType.swift */,
+				00000000000000000000001A /* EyeBreak/Core/Models/AppSnapshot.swift */,
+				000000000000000000000026 /* EyeBreak/Core/Models/BreakSessionState.swift */,
+				000000000000000000000027 /* EyeBreak/Core/Models/ReminderPostpone.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		000000000000000000000009 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				00000000000000000000001F /* BreakScheduler.swift */,
-				000000000000000000000089 /* ActivityMonitor.swift */,
-				00000000000000000000008B /* IdleTimeProviding.swift */,
-				000000000000000000000025 /* BreakSessionManager.swift */,
-				000000000000000000000022 /* SchedulerEvent.swift */,
-				000000000000000000000023 /* SchedulerCommand.swift */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		000000000000000000000007 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				00000000000000000000001C /* AppSettings.swift */,
-				00000000000000000000001D /* SettingsStore.swift */,
-				00000000000000000000001E /* UserDefaultsSettingsStore.swift */,
-				000000000000000000000112 /* LaunchAtLoginController.swift */,
-				00000000000000000000008D /* SystemIdleTimeProvider.swift */,
-				00000000000000000000008F /* SleepWakeObserver.swift */,
+				00000000000000000000001C /* EyeBreak/Infrastructure/AppSettings.swift */,
+				00000000000000000000001D /* EyeBreak/Infrastructure/SettingsStore.swift */,
+				00000000000000000000001E /* EyeBreak/Infrastructure/UserDefaultsSettingsStore.swift */,
+				000000000000000000000112 /* EyeBreak/Infrastructure/LaunchAtLoginController.swift */,
+				00000000000000000000008D /* EyeBreak/Infrastructure/SystemIdleTimeProvider.swift */,
+				00000000000000000000008F /* EyeBreak/Infrastructure/SleepWakeObserver.swift */,
 			);
 			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		000000000000000000000008 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000014 /* EyeBreak/Resources/Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		000000000000000000000009 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				00000000000000000000001F /* EyeBreak/Core/Services/BreakScheduler.swift */,
+				000000000000000000000089 /* EyeBreak/Core/Services/ActivityMonitor.swift */,
+				00000000000000000000008B /* EyeBreak/Core/Services/IdleTimeProviding.swift */,
+				000000000000000000000025 /* EyeBreak/Core/Services/BreakSessionManager.swift */,
+				000000000000000000000022 /* EyeBreak/Core/Services/SchedulerEvent.swift */,
+				000000000000000000000023 /* EyeBreak/Core/Services/SchedulerCommand.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		00000000000000000000000B /* EyeBreakTests */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000000085 /* EyeBreakTests/AppCoordinatorTests.swift */,
+				000000000000000000000016 /* EyeBreakTests/AppSettingsTests.swift */,
+				000000000000000000000017 /* EyeBreakTests/AppStateStoreTests.swift */,
+				000000000000000000000120 /* EyeBreakTests/AppModelTests.swift */,
+				000000000000000000000024 /* EyeBreakTests/BreakSchedulerTests.swift */,
+				000000000000000000000028 /* EyeBreakTests/BreakSessionManagerTests.swift */,
+				000000000000000000000133 /* EyeBreakTests/BreakOverlayPresenterTests.swift */,
+				000000000000000000000127 /* EyeBreakTests/MenuBarContentViewTests.swift */,
+				000000000000000000000083 /* EyeBreakTests/MenuContentBuilderTests.swift */,
+				000000000000000000000137 /* EyeBreakTests/ReminderPopupPresenterTests.swift */,
+				000000000000000000000119 /* EyeBreakTests/PreferencesViewTests.swift */,
+				000000000000000000000131 /* EyeBreakTests/ReminderWindowViewTests.swift */,
+				00000000000000000000011B /* EyeBreakTests/SystemIdleTimeProviderTests.swift */,
+			);
+			path = EyeBreakTests;
 			sourceTree = "<group>";
 		};
 		000000000000000000000094 /* UI */ = {
@@ -239,9 +260,9 @@
 		000000000000000000000095 /* MenuBar */ = {
 			isa = PBXGroup;
 			children = (
-				000000000000000000000129 /* MenuBarContentView.swift */,
-				000000000000000000000091 /* MenuContent.swift */,
-				000000000000000000000093 /* MenuContentBuilder.swift */,
+				000000000000000000000129 /* EyeBreak/UI/MenuBar/MenuBarContentView.swift */,
+				000000000000000000000091 /* EyeBreak/UI/MenuBar/MenuContent.swift */,
+				000000000000000000000093 /* EyeBreak/UI/MenuBar/MenuContentBuilder.swift */,
 			);
 			path = MenuBar;
 			sourceTree = "<group>";
@@ -249,9 +270,9 @@
 		000000000000000000000114 /* ReminderPopup */ = {
 			isa = PBXGroup;
 			children = (
-				000000000000000000000139 /* ReminderPopupPresenter.swift */,
-				000000000000000000000135 /* ReminderWindowView.swift */,
-				000000000000000000000102 /* ReminderPopupView.swift */,
+				000000000000000000000139 /* EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift */,
+				000000000000000000000135 /* EyeBreak/UI/ReminderPopup/ReminderWindowView.swift */,
+				000000000000000000000102 /* EyeBreak/UI/ReminderPopup/ReminderPopupView.swift */,
 			);
 			path = ReminderPopup;
 			sourceTree = "<group>";
@@ -259,8 +280,8 @@
 		000000000000000000000115 /* BreakOverlay */ = {
 			isa = PBXGroup;
 			children = (
-				000000000000000000000104 /* BreakOverlayPresenter.swift */,
-				000000000000000000000106 /* BreakOverlayView.swift */,
+				000000000000000000000104 /* EyeBreak/UI/BreakOverlay/BreakOverlayPresenter.swift */,
+				000000000000000000000106 /* EyeBreak/UI/BreakOverlay/BreakOverlayView.swift */,
 			);
 			path = BreakOverlay;
 			sourceTree = "<group>";
@@ -268,37 +289,17 @@
 		000000000000000000000116 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				000000000000000000000108 /* PreferencesView.swift */,
+				000000000000000000000108 /* EyeBreak/UI/Preferences/PreferencesView.swift */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
 		};
-		000000000000000000000008 /* Resources */ = {
+		8FBC11542F780941000037BA /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				000000000000000000000014 /* Assets.xcassets */,
+				00000000000000000000001B /* EyeBreak/App/AppStateStore.swift */,
 			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		00000000000000000000000B /* EyeBreakTests */ = {
-			isa = PBXGroup;
-			children = (
-				000000000000000000000085 /* AppCoordinatorTests.swift */,
-				000000000000000000000016 /* AppSettingsTests.swift */,
-				000000000000000000000017 /* AppStateStoreTests.swift */,
-				000000000000000000000120 /* AppModelTests.swift */,
-				000000000000000000000024 /* BreakSchedulerTests.swift */,
-				000000000000000000000028 /* BreakSessionManagerTests.swift */,
-				000000000000000000000133 /* BreakOverlayPresenterTests.swift */,
-				000000000000000000000127 /* MenuBarContentViewTests.swift */,
-				000000000000000000000083 /* MenuContentBuilderTests.swift */,
-				000000000000000000000137 /* ReminderPopupPresenterTests.swift */,
-				000000000000000000000119 /* PreferencesViewTests.swift */,
-				000000000000000000000131 /* ReminderWindowViewTests.swift */,
-				00000000000000000000011B /* SystemIdleTimeProviderTests.swift */,
-			);
-			path = EyeBreakTests;
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,8 +346,9 @@
 		000000000000000000000000 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 2630;
-				LastUpgradeCheck = 2630;
+				LastUpgradeCheck = 2640;
 			};
 			buildConfigurationList = 000000000000000000000062 /* Build configuration list for PBXProject "EyeBreak" */;
 			compatibilityVersion = "Xcode 16.0";
@@ -372,7 +374,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				000000000000000000000043 /* Assets.xcassets in Resources */,
+				000000000000000000000043 /* EyeBreak/Resources/Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,38 +392,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				000000000000000000000040 /* EyeBreakApp.swift in Sources */,
-				000000000000000000000123 /* AppCoordinating.swift in Sources */,
-				000000000000000000000042 /* AppCoordinator.swift in Sources */,
-				000000000000000000000125 /* AppModel.swift in Sources */,
-				000000000000000000000086 /* Heartbeat.swift in Sources */,
-				000000000000000000000046 /* AppPhase.swift in Sources */,
-				000000000000000000000047 /* BreakType.swift in Sources */,
-				000000000000000000000048 /* AppSnapshot.swift in Sources */,
-				000000000000000000000049 /* AppStateStore.swift in Sources */,
-				00000000000000000000004A /* AppSettings.swift in Sources */,
-				00000000000000000000004B /* SettingsStore.swift in Sources */,
-				00000000000000000000004C /* UserDefaultsSettingsStore.swift in Sources */,
-				00000000000000000000004D /* BreakScheduler.swift in Sources */,
-				000000000000000000000088 /* ActivityMonitor.swift in Sources */,
-				00000000000000000000008A /* IdleTimeProviding.swift in Sources */,
-				00000000000000000000005B /* BreakSessionManager.swift in Sources */,
-				00000000000000000000005C /* BreakSessionState.swift in Sources */,
-				00000000000000000000005D /* ReminderPostpone.swift in Sources */,
-				00000000000000000000004E /* SchedulerEvent.swift in Sources */,
-				00000000000000000000004F /* SchedulerCommand.swift in Sources */,
-				00000000000000000000008C /* SystemIdleTimeProvider.swift in Sources */,
-				00000000000000000000008E /* SleepWakeObserver.swift in Sources */,
-				000000000000000000000090 /* MenuContent.swift in Sources */,
-				000000000000000000000092 /* MenuContentBuilder.swift in Sources */,
-				000000000000000000000128 /* MenuBarContentView.swift in Sources */,
-				000000000000000000000134 /* ReminderWindowView.swift in Sources */,
-				000000000000000000000103 /* ReminderPopupView.swift in Sources */,
-				000000000000000000000138 /* ReminderPopupPresenter.swift in Sources */,
-				000000000000000000000105 /* BreakOverlayPresenter.swift in Sources */,
-				000000000000000000000107 /* BreakOverlayView.swift in Sources */,
-				000000000000000000000109 /* PreferencesView.swift in Sources */,
-				000000000000000000000113 /* LaunchAtLoginController.swift in Sources */,
+				000000000000000000000040 /* EyeBreak/App/EyeBreakApp.swift in Sources */,
+				000000000000000000000123 /* EyeBreak/App/AppCoordinating.swift in Sources */,
+				000000000000000000000042 /* EyeBreak/App/AppCoordinator.swift in Sources */,
+				000000000000000000000125 /* EyeBreak/App/AppModel.swift in Sources */,
+				000000000000000000000086 /* EyeBreak/App/Heartbeat.swift in Sources */,
+				000000000000000000000046 /* EyeBreak/Core/Models/AppPhase.swift in Sources */,
+				000000000000000000000047 /* EyeBreak/Core/Models/BreakType.swift in Sources */,
+				000000000000000000000048 /* EyeBreak/Core/Models/AppSnapshot.swift in Sources */,
+				000000000000000000000049 /* EyeBreak/App/AppStateStore.swift in Sources */,
+				00000000000000000000004A /* EyeBreak/Infrastructure/AppSettings.swift in Sources */,
+				00000000000000000000004B /* EyeBreak/Infrastructure/SettingsStore.swift in Sources */,
+				00000000000000000000004C /* EyeBreak/Infrastructure/UserDefaultsSettingsStore.swift in Sources */,
+				00000000000000000000004D /* EyeBreak/Core/Services/BreakScheduler.swift in Sources */,
+				000000000000000000000088 /* EyeBreak/Core/Services/ActivityMonitor.swift in Sources */,
+				00000000000000000000008A /* EyeBreak/Core/Services/IdleTimeProviding.swift in Sources */,
+				00000000000000000000005B /* EyeBreak/Core/Services/BreakSessionManager.swift in Sources */,
+				00000000000000000000005C /* EyeBreak/Core/Models/BreakSessionState.swift in Sources */,
+				00000000000000000000005D /* EyeBreak/Core/Models/ReminderPostpone.swift in Sources */,
+				00000000000000000000004E /* EyeBreak/Core/Services/SchedulerEvent.swift in Sources */,
+				00000000000000000000004F /* EyeBreak/Core/Services/SchedulerCommand.swift in Sources */,
+				00000000000000000000008C /* EyeBreak/Infrastructure/SystemIdleTimeProvider.swift in Sources */,
+				00000000000000000000008E /* EyeBreak/Infrastructure/SleepWakeObserver.swift in Sources */,
+				000000000000000000000090 /* EyeBreak/UI/MenuBar/MenuContent.swift in Sources */,
+				000000000000000000000092 /* EyeBreak/UI/MenuBar/MenuContentBuilder.swift in Sources */,
+				000000000000000000000128 /* EyeBreak/UI/MenuBar/MenuBarContentView.swift in Sources */,
+				000000000000000000000134 /* EyeBreak/UI/ReminderPopup/ReminderWindowView.swift in Sources */,
+				000000000000000000000103 /* EyeBreak/UI/ReminderPopup/ReminderPopupView.swift in Sources */,
+				000000000000000000000138 /* EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift in Sources */,
+				000000000000000000000105 /* EyeBreak/UI/BreakOverlay/BreakOverlayPresenter.swift in Sources */,
+				000000000000000000000107 /* EyeBreak/UI/BreakOverlay/BreakOverlayView.swift in Sources */,
+				000000000000000000000109 /* EyeBreak/UI/Preferences/PreferencesView.swift in Sources */,
+				000000000000000000000113 /* EyeBreak/Infrastructure/LaunchAtLoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,23 +431,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				000000000000000000000084 /* AppCoordinatorTests.swift in Sources */,
-				000000000000000000000044 /* AppSettingsTests.swift in Sources */,
-				000000000000000000000045 /* AppStateStoreTests.swift in Sources */,
-				000000000000000000000059 /* BreakSchedulerTests.swift in Sources */,
-				00000000000000000000005E /* BreakSessionManagerTests.swift in Sources */,
-				000000000000000000000121 /* AppModelTests.swift in Sources */,
-				000000000000000000000132 /* BreakOverlayPresenterTests.swift in Sources */,
-				000000000000000000000126 /* MenuBarContentViewTests.swift in Sources */,
-				000000000000000000000082 /* MenuContentBuilderTests.swift in Sources */,
-				000000000000000000000136 /* ReminderPopupPresenterTests.swift in Sources */,
-				00000000000000000000011A /* PreferencesViewTests.swift in Sources */,
-				000000000000000000000130 /* ReminderWindowViewTests.swift in Sources */,
-				00000000000000000000011C /* SystemIdleTimeProviderTests.swift in Sources */,
+				000000000000000000000084 /* EyeBreakTests/AppCoordinatorTests.swift in Sources */,
+				000000000000000000000044 /* EyeBreakTests/AppSettingsTests.swift in Sources */,
+				000000000000000000000045 /* EyeBreakTests/AppStateStoreTests.swift in Sources */,
+				000000000000000000000059 /* EyeBreakTests/BreakSchedulerTests.swift in Sources */,
+				00000000000000000000005E /* EyeBreakTests/BreakSessionManagerTests.swift in Sources */,
+				000000000000000000000121 /* EyeBreakTests/AppModelTests.swift in Sources */,
+				000000000000000000000132 /* EyeBreakTests/BreakOverlayPresenterTests.swift in Sources */,
+				000000000000000000000126 /* EyeBreakTests/MenuBarContentViewTests.swift in Sources */,
+				000000000000000000000082 /* EyeBreakTests/MenuContentBuilderTests.swift in Sources */,
+				000000000000000000000136 /* EyeBreakTests/ReminderPopupPresenterTests.swift in Sources */,
+				00000000000000000000011A /* EyeBreakTests/PreferencesViewTests.swift in Sources */,
+				000000000000000000000130 /* EyeBreakTests/ReminderWindowViewTests.swift in Sources */,
+				00000000000000000000011C /* EyeBreakTests/SystemIdleTimeProviderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		000000000000000000000081 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 000000000000000000000030 /* EyeBreak */;
+			targetProxy = 000000000000000000000080 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		000000000000000000000070 /* Debug */ = {
@@ -453,10 +463,12 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOLS = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_REQUIRED = NO;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = YES;
@@ -481,9 +493,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOLS = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_REQUIRED = NO;
 				CODE_SIGN_IDENTITY = "-";
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -504,9 +518,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_REQUIRED = NO;
 				CODE_SIGN_IDENTITY = "-";
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = YES;
@@ -522,7 +539,6 @@
 				PRODUCT_NAME = EyeBreakTests;
 				SWIFT_VERSION = 6.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EyeBreak.app/Contents/MacOS/EyeBreak";
-				BUNDLE_LOADER = "$(TEST_HOST)";
 			};
 			name = Debug;
 		};
@@ -530,9 +546,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_REQUIRED = NO;
 				CODE_SIGN_IDENTITY = "-";
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -547,7 +566,6 @@
 				PRODUCT_NAME = EyeBreakTests;
 				SWIFT_VERSION = 6.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EyeBreak.app/Contents/MacOS/EyeBreak";
-				BUNDLE_LOADER = "$(TEST_HOST)";
 			};
 			name = Release;
 		};
@@ -556,14 +574,44 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOLS = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_REQUIRED = NO;
 				CODE_SIGN_IDENTITY = "-";
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
@@ -573,13 +621,43 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOLS = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_REQUIRED = NO;
 				CODE_SIGN_IDENTITY = "-";
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 6.0;
 			};
 			name = Release;

@@ -113,8 +113,16 @@ final class AppModel: ObservableObject {
         coordinator.skipCurrentReminder()
     }
 
+    func postponeCurrentReminder() {
+        coordinator.postponeCurrentReminder()
+    }
+
     func skipCurrentBreak() {
         coordinator.skipCurrentBreak()
+    }
+
+    func postponeCurrentBreak() {
+        coordinator.postponeCurrentBreak()
     }
 
     func startBreakNow() {

@@ -11,7 +11,8 @@ final class BreakOverlayPresenterTests: XCTestCase {
             isPresented: true,
             remainingSeconds: 45,
             totalSeconds: 60,
-            onSkip: {}
+            onSkip: {},
+            onPostpone: {}
         )
 
         XCTAssertNotNil(presenter.panelForTesting)
@@ -23,14 +24,16 @@ final class BreakOverlayPresenterTests: XCTestCase {
             isPresented: true,
             remainingSeconds: 45,
             totalSeconds: 60,
-            onSkip: {}
+            onSkip: {},
+            onPostpone: {}
         )
 
         presenter.render(
             isPresented: false,
             remainingSeconds: 0,
             totalSeconds: 0,
-            onSkip: {}
+            onSkip: {},
+            onPostpone: {}
         )
 
         XCTAssertFalse(presenter.panelForTesting?.isVisible ?? true)
@@ -39,11 +42,11 @@ final class BreakOverlayPresenterTests: XCTestCase {
     func test_showReusesHostingViewAndUpdatesRemainingSeconds() {
         let presenter = BreakOverlayPresenter()
 
-        presenter.show(remainingSeconds: 20, totalSeconds: 20, onSkip: {})
+        presenter.show(remainingSeconds: 20, totalSeconds: 20, onSkip: {}, onPostpone: {})
         let firstPanel = presenter.panelForTesting
         let firstHostingView = presenter.hostingViewForTesting
 
-        presenter.show(remainingSeconds: 19, totalSeconds: 20, onSkip: {})
+        presenter.show(remainingSeconds: 19, totalSeconds: 20, onSkip: {}, onPostpone: {})
 
         XCTAssertTrue(firstPanel === presenter.panelForTesting)
         XCTAssertTrue(firstHostingView === presenter.hostingViewForTesting)
@@ -56,9 +59,30 @@ final class BreakOverlayPresenterTests: XCTestCase {
         let view = BreakOverlayView(
             remainingSeconds: 45,
             totalSeconds: 60,
-            onSkip: {}
+            onSkip: {},
+            onPostpone: {}
         )
 
         XCTAssertEqual(view.progressValue, 0.75, accuracy: 0.001)
+    }
+
+    func test_doubleEscapeTriggersSkipAction() {
+        var now = Date(timeIntervalSince1970: 100)
+        let presenter = BreakOverlayPresenter(now: { now })
+        var skipCallCount = 0
+
+        presenter.render(
+            isPresented: true,
+            remainingSeconds: 45,
+            totalSeconds: 60,
+            onSkip: { skipCallCount += 1 },
+            onPostpone: {}
+        )
+
+        presenter.handleEscapeKeyPress()
+        now = Date(timeIntervalSince1970: 101)
+        presenter.handleEscapeKeyPress()
+
+        XCTAssertEqual(skipCallCount, 1)
     }
 }

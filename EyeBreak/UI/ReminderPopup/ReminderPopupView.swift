@@ -6,8 +6,8 @@ struct ReminderPopupView: View {
     let breakDuration: TimeInterval
     let idleDuration: TimeInterval
     let idleThreshold: TimeInterval
-    let onStartNow: @MainActor () -> Void
     let onSkip: @MainActor () -> Void
+    let onPostpone: @MainActor () -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -30,12 +30,12 @@ struct ReminderPopupView: View {
             .fixedSize(horizontal: false, vertical: true)
 
             HStack(spacing: 8) {
-                Button("Start break now", action: onStartNow)
+                Button("Skip", action: onSkip)
                     .buttonStyle(.bordered)
                     .controlSize(.small)
 
-                Button("Skip for now", action: onSkip)
-                    .buttonStyle(.bordered)
+                Button("Postpone 5 minutes", action: onPostpone)
+                    .buttonStyle(.borderedProminent)
                     .controlSize(.small)
             }
 

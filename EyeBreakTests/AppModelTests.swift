@@ -205,7 +205,9 @@ private final class SpyAppCoordinator: AppCoordinating {
     var pauseRemindersCallCount = 0
     var resumeRemindersCallCount = 0
     var skipCurrentReminderCallCount = 0
+    var postponeCurrentReminderCallCount = 0
     var skipCurrentBreakCallCount = 0
+    var postponeCurrentBreakCallCount = 0
     var startBreakNowCallCount = 0
     var updateSettingsValues: [AppSettings] = []
     private var observers: [AppStateObservationToken: (AppSnapshot, AppSettings) -> Void] = [:]
@@ -239,8 +241,16 @@ private final class SpyAppCoordinator: AppCoordinating {
         skipCurrentReminderCallCount += 1
     }
 
+    func postponeCurrentReminder() {
+        postponeCurrentReminderCallCount += 1
+    }
+
     func skipCurrentBreak() {
         skipCurrentBreakCallCount += 1
+    }
+
+    func postponeCurrentBreak() {
+        postponeCurrentBreakCallCount += 1
     }
 
     func startBreakNow() {

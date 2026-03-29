@@ -1,5 +1,6 @@
 import AppKit
 import XCTest
+
 @testable import EyeBreak
 
 @MainActor
@@ -13,8 +14,8 @@ final class ReminderPopupPresenterTests: XCTestCase {
             breakDuration: 20,
             idleDuration: 0,
             idleThreshold: 5,
-            onStartNow: {},
-            onSkip: {}
+            onSkip: {},
+            onPostpone: {}
         )
 
         let panel = try XCTUnwrap(presenter.panelForTesting)
@@ -31,8 +32,8 @@ final class ReminderPopupPresenterTests: XCTestCase {
             breakDuration: 20,
             idleDuration: 0,
             idleThreshold: 5,
-            onStartNow: {},
-            onSkip: {}
+            onSkip: {},
+            onPostpone: {}
         )
         let firstPanel = presenter.panelForTesting
         let firstHostingView = presenter.hostingViewForTesting
@@ -43,8 +44,8 @@ final class ReminderPopupPresenterTests: XCTestCase {
             breakDuration: 60,
             idleDuration: 3,
             idleThreshold: 5,
-            onStartNow: {},
-            onSkip: {}
+            onSkip: {},
+            onPostpone: {}
         )
 
         XCTAssertTrue(firstPanel === presenter.panelForTesting)
@@ -69,8 +70,8 @@ final class ReminderPopupPresenterTests: XCTestCase {
             breakDuration: 20,
             idleDuration: 0,
             idleThreshold: 5,
-            onStartNow: {},
-            onSkip: {}
+            onSkip: {},
+            onPostpone: {}
         )
 
         presenter.render(
@@ -79,8 +80,8 @@ final class ReminderPopupPresenterTests: XCTestCase {
             breakDuration: 0,
             idleDuration: 0,
             idleThreshold: 1,
-            onStartNow: {},
-            onSkip: {}
+            onSkip: {},
+            onPostpone: {}
         )
 
         XCTAssertFalse(presenter.panelForTesting?.isVisible ?? true)

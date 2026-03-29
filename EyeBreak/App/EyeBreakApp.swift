@@ -28,11 +28,12 @@ struct EyeBreakApp: App {
 
     var body: some Scene {
         MenuBarExtra("EyeBreak", systemImage: "eye") {
-            MenuBarContentView(
+            MenuBarRootView(
                 model: appModel,
                 quit: { NSApp.terminate(nil) }
             )
         }
+        .menuBarExtraStyle(.window)
         .onChange(of: appModel.reminderWindowState, initial: true) { _, state in
             renderReminderPopup(state)
         }
@@ -56,8 +57,8 @@ struct EyeBreakApp: App {
             breakDuration: state?.breakDuration ?? 0,
             idleDuration: state?.idleDuration ?? 0,
             idleThreshold: state?.idleThreshold ?? 1,
-            onStartNow: appModel.startBreakNow,
-            onSkip: appModel.skipCurrentReminder
+            onSkip: appModel.skipCurrentReminder,
+            onPostpone: appModel.postponeCurrentReminder
         )
     }
 
@@ -66,7 +67,8 @@ struct EyeBreakApp: App {
             isPresented: state != nil,
             remainingSeconds: state?.remainingSeconds ?? 0,
             totalSeconds: state?.totalSeconds ?? 0,
-            onSkip: appModel.skipCurrentBreak
+            onSkip: appModel.skipCurrentBreak,
+            onPostpone: appModel.postponeCurrentBreak
         )
     }
 

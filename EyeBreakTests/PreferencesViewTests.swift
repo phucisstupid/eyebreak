@@ -88,7 +88,11 @@ private final class SpyAppCoordinator: AppCoordinating {
 
     func skipCurrentReminder() {}
 
+    func postponeCurrentReminder() {}
+
     func skipCurrentBreak() {}
+
+    func postponeCurrentBreak() {}
 
     func startBreakNow() {}
 

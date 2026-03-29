@@ -116,13 +116,41 @@ final class AppCoordinator: AppCoordinating {
         applyScheduler(event: .skipReminder)
     }
 
+    func postponeCurrentReminder() {
+        guard case .waitingForIdle = store.snapshot.schedulerState else {
+            return
+        }
+
+        var snapshot = store.snapshot
+        snapshot.breakSessionState = nil
+        snapshot.postpone = .standard(from: now())
+        snapshot.schedulerState = .running(progress: 0)
+        snapshot.phase = phase(for: snapshot)
+        store.updateSnapshot(snapshot)
+        publishState()
+    }
+
     func skipCurrentBreak() {
+        guard store.snapshot.breakSessionState != nil else {
+            return
+        }
+
+        var snapshot = store.snapshot
+        snapshot.breakSessionState = nil
+        snapshot.postpone = nil
+        snapshot.schedulerState = .running(progress: 0)
+        snapshot.phase = phase(for: snapshot)
+        store.updateSnapshot(snapshot)
+        publishState()
+    }
+
+    func postponeCurrentBreak() {
         guard let session = store.snapshot.breakSessionState else {
             return
         }
 
         var snapshot = store.snapshot
-        let result = store.breakSessionManager.skip(session: session, now: now())
+        let result = store.breakSessionManager.postpone(session: session, now: now())
         snapshot.breakSessionState = result.nextSession
         snapshot.postpone = result.postpone
         snapshot.schedulerState = .running(progress: 0)
@@ -132,7 +160,14 @@ final class AppCoordinator: AppCoordinating {
     }
 
     func startBreakNow() {
-        guard case .waitingForIdle(let progress) = store.snapshot.schedulerState else {
+        let progress: TimeInterval
+
+        switch store.snapshot.schedulerState {
+        case .running(let currentProgress):
+            progress = currentProgress
+        case .waitingForIdle(let currentProgress):
+            progress = currentProgress
+        case .paused:
             return
         }
 
@@ -141,6 +176,7 @@ final class AppCoordinator: AppCoordinating {
             completedBreakCount: snapshot.breakCount,
             startedAt: now()
         )
+        snapshot.postpone = nil
         snapshot.schedulerState = .running(progress: progress)
         snapshot.phase = .breakInProgress
         store.updateSnapshot(snapshot)

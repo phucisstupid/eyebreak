@@ -63,18 +63,11 @@ final class BreakSessionManager {
         )
     }
 
-    func skip(session _: BreakSessionState, now: Date) -> BreakSkipResult {
-        let postpone = ReminderPostpone(
-            startedAt: now,
-            duration: Self.skipPostponeDuration
-        )
-
+    func postpone(session _: BreakSessionState, now: Date) -> BreakSkipResult {
         return BreakSkipResult(
             nextSession: nil,
             completedBreakCountDelta: 0,
-            postpone: postpone
+            postpone: .standard(from: now)
         )
     }
-
-    private static let skipPostponeDuration: TimeInterval = 5 * 60
 }

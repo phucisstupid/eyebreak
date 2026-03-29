@@ -51,14 +51,14 @@ final class BreakSessionManagerTests: XCTestCase {
         XCTAssertNil(result.nextSession)
     }
 
-    func test_skipBreakCreatesFiveMinutePostponeWithoutIncrementingCount() {
+    func test_postponeBreakCreatesFiveMinutePostponeWithoutIncrementingCount() {
         let manager = BreakSessionManager(settings: .default)
         let session = manager.startBreak(
             completedBreakCount: 0,
             startedAt: .init(timeIntervalSince1970: 0)
         )
 
-        let result = manager.skip(session: session, now: .init(timeIntervalSince1970: 100))
+        let result = manager.postpone(session: session, now: .init(timeIntervalSince1970: 100))
 
         XCTAssertEqual(result.completedBreakCountDelta, 0)
         XCTAssertEqual(

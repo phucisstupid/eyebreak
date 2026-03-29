@@ -37,6 +37,7 @@ final class MenuContentBuilderTests: XCTestCase {
         XCTAssertEqual(content.waitingForIdleLine, "Waiting for idle: No")
         XCTAssertEqual(content.breakCountLine, "Current break count: 1")
         XCTAssertEqual(content.nextBreakTypeLine, "Next break type: Short")
+        XCTAssertTrue(content.canStartBreakNow)
     }
 
     func test_waitingForIdleSnapshotShowsPendingReminderRows() {
@@ -76,5 +77,6 @@ final class MenuContentBuilderTests: XCTestCase {
         XCTAssertEqual(content.waitingForIdleLine, "Waiting for idle: No")
         XCTAssertTrue(content.canResume)
         XCTAssertFalse(content.canPause)
+        XCTAssertFalse(content.canStartBreakNow)
     }
 }

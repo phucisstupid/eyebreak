@@ -64,6 +64,7 @@ EyeBreak stays small by keeping scheduling logic in plain Swift and treating UI 
 - `AppModel` exposes coordinator state and actions to SwiftUI views.
 - `AppCoordinator` owns the app snapshot and applies heartbeat, reminder, break, and sleep/wake transitions.
 - `BreakScheduler` tracks active-time progress and decides when reminders should appear.
+- `ReminderPopupPresenter` is the AppKit bridge for the top-of-screen reminder banner while `ReminderPopupView` keeps the content in SwiftUI.
 - `BreakOverlayPresenter` is the AppKit bridge that renders the full-screen break experience.
 
 `AppSnapshot` and `AppSettings` stay the source of truth, so UI reacts to shared state instead of maintaining its own timing rules.
@@ -77,7 +78,7 @@ EyeBreak stays small by keeping scheduling logic in plain Swift and treating UI 
 5. If idle time reaches the configured threshold while the app is waiting, the coordinator starts a break session and shows the break overlay.
 6. Break timing is tracked separately by `BreakSessionManager`, which handles short and long break selection and countdown.
 
-The reminder UI is a standard SwiftUI window scene, so it keeps the system-managed window behavior for focus and placement. The break overlay is still an AppKit-backed full-screen panel so it can cover the selected screen reliably.
+The reminder popup uses a non-activating AppKit panel hosted with SwiftUI content so it can behave like a lightweight macOS banner instead of a normal app window. The break overlay is also AppKit-backed so it can cover the selected screen reliably.
 
 ## Limitations
 

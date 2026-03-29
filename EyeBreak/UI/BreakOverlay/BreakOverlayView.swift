@@ -5,6 +5,7 @@ struct BreakOverlayView: View {
     let remainingSeconds: Int
     let totalSeconds: Int
     let onSkip: @MainActor () -> Void
+    let onPostpone: @MainActor () -> Void
 
     var body: some View {
         ZStack {
@@ -44,9 +45,15 @@ struct BreakOverlayView: View {
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 720)
 
-                Button("Skip and remind me in 5 minutes", action: onSkip)
-                    .buttonStyle(.borderedProminent)
-                    .accessibilityHint("Postpones the reminder for five minutes")
+                HStack(spacing: 12) {
+                    Button("Skip", action: onSkip)
+                        .buttonStyle(.bordered)
+                        .accessibilityHint("Ends this break immediately")
+
+                    Button("Postpone 5 minutes", action: onPostpone)
+                        .buttonStyle(.borderedProminent)
+                        .accessibilityHint("Postpones the reminder for five minutes")
+                }
             }
             .padding(60)
         }

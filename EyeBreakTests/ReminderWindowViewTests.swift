@@ -10,8 +10,8 @@ final class ReminderWindowViewTests: XCTestCase {
             breakDuration: 20,
             idleDuration: 2,
             idleThreshold: 5,
-            onStartNow: {},
-            onSkip: {}
+            onSkip: {},
+            onPostpone: {}
         )
 
         XCTAssertEqual(view.progressValue, 0.6, accuracy: 0.001)
@@ -23,8 +23,8 @@ final class ReminderWindowViewTests: XCTestCase {
             breakDuration: 20,
             idleDuration: 2,
             idleThreshold: 5,
-            onStartNow: {},
-            onSkip: {}
+            onSkip: {},
+            onPostpone: {}
         )
 
         XCTAssertEqual(view.progressValue, 0.6, accuracy: 0.001)

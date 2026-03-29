@@ -23,6 +23,7 @@ final class MenuBarContentViewTests: XCTestCase {
         XCTAssertEqual(view.menuContent.waitingForIdleLine, "Waiting for idle: Yes")
         XCTAssertEqual(view.menuContent.breakCountLine, "Current break count: 2")
         XCTAssertEqual(view.menuContent.nextBreakTypeLine, "Next break type: Long")
+        XCTAssertTrue(view.menuContent.canStartBreakNow)
         XCTAssertTrue(view.menuContent.canPause)
         XCTAssertFalse(view.menuContent.canResume)
         XCTAssertTrue(view.menuContent.canSkipReminder)
@@ -37,5 +38,144 @@ final class MenuBarContentViewTests: XCTestCase {
         )
         view.quit()
         XCTAssertTrue(quitRequested)
+    }
+
+    func test_settingsCommandInvokesClosure() {
+        let model = AppModel.makeForTests()
+        var settingsOpened = false
+        let view = MenuBarContentView(
+            model: model,
+            quit: {},
+            openSettingsWindow: { settingsOpened = true }
+        )
+
+        view.openSettingsWindow()
+
+        XCTAssertTrue(settingsOpened)
+    }
+
+    func test_menuBarRootViewUsesInjectedSettingsAction() {
+        let model = AppModel.makeForTests()
+        var settingsOpened = false
+        let view = MenuBarRootView(
+            model: model,
+            quit: {},
+            openSettingsOverride: { settingsOpened = true }
+        )
+
+        view.openSettingsWindow()
+
+        XCTAssertTrue(settingsOpened)
+    }
+
+    func test_pauseResumeToggleUsesPauseIconWhenRunning() {
+        let model = AppModel.makeForTests()
+        let view = MenuBarContentView(
+            model: model,
+            quit: {}
+        )
+
+        XCTAssertTrue(view.menuContent.canStartBreakNow)
+        XCTAssertEqual(view.pauseResumeIconName, "pause.fill")
+        XCTAssertEqual(view.pauseResumeAccessibilityLabel, "Pause reminders")
+        XCTAssertTrue(view.canTogglePauseResume)
+    }
+
+    func test_pauseResumeToggleUsesPlayIconWhenPaused() {
+        let settings = AppSettings.default
+        let snapshot = AppSnapshot(
+            phase: .paused,
+            breakCount: 0,
+            nextBreakType: .short,
+            breakSessionState: nil,
+            schedulerState: .paused(progress: 120, origin: .running),
+            idleDuration: 0,
+            postpone: nil
+        )
+        let model = AppModel.makeForTests(snapshot: snapshot, settings: settings)
+        let view = MenuBarContentView(
+            model: model,
+            quit: {}
+        )
+
+        XCTAssertEqual(view.pauseResumeIconName, "play.fill")
+        XCTAssertEqual(view.pauseResumeAccessibilityLabel, "Resume reminders")
+        XCTAssertTrue(view.canTogglePauseResume)
+    }
+
+    func test_startBreakNowInvokesModelAction() {
+        let settings = AppSettings.default
+        let snapshot = AppSnapshot.waitingForIdle(
+            progress: settings.activeInterval,
+            breakCount: 0,
+            nextBreakType: .short
+        )
+        let coordinator = SpyAppCoordinator(settings: settings, snapshot: snapshot)
+        let model = AppModel.makeForTests(coordinator: coordinator, settings: settings)
+        let view = MenuBarContentView(
+            model: model,
+            quit: {}
+        )
+        let dismissedExpectation = expectation(description: "menu dismissed before break starts")
+        let startExpectation = expectation(description: "break action invoked asynchronously")
+        coordinator.onStartBreakNow = {
+            XCTAssertTrue(coordinator.dismissedMenu)
+            startExpectation.fulfill()
+        }
+
+        view.startBreakNow {
+            coordinator.dismissedMenu = true
+            dismissedExpectation.fulfill()
+        }
+
+        wait(for: [dismissedExpectation, startExpectation], timeout: 1)
+        XCTAssertEqual(coordinator.startBreakNowCallCount, 1)
+        XCTAssertTrue(view.menuContent.canStartBreakNow)
+    }
+}
+
+private final class SpyAppCoordinator: AppCoordinating {
+    var settings: AppSettings
+    var snapshot: AppSnapshot
+    var startBreakNowCallCount = 0
+    var dismissedMenu = false
+    var onStartBreakNow: (() -> Void)?
+
+    init(settings: AppSettings, snapshot: AppSnapshot) {
+        self.settings = settings
+        self.snapshot = snapshot
+    }
+
+    func observeStateChanges(
+        _ observer: @escaping (AppSnapshot, AppSettings) -> Void
+    ) -> AppStateObservationToken {
+        UUID()
+    }
+
+    func removeStateChangeObserver(_ token: AppStateObservationToken) {}
+
+    func start() {}
+
+    func stop() {}
+
+    func pauseReminders() {}
+
+    func resumeReminders() {}
+
+    func skipCurrentReminder() {}
+
+    func postponeCurrentReminder() {}
+
+    func skipCurrentBreak() {}
+
+    func postponeCurrentBreak() {}
+
+    func startBreakNow() {
+        startBreakNowCallCount += 1
+        onStartBreakNow?()
+    }
+
+    func updateSettings(_ settings: AppSettings) {
+        self.settings = settings
     }
 }
