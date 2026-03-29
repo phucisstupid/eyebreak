@@ -21,6 +21,25 @@ final class SettingsPopupPresenterTests: XCTestCase {
         XCTAssertNotNil(panel.contentView as? NSHostingView<PreferencesView>)
     }
 
+    func test_renderWiresThePanelDelegateToThePresenter() throws {
+        let presenter = SettingsPopupPresenter()
+
+        presenter.render(
+            isPresented: true,
+            settings: .default,
+            onSave: { _ in },
+            onLaunchAtLoginChange: { _ in nil }
+        )
+
+        let panel = try XCTUnwrap(presenter.panel)
+        XCTAssertTrue(panel.delegate === presenter)
+
+        let delegate = try XCTUnwrap(panel.delegate as? SettingsPopupPresenter)
+        delegate.windowDidResignKey(Notification(name: NSWindow.didResignKeyNotification, object: panel))
+
+        XCTAssertFalse(panel.isVisible)
+    }
+
     func test_renderReusesTheSamePanelInstanceAcrossPresentations() {
         let presenter = SettingsPopupPresenter()
 
@@ -64,6 +83,57 @@ final class SettingsPopupPresenterTests: XCTestCase {
         let secondContentView = try XCTUnwrap(panel.contentView)
         XCTAssertFalse(firstContentView === secondContentView)
         XCTAssertNotNil(secondContentView as? NSHostingView<PreferencesView>)
+    }
+
+    func test_renderRecreatesPreferencesViewWithUpdatedSettingsValues() throws {
+        let presenter = SettingsPopupPresenter()
+        let initialSettings = AppSettings(
+            activeInterval: 20 * 60,
+            shortBreakDuration: 20,
+            longBreakDuration: 60,
+            longBreakFrequency: 3,
+            idleThreshold: 5,
+            launchAtLogin: false
+        )
+        let updatedSettings = AppSettings(
+            activeInterval: 45 * 60,
+            shortBreakDuration: 30,
+            longBreakDuration: 120,
+            longBreakFrequency: 7,
+            idleThreshold: 12,
+            launchAtLogin: true
+        )
+
+        presenter.render(
+            isPresented: true,
+            settings: initialSettings,
+            onSave: { _ in },
+            onLaunchAtLoginChange: { _ in nil }
+        )
+
+        let panel = try XCTUnwrap(presenter.panel)
+        let firstHostingView = try XCTUnwrap(panel.contentView as? NSHostingView<PreferencesView>)
+        XCTAssertEqual(
+            extractedSettings(from: firstHostingView.rootView),
+            initialSettings
+        )
+
+        presenter.render(
+            isPresented: true,
+            settings: updatedSettings,
+            onSave: { _ in },
+            onLaunchAtLoginChange: { _ in nil }
+        )
+
+        let secondHostingView = try XCTUnwrap(panel.contentView as? NSHostingView<PreferencesView>)
+        XCTAssertEqual(
+            extractedSettings(from: secondHostingView.rootView),
+            updatedSettings
+        )
+        XCTAssertEqual(
+            extractedSettings(from: firstHostingView.rootView),
+            initialSettings
+        )
     }
 
     func test_renderCreatesANonClosablePanel() throws {
@@ -205,5 +275,27 @@ final class SettingsPopupPresenterTests: XCTestCase {
 
         XCTAssertTrue(presenter.panel === firstPanel)
         XCTAssertTrue(firstPanel.isVisible)
+    }
+
+    private func extractedSettings(from view: PreferencesView) -> AppSettings? {
+        extractValue(of: AppSettings.self, from: view)
+    }
+
+    private func extractValue<T>(of type: T.Type, from value: Any, depth: Int = 4) -> T? {
+        if let typedValue = value as? T {
+            return typedValue
+        }
+
+        guard depth > 0 else {
+            return nil
+        }
+
+        for child in Mirror(reflecting: value).children {
+            if let extractedValue = extractValue(of: type, from: child.value, depth: depth - 1) {
+                return extractedValue
+            }
+        }
+
+        return nil
     }
 }
