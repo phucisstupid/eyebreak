@@ -54,7 +54,7 @@ git tag v0.1.0
 git push origin v0.1.0
 ```
 
-Tagged releases build the app in Release configuration, package `EyeBreak.app` into both `EyeBreak-macOS.zip` and `EyeBreak-macOS.dmg`, upload both as workflow artifacts, and publish them as unsigned GitHub prerelease assets.
+Tagged releases build the app in Release configuration, package `EyeBreak.app` into both `EyeBreak-macOS.zip` and `EyeBreak-macOS.dmg`, use `create-dmg` for the disk image, upload both as workflow artifacts, and publish them as unsigned GitHub prerelease assets.
 
 ## Architecture
 

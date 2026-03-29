@@ -10,15 +10,22 @@ jobs:
     runs-on: macos-latest
     permissions:
       contents: write
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
       - name: Build Release app
         run: xcodebuild -project EyeBreak.xcodeproj -scheme EyeBreak -configuration Release -destination 'platform=macOS' build
 
-      - name: Package app
+      - name: Package zip
         run: |
           APP_PATH=$(find ~/Library/Developer/Xcode/DerivedData -path '*Build/Products/Release/EyeBreak.app' -print -quit)
           if [ -z "$APP_PATH" ]; then
@@ -28,15 +35,24 @@ jobs:
 
           ditto -c -k --sequesterRsrc --keepParent "$APP_PATH" EyeBreak-macOS.zip
 
-          STAGING_DIR=$(mktemp -d)
-          cp -R "$APP_PATH" "$STAGING_DIR/"
-          hdiutil create \
-            -volname "EyeBreak" \
-            -srcfolder "$STAGING_DIR" \
-            -ov \
-            -format UDZO \
-            EyeBreak-macOS.dmg
-          rm -rf "$STAGING_DIR"
+      - name: Install DMG builder
+        run: npm install --global create-dmg
+
+      - name: Package dmg
+        run: |
+          APP_PATH=$(find ~/Library/Developer/Xcode/DerivedData -path '*Build/Products/Release/EyeBreak.app' -print -quit)
+          if [ -z "$APP_PATH" ]; then
+            echo "Release app not found in DerivedData"
+            exit 1
+          fi
+
+          rm -f EyeBreak.dmg EyeBreak-macOS.dmg
+          create-dmg "$APP_PATH" . \
+            --overwrite \
+            --no-version-in-filename \
+            --no-code-sign \
+            --dmg-title=EyeBreak
+          mv EyeBreak.dmg EyeBreak-macOS.dmg
 
       - name: Upload release artifact
         uses: actions/upload-artifact@v4
