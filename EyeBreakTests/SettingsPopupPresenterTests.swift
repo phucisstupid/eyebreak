@@ -42,6 +42,28 @@ final class SettingsPopupPresenterTests: XCTestCase {
         XCTAssertTrue(firstPanel === presenter.panel)
     }
 
+    func test_renderPreservesTheExistingPanelOriginWhenReusingThePanel() throws {
+        let presenter = SettingsPopupPresenter()
+
+        presenter.render(
+            isPresented: true,
+            settings: .default,
+            onSave: { _ in },
+            onLaunchAtLoginChange: { _ in nil }
+        )
+        let panel = try XCTUnwrap(presenter.panel)
+        panel.setFrameOrigin(NSPoint(x: 42, y: 84))
+
+        presenter.render(
+            isPresented: true,
+            settings: .default,
+            onSave: { _ in },
+            onLaunchAtLoginChange: { _ in nil }
+        )
+
+        XCTAssertEqual(panel.frame.origin, NSPoint(x: 42, y: 84))
+    }
+
     func test_renderOrdersPanelOutWhenPresentationIsDisabled() throws {
         let presenter = SettingsPopupPresenter()
 
@@ -78,6 +100,44 @@ final class SettingsPopupPresenterTests: XCTestCase {
 
         XCTAssertTrue(presenter.panel === panel)
         XCTAssertFalse(panel.isVisible)
+    }
+
+    func test_renderDoesNotReopenAfterResignKeyUntilPresentationIsExplicitlyDisabledAndEnabledAgain() throws {
+        let presenter = SettingsPopupPresenter()
+
+        presenter.render(
+            isPresented: true,
+            settings: .default,
+            onSave: { _ in },
+            onLaunchAtLoginChange: { _ in nil }
+        )
+        let panel = try XCTUnwrap(presenter.panel)
+
+        presenter.windowDidResignKey(Notification(name: NSWindow.didResignKeyNotification, object: panel))
+
+        presenter.render(
+            isPresented: true,
+            settings: .default,
+            onSave: { _ in },
+            onLaunchAtLoginChange: { _ in nil }
+        )
+        XCTAssertFalse(panel.isVisible)
+
+        presenter.render(
+            isPresented: false,
+            settings: .default,
+            onSave: { _ in },
+            onLaunchAtLoginChange: { _ in nil }
+        )
+
+        presenter.render(
+            isPresented: true,
+            settings: .default,
+            onSave: { _ in },
+            onLaunchAtLoginChange: { _ in nil }
+        )
+
+        XCTAssertTrue(panel.isVisible)
     }
 
     func test_renderReopensTheSamePanelAfterItWasDismissed() throws {

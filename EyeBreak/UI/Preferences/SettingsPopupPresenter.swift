@@ -5,6 +5,7 @@ import SwiftUI
 final class SettingsPopupPresenter: NSObject, NSWindowDelegate {
     private var hostingView: NSHostingView<PreferencesView>?
     private(set) var panel: NSPanel?
+    private var isPresentationSuppressedUntilExplicitHide = false
 
     func render(
         isPresented: Bool,
@@ -14,12 +15,12 @@ final class SettingsPopupPresenter: NSObject, NSWindowDelegate {
     ) {
         guard isPresented else {
             panel?.orderOut(nil)
+            isPresentationSuppressedUntilExplicitHide = false
             return
         }
 
         let size = PreferencesView.nativeWindowSize
-        let frame = CGRect(origin: .zero, size: size)
-        let panel = panel ?? makePanel(frame: frame)
+        let panel = panel ?? makePanel(frame: CGRect(origin: .zero, size: size))
         let hostingView =
             hostingView
             ?? NSHostingView(
@@ -30,8 +31,8 @@ final class SettingsPopupPresenter: NSObject, NSWindowDelegate {
                 )
             )
 
-        panel.setFrame(frame, display: true)
-        hostingView.frame = frame
+        panel.setFrame(CGRect(origin: panel.frame.origin, size: size), display: true)
+        hostingView.frame = CGRect(origin: .zero, size: size)
         hostingView.autoresizingMask = [.width, .height]
         hostingView.rootView = PreferencesView(
             settings: settings,
@@ -42,8 +43,10 @@ final class SettingsPopupPresenter: NSObject, NSWindowDelegate {
             panel.contentView = hostingView
         }
 
-        NSApp.activate(ignoringOtherApps: true)
-        panel.makeKeyAndOrderFront(nil)
+        if !isPresentationSuppressedUntilExplicitHide {
+            NSApp.activate(ignoringOtherApps: true)
+            panel.makeKeyAndOrderFront(nil)
+        }
 
         self.panel = panel
         self.hostingView = hostingView
@@ -51,6 +54,7 @@ final class SettingsPopupPresenter: NSObject, NSWindowDelegate {
 
     func windowDidResignKey(_ notification: Notification) {
         panel?.orderOut(nil)
+        isPresentationSuppressedUntilExplicitHide = true
     }
 
     private func makePanel(frame: CGRect) -> NSPanel {
