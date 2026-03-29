@@ -53,6 +53,8 @@
 		000000000000000000000134 /* EyeBreak/UI/ReminderPopup/ReminderWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000135 /* EyeBreak/UI/ReminderPopup/ReminderWindowView.swift */; };
 		000000000000000000000136 /* EyeBreakTests/ReminderPopupPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000137 /* EyeBreakTests/ReminderPopupPresenterTests.swift */; };
 		000000000000000000000138 /* EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000139 /* EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift */; };
+		000000000000000000000140 /* EyeBreakTests/SettingsPopupPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000141 /* EyeBreakTests/SettingsPopupPresenterTests.swift */; };
+		000000000000000000000142 /* EyeBreak/UI/Preferences/SettingsPopupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000143 /* EyeBreak/UI/Preferences/SettingsPopupPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +117,8 @@
 		000000000000000000000135 /* EyeBreak/UI/ReminderPopup/ReminderWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/ReminderPopup/ReminderWindowView.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000137 /* EyeBreakTests/ReminderPopupPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/ReminderPopupPresenterTests.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000139 /* EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000141 /* EyeBreakTests/SettingsPopupPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/SettingsPopupPresenterTests.swift; sourceTree = SOURCE_ROOT; };
+		000000000000000000000143 /* EyeBreak/UI/Preferences/SettingsPopupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/Preferences/SettingsPopupPresenter.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +243,7 @@
 				000000000000000000000127 /* EyeBreakTests/MenuBarContentViewTests.swift */,
 				000000000000000000000083 /* EyeBreakTests/MenuContentBuilderTests.swift */,
 				000000000000000000000137 /* EyeBreakTests/ReminderPopupPresenterTests.swift */,
+				000000000000000000000141 /* EyeBreakTests/SettingsPopupPresenterTests.swift */,
 				000000000000000000000119 /* EyeBreakTests/PreferencesViewTests.swift */,
 				000000000000000000000131 /* EyeBreakTests/ReminderWindowViewTests.swift */,
 				00000000000000000000011B /* EyeBreakTests/SystemIdleTimeProviderTests.swift */,
@@ -289,6 +294,7 @@
 		000000000000000000000116 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
+				000000000000000000000143 /* EyeBreak/UI/Preferences/SettingsPopupPresenter.swift */,
 				000000000000000000000108 /* EyeBreak/UI/Preferences/PreferencesView.swift */,
 			);
 			path = Preferences;
@@ -422,6 +428,7 @@
 				000000000000000000000138 /* EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift in Sources */,
 				000000000000000000000105 /* EyeBreak/UI/BreakOverlay/BreakOverlayPresenter.swift in Sources */,
 				000000000000000000000107 /* EyeBreak/UI/BreakOverlay/BreakOverlayView.swift in Sources */,
+				000000000000000000000142 /* EyeBreak/UI/Preferences/SettingsPopupPresenter.swift in Sources */,
 				000000000000000000000109 /* EyeBreak/UI/Preferences/PreferencesView.swift in Sources */,
 				000000000000000000000113 /* EyeBreak/Infrastructure/LaunchAtLoginController.swift in Sources */,
 			);
@@ -441,6 +448,7 @@
 				000000000000000000000126 /* EyeBreakTests/MenuBarContentViewTests.swift in Sources */,
 				000000000000000000000082 /* EyeBreakTests/MenuContentBuilderTests.swift in Sources */,
 				000000000000000000000136 /* EyeBreakTests/ReminderPopupPresenterTests.swift in Sources */,
+				000000000000000000000140 /* EyeBreakTests/SettingsPopupPresenterTests.swift in Sources */,
 				00000000000000000000011A /* EyeBreakTests/PreferencesViewTests.swift in Sources */,
 				000000000000000000000130 /* EyeBreakTests/ReminderWindowViewTests.swift in Sources */,
 				00000000000000000000011C /* EyeBreakTests/SystemIdleTimeProviderTests.swift in Sources */,
