@@ -50,9 +50,7 @@ final class SettingsPopupPresenter: NSObject, NSWindowDelegate {
     }
 
     func windowDidResignKey(_ notification: Notification) {
-        panel?.close()
-        panel = nil
-        hostingView = nil
+        panel?.orderOut(nil)
     }
 
     private func makePanel(frame: CGRect) -> NSPanel {

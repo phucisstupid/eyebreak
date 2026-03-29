@@ -63,7 +63,7 @@ final class SettingsPopupPresenterTests: XCTestCase {
         XCTAssertFalse(panel.isVisible)
     }
 
-    func test_windowDidResignKeyClosesThePanel() throws {
+    func test_windowDidResignKeyClosesThePanelButKeepsItForReuse() throws {
         let presenter = SettingsPopupPresenter()
 
         presenter.render(
@@ -76,7 +76,36 @@ final class SettingsPopupPresenterTests: XCTestCase {
 
         presenter.windowDidResignKey(Notification(name: NSWindow.didResignKeyNotification, object: panel))
 
-        XCTAssertNil(presenter.panel)
+        XCTAssertTrue(presenter.panel === panel)
         XCTAssertFalse(panel.isVisible)
+    }
+
+    func test_renderReopensTheSamePanelAfterItWasDismissed() throws {
+        let presenter = SettingsPopupPresenter()
+
+        presenter.render(
+            isPresented: true,
+            settings: .default,
+            onSave: { _ in },
+            onLaunchAtLoginChange: { _ in nil }
+        )
+        let firstPanel = try XCTUnwrap(presenter.panel)
+
+        presenter.render(
+            isPresented: false,
+            settings: .default,
+            onSave: { _ in },
+            onLaunchAtLoginChange: { _ in nil }
+        )
+
+        presenter.render(
+            isPresented: true,
+            settings: .default,
+            onSave: { _ in },
+            onLaunchAtLoginChange: { _ in nil }
+        )
+
+        XCTAssertTrue(presenter.panel === firstPanel)
+        XCTAssertTrue(firstPanel.isVisible)
     }
 }
