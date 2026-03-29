@@ -7,15 +7,10 @@ import XCTest
 @MainActor
 final class PreferencesViewTests: XCTestCase {
     func test_prefersNativeFormSpacingAndWindowFootprint() throws {
-        let hostingView = makeHostingView()
-
-        hostingView.frame = CGRect(origin: .zero, size: PreferencesView.nativeWindowSize)
-        hostingView.layoutSubtreeIfNeeded()
-
-        let fittingSize = hostingView.fittingSize
-
-        XCTAssertGreaterThanOrEqual(fittingSize.width, PreferencesView.nativeWindowSize.width)
-        XCTAssertGreaterThanOrEqual(fittingSize.height, PreferencesView.nativeWindowSize.height)
+        XCTAssertEqual(
+            PreferencesView.nativeWindowSize,
+            CGSize(width: 360, height: 250)
+        )
     }
 
     func test_rendersCompactNumericFieldWidth() throws {

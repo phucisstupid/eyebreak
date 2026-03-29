@@ -65,7 +65,9 @@ struct PreferencesView: View {
                 }
             }
         }
+        .controlSize(.small)
         .formStyle(.grouped)
+        .environment(\.defaultMinListRowHeight, 22)
         .scrollContentBackground(.hidden)
         .padding(.horizontal, 2)
         .padding(.vertical, 4)
