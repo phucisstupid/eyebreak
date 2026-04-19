@@ -65,20 +65,6 @@ final class AppModel: ObservableObject {
         startObservingStateChanges()
     }
 
-    static func makeForTests(
-        coordinator: any AppCoordinating = AppCoordinator(),
-        launchAtLoginController: any LaunchAtLoginControlling = LaunchAtLoginController(),
-        snapshot: AppSnapshot? = nil,
-        settings: AppSettings? = nil
-    ) -> AppModel {
-        AppModel(
-            coordinator: coordinator,
-            launchAtLoginController: launchAtLoginController,
-            snapshot: snapshot,
-            settings: settings
-        )
-    }
-
     func start() {
         guard !hasStartedCoordinator else {
             return
