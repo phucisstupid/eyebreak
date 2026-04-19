@@ -163,6 +163,6 @@ enum PresentationScreenSelector {
         activeFrame: CGRect?,
         fallbackFrame: CGRect?
     ) -> CGRect? {
-        primaryFrame ?? activeFrame ?? fallbackFrame
+        activeFrame ?? primaryFrame ?? fallbackFrame
     }
 }
