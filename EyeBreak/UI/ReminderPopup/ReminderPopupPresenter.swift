@@ -31,7 +31,7 @@ final class ReminderPopupPresenter {
             let frame = PresentationScreenSelector.preferredFrame(
                 primaryFrame: NSScreen.screens.first?.visibleFrame,
                 activeFrame: NSScreen.main?.visibleFrame,
-                fallbackFrames: Array(NSScreen.screens.dropFirst().map(\.visibleFrame))
+                fallbackFrame: NSScreen.screens.dropFirst().first?.visibleFrame
             )
         else {
             return

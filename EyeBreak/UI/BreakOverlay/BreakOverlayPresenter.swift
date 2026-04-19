@@ -51,7 +51,7 @@ final class BreakOverlayPresenter {
             let screenFrame = PresentationScreenSelector.preferredFrame(
                 primaryFrame: NSScreen.screens.first?.frame,
                 activeFrame: NSScreen.main?.frame,
-                fallbackFrames: Array(NSScreen.screens.dropFirst().map(\.frame))
+                fallbackFrame: NSScreen.screens.dropFirst().first?.frame
             )
         else {
             return
@@ -161,8 +161,8 @@ enum PresentationScreenSelector {
     static func preferredFrame(
         primaryFrame: CGRect?,
         activeFrame: CGRect?,
-        fallbackFrames: [CGRect]
+        fallbackFrame: CGRect?
     ) -> CGRect? {
-        primaryFrame ?? activeFrame ?? fallbackFrames.first
+        primaryFrame ?? activeFrame ?? fallbackFrame
     }
 }
