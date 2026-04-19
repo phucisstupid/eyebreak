@@ -14,13 +14,13 @@ final class BreakOverlayPresenter {
     }
 
     #if DEBUG
-    var panelForTesting: NSPanel? {
-        panel
-    }
+        var panelForTesting: NSPanel? {
+            panel
+        }
 
-    var hostingViewForTesting: NSHostingView<BreakOverlayView>? {
-        hostingView
-    }
+        var hostingViewForTesting: NSHostingView<BreakOverlayView>? {
+            hostingView
+        }
     #endif
 
     func render(

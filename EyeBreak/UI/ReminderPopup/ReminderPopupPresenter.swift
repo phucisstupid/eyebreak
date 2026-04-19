@@ -14,8 +14,8 @@ final class ReminderPopupPresenter {
     private var hostingView: NSHostingView<ReminderWindowView>?
 
     #if DEBUG
-    var panelForTesting: NSPanel? { panel }
-    var hostingViewForTesting: NSHostingView<ReminderWindowView>? { hostingView }
+        var panelForTesting: NSPanel? { panel }
+        var hostingViewForTesting: NSHostingView<ReminderWindowView>? { hostingView }
     #endif
 
     func render(
