@@ -99,10 +99,12 @@ final class AppCoordinator: AppCoordinating {
         publishState()
     }
 
+    #if DEBUG
     func replaceSnapshotForTesting(_ snapshot: AppSnapshot) {
         store.updateSnapshot(snapshot)
         publishState()
     }
+    #endif
 
     func pauseReminders() {
         applyScheduler(event: .pause)

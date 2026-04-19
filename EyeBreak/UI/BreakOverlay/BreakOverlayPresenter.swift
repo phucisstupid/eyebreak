@@ -13,6 +13,7 @@ final class BreakOverlayPresenter {
         self.now = now
     }
 
+    #if DEBUG
     var panelForTesting: NSPanel? {
         panel
     }
@@ -20,6 +21,7 @@ final class BreakOverlayPresenter {
     var hostingViewForTesting: NSHostingView<BreakOverlayView>? {
         hostingView
     }
+    #endif
 
     func render(
         isPresented: Bool,
