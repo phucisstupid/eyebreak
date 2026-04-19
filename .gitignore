@@ -4,7 +4,6 @@ DerivedData/
 .swiftpm/
 .superpowers/
 /docs/superpowers/
-/AGENTS.md
 *.xcworkspace/xcuserdata/
 *.xcuserstate
 *.xccheckout
