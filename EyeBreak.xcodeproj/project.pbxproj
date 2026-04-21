@@ -55,6 +55,7 @@
 		000000000000000000000138 /* EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000139 /* EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift */; };
 		000000000000000000000140 /* EyeBreakTests/SettingsPopupPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000141 /* EyeBreakTests/SettingsPopupPresenterTests.swift */; };
 		000000000000000000000142 /* EyeBreak/UI/Preferences/SettingsPopupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000143 /* EyeBreak/UI/Preferences/SettingsPopupPresenter.swift */; };
+		B1BF437AB6F467A4C921AF51 /* ActivityMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98194FF1A1534AB062D47D15 /* ActivityMonitorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		000000000000000000000139 /* EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000141 /* EyeBreakTests/SettingsPopupPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/SettingsPopupPresenterTests.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000143 /* EyeBreak/UI/Preferences/SettingsPopupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/Preferences/SettingsPopupPresenter.swift; sourceTree = SOURCE_ROOT; };
+		98194FF1A1534AB062D47D15 /* ActivityMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityMonitorTests.swift; path = EyeBreakTests/ActivityMonitorTests.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				000000000000000000000020 /* EyeBreak.app */,
 				000000000000000000000021 /* EyeBreakTests.xctest */,
 				8FBC11542F780941000037BA /* Recovered References */,
+				98194FF1A1534AB062D47D15 /* ActivityMonitorTests.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -452,6 +455,7 @@
 				00000000000000000000011A /* EyeBreakTests/PreferencesViewTests.swift in Sources */,
 				000000000000000000000130 /* EyeBreakTests/ReminderWindowViewTests.swift in Sources */,
 				00000000000000000000011C /* EyeBreakTests/SystemIdleTimeProviderTests.swift in Sources */,
+				B1BF437AB6F467A4C921AF51 /* ActivityMonitorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
