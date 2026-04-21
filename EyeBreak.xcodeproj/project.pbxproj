@@ -55,6 +55,7 @@
 		000000000000000000000138 /* ReminderPopupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000139 /* ReminderPopupPresenter.swift */; };
 		000000000000000000000140 /* SettingsPopupPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000141 /* SettingsPopupPresenterTests.swift */; };
 		000000000000000000000142 /* SettingsPopupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000143 /* SettingsPopupPresenter.swift */; };
+		2DA587CD68CC9563CEDB61EA /* AppModel+TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E26EC7F3ACF74D97C3DBF /* AppModel+TestExtensions.swift */; };
 		8C69E36533AA605CCEBFBB53 /* UserDefaultsSettingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80981ADF01428A77BD3FA03D /* UserDefaultsSettingsStoreTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +121,7 @@
 		000000000000000000000139 /* ReminderPopupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000141 /* SettingsPopupPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/SettingsPopupPresenterTests.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000143 /* SettingsPopupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/Preferences/SettingsPopupPresenter.swift; sourceTree = SOURCE_ROOT; };
+		226E26EC7F3ACF74D97C3DBF /* AppModel+TestExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "AppModel+TestExtensions.swift"; sourceTree = "<group>"; };
 		80981ADF01428A77BD3FA03D /* UserDefaultsSettingsStoreTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserDefaultsSettingsStoreTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -250,6 +252,7 @@
 				000000000000000000000131 /* ReminderWindowViewTests.swift */,
 				00000000000000000000011B /* SystemIdleTimeProviderTests.swift */,
 				80981ADF01428A77BD3FA03D /* UserDefaultsSettingsStoreTests.swift */,
+				226E26EC7F3ACF74D97C3DBF /* AppModel+TestExtensions.swift */,
 			);
 			path = EyeBreakTests;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				000000000000000000000130 /* ReminderWindowViewTests.swift in Sources */,
 				00000000000000000000011C /* SystemIdleTimeProviderTests.swift in Sources */,
 				8C69E36533AA605CCEBFBB53 /* UserDefaultsSettingsStoreTests.swift in Sources */,
+				2DA587CD68CC9563CEDB61EA /* AppModel+TestExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
