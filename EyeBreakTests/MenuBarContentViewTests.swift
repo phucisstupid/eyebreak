@@ -31,7 +31,7 @@ final class MenuBarContentViewTests: XCTestCase {
     }
 
     func test_quitCommandInvokesClosure() {
-        let coordinator = SpyAppCoordinator(settings: .default, snapshot: AppSnapshot(phase: .active, breakCount: 0, nextBreakType: .short, breakSessionState: nil, schedulerState: .running(progress: 0), idleDuration: 0, postpone: nil))
+        let coordinator = SpyAppCoordinator(settings: .default, snapshot: AppSnapshot(phase: .running, breakCount: 0, nextBreakType: .short, breakSessionState: nil, schedulerState: .running(progress: 0), idleDuration: 0, postpone: nil))
         let model = AppModel.makeForTests(coordinator: coordinator)
         var quitRequested = false
         let view = MenuBarContentView(
@@ -43,7 +43,7 @@ final class MenuBarContentViewTests: XCTestCase {
     }
 
     func test_settingsCommandInvokesClosure() {
-        let coordinator = SpyAppCoordinator(settings: .default, snapshot: AppSnapshot(phase: .active, breakCount: 0, nextBreakType: .short, breakSessionState: nil, schedulerState: .running(progress: 0), idleDuration: 0, postpone: nil))
+        let coordinator = SpyAppCoordinator(settings: .default, snapshot: AppSnapshot(phase: .running, breakCount: 0, nextBreakType: .short, breakSessionState: nil, schedulerState: .running(progress: 0), idleDuration: 0, postpone: nil))
         let model = AppModel.makeForTests(coordinator: coordinator)
         var settingsOpened = false
         let view = MenuBarContentView(
@@ -58,7 +58,7 @@ final class MenuBarContentViewTests: XCTestCase {
     }
 
     func test_settingsCommandDismissesMenuBeforeOpeningSettings() {
-        let coordinator = SpyAppCoordinator(settings: .default, snapshot: AppSnapshot(phase: .active, breakCount: 0, nextBreakType: .short, breakSessionState: nil, schedulerState: .running(progress: 0), idleDuration: 0, postpone: nil))
+        let coordinator = SpyAppCoordinator(settings: .default, snapshot: AppSnapshot(phase: .running, breakCount: 0, nextBreakType: .short, breakSessionState: nil, schedulerState: .running(progress: 0), idleDuration: 0, postpone: nil))
         let model = AppModel.makeForTests(coordinator: coordinator)
         var dismissed = false
         var returnedFromShowSettings = false
@@ -86,7 +86,7 @@ final class MenuBarContentViewTests: XCTestCase {
     }
 
     func test_menuBarRootViewUsesInjectedSettingsAction() {
-        let coordinator = SpyAppCoordinator(settings: .default, snapshot: AppSnapshot(phase: .active, breakCount: 0, nextBreakType: .short, breakSessionState: nil, schedulerState: .running(progress: 0), idleDuration: 0, postpone: nil))
+        let coordinator = SpyAppCoordinator(settings: .default, snapshot: AppSnapshot(phase: .running, breakCount: 0, nextBreakType: .short, breakSessionState: nil, schedulerState: .running(progress: 0), idleDuration: 0, postpone: nil))
         let model = AppModel.makeForTests(coordinator: coordinator)
         var settingsOpened = false
         let view = MenuBarRootView(
@@ -101,7 +101,7 @@ final class MenuBarContentViewTests: XCTestCase {
     }
 
     func test_pauseResumeToggleUsesPauseIconWhenRunning() {
-        let coordinator = SpyAppCoordinator(settings: .default, snapshot: AppSnapshot(phase: .active, breakCount: 0, nextBreakType: .short, breakSessionState: nil, schedulerState: .running(progress: 0), idleDuration: 0, postpone: nil))
+        let coordinator = SpyAppCoordinator(settings: .default, snapshot: AppSnapshot(phase: .running, breakCount: 0, nextBreakType: .short, breakSessionState: nil, schedulerState: .running(progress: 0), idleDuration: 0, postpone: nil))
         let model = AppModel.makeForTests(coordinator: coordinator)
         let view = MenuBarContentView(
             model: model,
