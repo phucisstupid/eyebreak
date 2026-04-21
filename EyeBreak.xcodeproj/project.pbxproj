@@ -56,6 +56,7 @@
 		000000000000000000000140 /* SettingsPopupPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000141 /* SettingsPopupPresenterTests.swift */; };
 		000000000000000000000142 /* SettingsPopupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000143 /* SettingsPopupPresenter.swift */; };
 		7945D85BEFCB711AE82A6B4D /* SleepWakeObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4454C180A73A32359A7A6A /* SleepWakeObserverTests.swift */; };
+		F431C215076E8BF6E86AD8A0 /* AppModel+TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A18BABFB3893E0EE7C9C7 /* AppModel+TestExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		000000000000000000000139 /* ReminderPopupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000141 /* SettingsPopupPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/SettingsPopupPresenterTests.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000143 /* SettingsPopupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/Preferences/SettingsPopupPresenter.swift; sourceTree = SOURCE_ROOT; };
+		560A18BABFB3893E0EE7C9C7 /* AppModel+TestExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "AppModel+TestExtensions.swift"; sourceTree = "<group>"; };
 		CD4454C180A73A32359A7A6A /* SleepWakeObserverTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SleepWakeObserverTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -250,6 +252,7 @@
 				000000000000000000000131 /* ReminderWindowViewTests.swift */,
 				00000000000000000000011B /* SystemIdleTimeProviderTests.swift */,
 				CD4454C180A73A32359A7A6A /* SleepWakeObserverTests.swift */,
+				560A18BABFB3893E0EE7C9C7 /* AppModel+TestExtensions.swift */,
 			);
 			path = EyeBreakTests;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				000000000000000000000130 /* ReminderWindowViewTests.swift in Sources */,
 				00000000000000000000011C /* SystemIdleTimeProviderTests.swift in Sources */,
 				7945D85BEFCB711AE82A6B4D /* SleepWakeObserverTests.swift in Sources */,
+				F431C215076E8BF6E86AD8A0 /* AppModel+TestExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
