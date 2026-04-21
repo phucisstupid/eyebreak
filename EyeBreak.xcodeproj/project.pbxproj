@@ -120,7 +120,7 @@
 		000000000000000000000139 /* EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000141 /* EyeBreakTests/SettingsPopupPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/SettingsPopupPresenterTests.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000143 /* EyeBreak/UI/Preferences/SettingsPopupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/Preferences/SettingsPopupPresenter.swift; sourceTree = SOURCE_ROOT; };
-		62E140B7BB11B6580CE8983C /* UserDefaultsSettingsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultsSettingsStoreTests.swift; path = EyeBreakTests/UserDefaultsSettingsStoreTests.swift; sourceTree = "<group>"; };
+		62E140B7BB11B6580CE8983C /* UserDefaultsSettingsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultsSettingsStoreTests.swift; path = EyeBreakTests/UserDefaultsSettingsStoreTests.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
