@@ -120,7 +120,7 @@
 		000000000000000000000139 /* ReminderPopupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000141 /* SettingsPopupPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/SettingsPopupPresenterTests.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000143 /* SettingsPopupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/UI/Preferences/SettingsPopupPresenter.swift; sourceTree = SOURCE_ROOT; };
-		85621F17F325A5718BE90184 /* HeartbeatTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HeartbeatTests.swift; sourceTree = "<group>"; };
+		85621F17F325A5718BE90184 /* HeartbeatTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/App/HeartbeatTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
