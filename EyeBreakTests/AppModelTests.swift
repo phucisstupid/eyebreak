@@ -338,7 +338,7 @@ extension AppSnapshot {
 
 extension AppModel {
     static func makeForTests(
-        coordinator: any AppCoordinating,
+        coordinator: any AppCoordinating = SpyAppCoordinator(settings: .default),
         launchAtLoginController: any LaunchAtLoginControlling = LaunchAtLoginController(),
         snapshot: AppSnapshot? = nil,
         settings: AppSettings? = nil
