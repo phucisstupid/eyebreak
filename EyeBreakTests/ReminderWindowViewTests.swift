@@ -6,10 +6,7 @@ import XCTest
 final class ReminderWindowViewTests: XCTestCase {
     func test_reminderWindowRendersIdleProgress() {
         let view = ReminderWindowView(
-            breakType: .short,
-            breakDuration: 20,
-            idleDuration: 2,
-            idleThreshold: 5,
+            state: .init(breakType: .short, breakDuration: 20, idleDuration: 2, idleThreshold: 5),
             onSkip: {},
             onPostpone: {}
         )
@@ -19,10 +16,7 @@ final class ReminderWindowViewTests: XCTestCase {
 
     func test_reminderPopupViewUsesIdleThresholdForProgressLine() {
         let view = ReminderPopupView(
-            breakType: .short,
-            breakDuration: 20,
-            idleDuration: 2,
-            idleThreshold: 5,
+            state: .init(breakType: .short, breakDuration: 20, idleDuration: 2, idleThreshold: 5),
             onSkip: {},
             onPostpone: {}
         )

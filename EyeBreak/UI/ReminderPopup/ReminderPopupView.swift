@@ -2,10 +2,7 @@ import SwiftUI
 
 @MainActor
 struct ReminderPopupView: View {
-    let breakType: BreakType
-    let breakDuration: TimeInterval
-    let idleDuration: TimeInterval
-    let idleThreshold: TimeInterval
+    let state: ReminderPopupPresenter.PresentationState
     let onSkip: @MainActor () -> Void
     let onPostpone: @MainActor () -> Void
 
@@ -22,7 +19,7 @@ struct ReminderPopupView: View {
             }
 
             Text(
-                "A \(breakType.title.lowercased()) break will start when you're "
+                "A \(state.breakType.title.lowercased()) break will start when you're "
                     + "idle for a moment. It lasts \(durationLabel)."
             )
             .font(.callout)
@@ -57,8 +54,8 @@ struct ReminderPopupView: View {
 
     var progressValue: Double {
         Self.progressValue(
-            idleDuration: idleDuration,
-            idleThreshold: idleThreshold
+            idleDuration: state.idleDuration,
+            idleThreshold: state.idleThreshold
         )
     }
 
@@ -72,11 +69,11 @@ struct ReminderPopupView: View {
     }
 
     private var durationLabel: String {
-        if breakDuration >= 60, breakDuration.truncatingRemainder(dividingBy: 60) == 0 {
-            return "\(Int(breakDuration / 60)) minute\(breakDuration == 60 ? "" : "s")"
+        if state.breakDuration >= 60, state.breakDuration.truncatingRemainder(dividingBy: 60) == 0 {
+            return "\(Int(state.breakDuration / 60)) minute\(state.breakDuration == 60 ? "" : "s")"
         }
 
-        return "\(Int(breakDuration)) seconds"
+        return "\(Int(state.breakDuration)) seconds"
     }
 }
 

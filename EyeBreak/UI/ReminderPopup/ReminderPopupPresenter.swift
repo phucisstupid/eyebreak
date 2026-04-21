@@ -45,10 +45,7 @@ final class ReminderPopupPresenter {
             hostingView
             ?? NSHostingView(
                 rootView: ReminderWindowView(
-                    breakType: state.breakType,
-                    breakDuration: state.breakDuration,
-                    idleDuration: state.idleDuration,
-                    idleThreshold: state.idleThreshold,
+                    state: state,
                     onSkip: onSkip,
                     onPostpone: onPostpone
                 ))
@@ -57,10 +54,7 @@ final class ReminderPopupPresenter {
         hostingView.frame = CGRect(origin: .zero, size: size)
         hostingView.autoresizingMask = [.width, .height]
         hostingView.rootView = ReminderWindowView(
-            breakType: state.breakType,
-            breakDuration: state.breakDuration,
-            idleDuration: state.idleDuration,
-            idleThreshold: state.idleThreshold,
+            state: state,
             onSkip: onSkip,
             onPostpone: onPostpone
         )
