@@ -11,7 +11,8 @@ final class MenuBarContentViewTests: XCTestCase {
             breakCount: 2,
             nextBreakType: .long
         )
-        let model = AppModel.makeForTests(snapshot: snapshot, settings: settings)
+        let coordinator = SpyAppCoordinator(settings: settings, snapshot: snapshot)
+        let model = AppModel.makeForTests(coordinator: coordinator, snapshot: snapshot, settings: settings)
         let view = MenuBarContentView(
             model: model,
             quit: {}
@@ -30,7 +31,7 @@ final class MenuBarContentViewTests: XCTestCase {
     }
 
     func test_quitCommandInvokesClosure() {
-        let model = AppModel.makeForTests()
+        let model = AppModel.makeForTests(coordinator: SpyAppCoordinator(settings: .default, snapshot: .init(phase: .running, breakCount: 0, nextBreakType: .short, breakSessionState: nil, schedulerState: .paused(progress: 0, origin: .running), idleDuration: 0, postpone: nil)))
         var quitRequested = false
         let view = MenuBarContentView(
             model: model,
@@ -41,7 +42,7 @@ final class MenuBarContentViewTests: XCTestCase {
     }
 
     func test_settingsCommandInvokesClosure() {
-        let model = AppModel.makeForTests()
+        let model = AppModel.makeForTests(coordinator: SpyAppCoordinator(settings: .default, snapshot: .init(phase: .running, breakCount: 0, nextBreakType: .short, breakSessionState: nil, schedulerState: .paused(progress: 0, origin: .running), idleDuration: 0, postpone: nil)))
         var settingsOpened = false
         let view = MenuBarContentView(
             model: model,
@@ -55,7 +56,7 @@ final class MenuBarContentViewTests: XCTestCase {
     }
 
     func test_settingsCommandDismissesMenuBeforeOpeningSettings() {
-        let model = AppModel.makeForTests()
+        let model = AppModel.makeForTests(coordinator: SpyAppCoordinator(settings: .default, snapshot: .init(phase: .running, breakCount: 0, nextBreakType: .short, breakSessionState: nil, schedulerState: .paused(progress: 0, origin: .running), idleDuration: 0, postpone: nil)))
         var dismissed = false
         var returnedFromShowSettings = false
         let settingsOpenedExpectation = expectation(
@@ -82,7 +83,7 @@ final class MenuBarContentViewTests: XCTestCase {
     }
 
     func test_menuBarRootViewUsesInjectedSettingsAction() {
-        let model = AppModel.makeForTests()
+        let model = AppModel.makeForTests(coordinator: SpyAppCoordinator(settings: .default, snapshot: .init(phase: .running, breakCount: 0, nextBreakType: .short, breakSessionState: nil, schedulerState: .paused(progress: 0, origin: .running), idleDuration: 0, postpone: nil)))
         var settingsOpened = false
         let view = MenuBarRootView(
             model: model,
@@ -96,7 +97,7 @@ final class MenuBarContentViewTests: XCTestCase {
     }
 
     func test_pauseResumeToggleUsesPauseIconWhenRunning() {
-        let model = AppModel.makeForTests()
+        let model = AppModel.makeForTests(coordinator: SpyAppCoordinator(settings: .default, snapshot: .init(phase: .running, breakCount: 0, nextBreakType: .short, breakSessionState: nil, schedulerState: .paused(progress: 0, origin: .running), idleDuration: 0, postpone: nil)))
         let view = MenuBarContentView(
             model: model,
             quit: {}
@@ -119,7 +120,8 @@ final class MenuBarContentViewTests: XCTestCase {
             idleDuration: 0,
             postpone: nil
         )
-        let model = AppModel.makeForTests(snapshot: snapshot, settings: settings)
+        let coordinator = SpyAppCoordinator(settings: settings, snapshot: snapshot)
+        let model = AppModel.makeForTests(coordinator: coordinator, snapshot: snapshot, settings: settings)
         let view = MenuBarContentView(
             model: model,
             quit: {}
@@ -138,7 +140,7 @@ final class MenuBarContentViewTests: XCTestCase {
             nextBreakType: .short
         )
         let coordinator = SpyAppCoordinator(settings: settings, snapshot: snapshot)
-        let model = AppModel.makeForTests(coordinator: coordinator, settings: settings)
+        let model = AppModel.makeForTests(coordinator: coordinator, snapshot: snapshot, settings: settings)
         let view = MenuBarContentView(
             model: model,
             quit: {}
