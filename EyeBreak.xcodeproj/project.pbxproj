@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000000000000000000000142 /* EyeBreakTests/AppModel+TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000143 /* EyeBreakTests/AppModel+TestExtensions.swift */; };
 		000000000000000000000140 /* EyeBreakTests/BreakTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000141 /* EyeBreakTests/BreakTypeTests.swift */; };
 		000000000000000000000040 /* EyeBreak/App/EyeBreakApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000010 /* EyeBreak/App/EyeBreakApp.swift */; };
 		000000000000000000000042 /* EyeBreak/App/AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000012 /* EyeBreak/App/AppCoordinator.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		000000000000000000000143 /* EyeBreakTests/AppModel+TestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/AppModel+TestExtensions.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000141 /* EyeBreakTests/BreakTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreakTests/BreakTypeTests.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000010 /* EyeBreak/App/EyeBreakApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/App/EyeBreakApp.swift; sourceTree = SOURCE_ROOT; };
 		000000000000000000000012 /* EyeBreak/App/AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBreak/App/AppCoordinator.swift; sourceTree = SOURCE_ROOT; };
@@ -235,6 +237,7 @@
 		00000000000000000000000B /* EyeBreakTests */ = {
 			isa = PBXGroup;
 			children = (
+				000000000000000000000143 /* EyeBreakTests/AppModel+TestExtensions.swift */,
 				000000000000000000000141 /* EyeBreakTests/BreakTypeTests.swift */,
 				000000000000000000000085 /* EyeBreakTests/AppCoordinatorTests.swift */,
 				000000000000000000000016 /* EyeBreakTests/AppSettingsTests.swift */,
@@ -441,6 +444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				000000000000000000000142 /* EyeBreakTests/AppModel+TestExtensions.swift in Sources */,
 				000000000000000000000140 /* EyeBreakTests/BreakTypeTests.swift in Sources */,
 				000000000000000000000084 /* EyeBreakTests/AppCoordinatorTests.swift in Sources */,
 				000000000000000000000044 /* EyeBreakTests/AppSettingsTests.swift in Sources */,
