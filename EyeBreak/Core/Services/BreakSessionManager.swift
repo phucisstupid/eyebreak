@@ -11,10 +11,6 @@ struct BreakSkipResult: Equatable {
     var nextSession: BreakSessionState?
     var completedBreakCountDelta: Int
     var postpone: ReminderPostpone?
-
-    var postponeDuration: TimeInterval {
-        postpone?.duration ?? 0
-    }
 }
 
 final class BreakSessionManager {
