@@ -19,4 +19,15 @@ final class ReminderPostponeTests: XCTestCase {
         let expected = ReminderPostpone(startedAt: startedAt, duration: ReminderPostpone.standardDuration)
         XCTAssertEqual(postpone, expected)
     }
+
+    func test_standardDuration_isFiveMinutes() {
+        XCTAssertEqual(ReminderPostpone.standardDuration, 300)
+    }
+
+    func test_standard_endsAt_isFiveMinutesAfterStartedAt() {
+        let startedAt = Date(timeIntervalSince1970: 2000)
+        let postpone = ReminderPostpone.standard(from: startedAt)
+
+        XCTAssertEqual(postpone.endsAt, startedAt.addingTimeInterval(300))
+    }
 }
