@@ -14,7 +14,7 @@ final class UserDefaultsSettingsStoreTests: XCTestCase {
     }
 
     override func tearDown() {
-        userDefaults?.removePersistentDomain(forName: suiteName)
+        userDefaults.removePersistentDomain(forName: "TestDefaults")
         sut = nil
         userDefaults = nil
         super.tearDown()
