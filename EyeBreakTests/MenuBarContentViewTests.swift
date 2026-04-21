@@ -168,7 +168,7 @@ private final class SpyAppCoordinator: AppCoordinating {
     var dismissedMenu = false
     var onStartBreakNow: (() -> Void)?
 
-        init(settings: AppSettings = .default, snapshot: AppSnapshot = .default) {
+        init(settings: AppSettings = .default, snapshot: AppSnapshot = .waitingForIdle(progress: 0, breakCount: 0, nextBreakType: .short)) {
         self.settings = settings
         self.snapshot = snapshot
     }
