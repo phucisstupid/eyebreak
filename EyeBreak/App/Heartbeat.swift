@@ -1,14 +1,33 @@
 import Foundation
 
+protocol HeartbeatTimer: AnyObject {
+    func invalidate()
+}
+
+extension Timer: HeartbeatTimer {}
+
 final class Heartbeat {
     var onTick: ((TimeInterval) -> Void)?
 
     private let interval: TimeInterval
-    private var timer: Timer?
+    private var timer: HeartbeatTimer?
     private var lastTickUptime: TimeInterval?
 
-    init(interval: TimeInterval = 1) {
+    private let uptimeProvider: () -> TimeInterval
+    private let scheduleTimer: (TimeInterval, @escaping () -> Void) -> HeartbeatTimer
+
+    init(
+        interval: TimeInterval = 1,
+        uptimeProvider: @escaping () -> TimeInterval = { ProcessInfo.processInfo.systemUptime },
+        scheduleTimer: @escaping (TimeInterval, @escaping () -> Void) -> HeartbeatTimer = { interval, block in
+            let timer = Timer(timeInterval: interval, repeats: true) { _ in block() }
+            RunLoop.main.add(timer, forMode: .common)
+            return timer
+        }
+    ) {
         self.interval = interval
+        self.uptimeProvider = uptimeProvider
+        self.scheduleTimer = scheduleTimer
     }
 
     func start() {
@@ -16,21 +35,17 @@ final class Heartbeat {
             return
         }
 
-        lastTickUptime = ProcessInfo.processInfo.systemUptime
-        let interval = interval
-        let timer = Timer(timeInterval: interval, repeats: true) { [weak self] _ in
+        lastTickUptime = uptimeProvider()
+        timer = scheduleTimer(interval) { [weak self] in
             guard let self else {
                 return
             }
 
-            let currentUptime = ProcessInfo.processInfo.systemUptime
-            let previousUptime = lastTickUptime ?? currentUptime
-            lastTickUptime = currentUptime
-            onTick?(max(currentUptime - previousUptime, 0))
+            let currentUptime = self.uptimeProvider()
+            let previousUptime = self.lastTickUptime ?? currentUptime
+            self.lastTickUptime = currentUptime
+            self.onTick?(max(currentUptime - previousUptime, 0))
         }
-
-        self.timer = timer
-        RunLoop.main.add(timer, forMode: .common)
     }
 
     func stop() {
