@@ -44,4 +44,10 @@ final class MockAppCoordinator: AppCoordinating {
 
 final class MockLaunchAtLoginController: LaunchAtLoginControlling {
     var isEnabled = false
+
+    @discardableResult
+    func setEnabled(_ enabled: Bool) -> String? {
+        self.isEnabled = enabled
+        return nil
+    }
 }
