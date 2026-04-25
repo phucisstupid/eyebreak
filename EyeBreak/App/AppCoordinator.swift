@@ -100,10 +100,10 @@ final class AppCoordinator: AppCoordinating {
     }
 
     #if DEBUG
-        func replaceSnapshotForTesting(_ snapshot: AppSnapshot) {
-            store.updateSnapshot(snapshot)
-            publishState()
-        }
+    func replaceSnapshotForTesting(_ snapshot: AppSnapshot) {
+        store.updateSnapshot(snapshot)
+        publishState()
+    }
     #endif
 
     func pauseReminders() {
