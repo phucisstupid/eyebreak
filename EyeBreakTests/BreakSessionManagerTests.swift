@@ -97,6 +97,6 @@ final class ReminderPostponeTests: XCTestCase {
         let startedAt = Date(timeIntervalSince1970: 2000)
         let postpone = ReminderPostpone.standard(from: startedAt)
 
-        XCTAssertEqual(postpone.endsAt, startedAt.addingTimeInterval(300))
+        XCTAssertEqual(postpone.endsAt, startedAt.addingTimeInterval(ReminderPostpone.standardDuration))
     }
 }
