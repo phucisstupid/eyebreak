@@ -53,7 +53,7 @@ final class BreakOverlayPresenter {
             let screenFrame = PresentationScreenSelector.preferredFrame(
                 primaryFrame: NSScreen.screens.first?.frame,
                 activeFrame: NSScreen.main?.frame,
-                fallbackFrame: NSScreen.screens.dropFirst().first?.frame
+                fallbackFrame: NSScreen.screens.dropFirst().lazy.map(\.frame).first
             )
         else {
             return
