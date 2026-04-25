@@ -11,8 +11,7 @@ final class MenuBarContentViewTests: XCTestCase {
             breakCount: 2,
             nextBreakType: .long
         )
-        let coordinator = SpyAppCoordinator(settings: .default, snapshot: snapshot)
-        let model = AppModel.makeForTests(coordinator: coordinator, snapshot: snapshot, settings: settings)
+        let model = AppModel.makeForTests(coordinator: SpyAppCoordinator(settings: settings, snapshot: snapshot), snapshot: snapshot, settings: settings)
         let view = MenuBarContentView(
             model: model,
             quit: {}
@@ -31,9 +30,7 @@ final class MenuBarContentViewTests: XCTestCase {
     }
 
     func test_quitCommandInvokesClosure() {
-        let snapshot = AppSnapshot.waitingForIdle(progress: 0, breakCount: 0, nextBreakType: .short)
-        let coordinator = SpyAppCoordinator(settings: .default, snapshot: snapshot)
-        let model = AppModel.makeForTests(coordinator: coordinator, snapshot: snapshot)
+        let model = AppModel.makeForTests(coordinator: SpyAppCoordinator())
         var quitRequested = false
         let view = MenuBarContentView(
             model: model,
@@ -44,9 +41,7 @@ final class MenuBarContentViewTests: XCTestCase {
     }
 
     func test_settingsCommandInvokesClosure() {
-        let snapshot = AppSnapshot.waitingForIdle(progress: 0, breakCount: 0, nextBreakType: .short)
-        let coordinator = SpyAppCoordinator(settings: .default, snapshot: snapshot)
-        let model = AppModel.makeForTests(coordinator: coordinator, snapshot: snapshot)
+        let model = AppModel.makeForTests(coordinator: SpyAppCoordinator())
         var settingsOpened = false
         let view = MenuBarContentView(
             model: model,
@@ -60,9 +55,7 @@ final class MenuBarContentViewTests: XCTestCase {
     }
 
     func test_settingsCommandDismissesMenuBeforeOpeningSettings() {
-        let snapshot = AppSnapshot.waitingForIdle(progress: 0, breakCount: 0, nextBreakType: .short)
-        let coordinator = SpyAppCoordinator(settings: .default, snapshot: snapshot)
-        let model = AppModel.makeForTests(coordinator: coordinator, snapshot: snapshot)
+        let model = AppModel.makeForTests(coordinator: SpyAppCoordinator())
         var dismissed = false
         var returnedFromShowSettings = false
         let settingsOpenedExpectation = expectation(
@@ -89,9 +82,7 @@ final class MenuBarContentViewTests: XCTestCase {
     }
 
     func test_menuBarRootViewUsesInjectedSettingsAction() {
-        let snapshot = AppSnapshot.waitingForIdle(progress: 0, breakCount: 0, nextBreakType: .short)
-        let coordinator = SpyAppCoordinator(settings: .default, snapshot: snapshot)
-        let model = AppModel.makeForTests(coordinator: coordinator, snapshot: snapshot)
+        let model = AppModel.makeForTests(coordinator: SpyAppCoordinator())
         var settingsOpened = false
         let view = MenuBarRootView(
             model: model,
@@ -105,9 +96,7 @@ final class MenuBarContentViewTests: XCTestCase {
     }
 
     func test_pauseResumeToggleUsesPauseIconWhenRunning() {
-        let snapshot = AppSnapshot.waitingForIdle(progress: 0, breakCount: 0, nextBreakType: .short)
-        let coordinator = SpyAppCoordinator(settings: .default, snapshot: snapshot)
-        let model = AppModel.makeForTests(coordinator: coordinator, snapshot: snapshot)
+        let model = AppModel.makeForTests(coordinator: SpyAppCoordinator())
         let view = MenuBarContentView(
             model: model,
             quit: {}
@@ -130,8 +119,7 @@ final class MenuBarContentViewTests: XCTestCase {
             idleDuration: 0,
             postpone: nil
         )
-        let coordinator = SpyAppCoordinator(settings: .default, snapshot: snapshot)
-        let model = AppModel.makeForTests(coordinator: coordinator, snapshot: snapshot, settings: settings)
+        let model = AppModel.makeForTests(coordinator: SpyAppCoordinator(settings: settings, snapshot: snapshot), snapshot: snapshot, settings: settings)
         let view = MenuBarContentView(
             model: model,
             quit: {}
@@ -180,7 +168,7 @@ private final class SpyAppCoordinator: AppCoordinating {
     var dismissedMenu = false
     var onStartBreakNow: (() -> Void)?
 
-    init(settings: AppSettings, snapshot: AppSnapshot) {
+    init(settings: AppSettings = .default, snapshot: AppSnapshot = .waitingForIdle(progress: 0, breakCount: 0, nextBreakType: .short)) {
         self.settings = settings
         self.snapshot = snapshot
     }

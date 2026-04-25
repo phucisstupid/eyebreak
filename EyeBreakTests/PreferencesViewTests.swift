@@ -71,10 +71,10 @@ final class PreferencesViewTests: XCTestCase {
     func test_integerFieldParserNormalizesInputWithinConfiguredRange() {
         let parser = PreferencesIntegerFieldParser(range: 1...120)
 
-        XCTAssertEqual(parser.normalizedValue(from: " 15 ", fallback: 20), 15)
-        XCTAssertEqual(parser.normalizedValue(from: "0", fallback: 20), 1)
-        XCTAssertEqual(parser.normalizedValue(from: "999", fallback: 20), 120)
-        XCTAssertEqual(parser.normalizedValue(from: "abc", fallback: 20), 20)
+        XCTAssertEqual(parser.normalizedText(from: " 15 ", fallback: 20), "15")
+        XCTAssertEqual(parser.normalizedText(from: "0", fallback: 20), "1")
+        XCTAssertEqual(parser.normalizedText(from: "999", fallback: 20), "120")
+        XCTAssertEqual(parser.normalizedText(from: "abc", fallback: 20), "20")
     }
 
     private func makeHostingView() -> NSHostingView<PreferencesView> {

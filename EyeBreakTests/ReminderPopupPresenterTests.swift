@@ -60,6 +60,10 @@ final class ReminderPopupPresenterTests: XCTestCase {
         XCTAssertEqual(presenter.hostingViewForTesting?.rootView.breakDuration, 60)
         XCTAssertEqual(presenter.hostingViewForTesting?.rootView.idleDuration, 3)
         XCTAssertEqual(presenter.hostingViewForTesting?.rootView.idleThreshold, 5)
+        XCTAssertEqual(presenter.hostingViewForTesting?.rootView.state.breakType, BreakType.long)
+        XCTAssertEqual(presenter.hostingViewForTesting?.rootView.state.breakDuration, 60)
+        XCTAssertEqual(presenter.hostingViewForTesting?.rootView.state.idleDuration, 3)
+        XCTAssertEqual(presenter.hostingViewForTesting?.rootView.state.idleThreshold, 5)
         XCTAssertEqual(
             presenter.hostingViewForTesting?.rootView.progressValue ?? 0,
             0.4,

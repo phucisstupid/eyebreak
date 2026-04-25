@@ -6,6 +6,8 @@ struct ReminderWindowView: View {
     let breakDuration: TimeInterval
     let idleDuration: TimeInterval
     let idleThreshold: TimeInterval
+    let state: ReminderPopupPresenter.PresentationState
+    let state: ReminderPopupPresenter.PresentationState
     let onSkip: @MainActor () -> Void
     let onPostpone: @MainActor () -> Void
 
@@ -15,6 +17,8 @@ struct ReminderWindowView: View {
             breakDuration: breakDuration,
             idleDuration: idleDuration,
             idleThreshold: idleThreshold,
+            state: state,
+            state: state,
             onSkip: onSkip,
             onPostpone: onPostpone
         )
@@ -23,6 +27,32 @@ struct ReminderWindowView: View {
 
     var progressValue: Double {
         ReminderPopupView.progressValue(
+            idleDuration: state.idleDuration,
+            idleThreshold: state.idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: state.idleDuration,
+            idleThreshold: state.idleThreshold
             idleDuration: idleDuration,
             idleThreshold: idleThreshold
         )
