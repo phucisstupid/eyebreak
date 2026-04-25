@@ -6,6 +6,8 @@ struct ReminderPopupView: View {
     let breakDuration: TimeInterval
     let idleDuration: TimeInterval
     let idleThreshold: TimeInterval
+    let state: ReminderPopupPresenter.PresentationState
+    let state: ReminderPopupPresenter.PresentationState
     let onSkip: @MainActor () -> Void
     let onPostpone: @MainActor () -> Void
 
@@ -22,6 +24,19 @@ struct ReminderPopupView: View {
             }
 
             Text(
+                "A \(state.breakType.title.lowercased()) break will start when you're "
+                "A \(breakType.title.lowercased()) break will start when you're "
+                "A \(breakType.title.lowercased()) break will start when you're "
+                "A \(breakType.title.lowercased()) break will start when you're "
+                "A \(breakType.title.lowercased()) break will start when you're "
+                "A \(breakType.title.lowercased()) break will start when you're "
+                "A \(breakType.title.lowercased()) break will start when you're "
+                "A \(breakType.title.lowercased()) break will start when you're "
+                "A \(breakType.title.lowercased()) break will start when you're "
+                "A \(breakType.title.lowercased()) break will start when you're "
+                "A \(breakType.title.lowercased()) break will start when you're "
+                "A \(breakType.title.lowercased()) break will start when you're "
+                "A \(state.breakType.title.lowercased()) break will start when you're "
                 "A \(breakType.title.lowercased()) break will start when you're "
                     + "idle for a moment. It lasts \(durationLabel)."
             )
@@ -57,6 +72,32 @@ struct ReminderPopupView: View {
 
     var progressValue: Double {
         Self.progressValue(
+            idleDuration: state.idleDuration,
+            idleThreshold: state.idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: idleDuration,
+            idleThreshold: idleThreshold
+            idleDuration: state.idleDuration,
+            idleThreshold: state.idleThreshold
             idleDuration: idleDuration,
             idleThreshold: idleThreshold
         )
@@ -77,6 +118,11 @@ struct ReminderPopupView: View {
         }
 
         return "\(Int(breakDuration)) seconds"
+        if state.breakDuration >= 60, state.breakDuration.truncatingRemainder(dividingBy: 60) == 0 {
+            return "\(Int(state.breakDuration / 60)) minute\(state.breakDuration == 60 ? "" : "s")"
+        }
+
+        return "\(Int(state.breakDuration)) seconds"
     }
 }
 

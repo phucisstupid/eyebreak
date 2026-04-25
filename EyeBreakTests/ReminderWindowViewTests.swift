@@ -10,6 +10,13 @@ final class ReminderWindowViewTests: XCTestCase {
             breakDuration: 20,
             idleDuration: 2,
             idleThreshold: 5,
+            state: .init(breakType: .short, breakDuration: 20, idleDuration: 2, idleThreshold: 5),
+            state: ReminderPopupPresenter.PresentationState(
+                breakType: .short,
+                breakDuration: 20,
+                idleDuration: 2,
+                idleThreshold: 5
+            ),
             onSkip: {},
             onPostpone: {}
         )
@@ -23,6 +30,13 @@ final class ReminderWindowViewTests: XCTestCase {
             breakDuration: 20,
             idleDuration: 2,
             idleThreshold: 5,
+            state: .init(breakType: .short, breakDuration: 20, idleDuration: 2, idleThreshold: 5),
+            state: ReminderPopupPresenter.PresentationState(
+                breakType: .short,
+                breakDuration: 20,
+                idleDuration: 2,
+                idleThreshold: 5
+            ),
             onSkip: {},
             onPostpone: {}
         )
