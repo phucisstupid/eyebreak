@@ -57,7 +57,6 @@
 		000000000000000000000138 /* EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000139 /* EyeBreak/UI/ReminderPopup/ReminderPopupPresenter.swift */; };
 		000000000000000000000140 /* EyeBreakTests/SettingsPopupPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000141 /* EyeBreakTests/SettingsPopupPresenterTests.swift */; };
 		000000000000000000000142 /* EyeBreak/UI/Preferences/SettingsPopupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000143 /* EyeBreak/UI/Preferences/SettingsPopupPresenter.swift */; };
-		79F848FF974EDF8DD9611401 /* UserDefaultsSettingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E140B7BB11B6580CE8983C /* UserDefaultsSettingsStoreTests.swift */; };
 		000000000000000000000040 /* EyeBreakApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000010 /* EyeBreakApp.swift */; };
 		000000000000000000000042 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000012 /* AppCoordinator.swift */; };
 		000000000000000000000043 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000014 /* Assets.xcassets */; };
@@ -110,12 +109,8 @@
 		0A0CFB3AA3E591146A9A1AF9 /* BreakTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4376F6289C79A7218FDC6C21 /* BreakTypeTests.swift */; };
 		7945D85BEFCB711AE82A6B4D /* SleepWakeObserverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4454C180A73A32359A7A6A /* SleepWakeObserverTests.swift */; };
 		F431C215076E8BF6E86AD8A0 /* AppModel+TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560A18BABFB3893E0EE7C9C7 /* AppModel+TestExtensions.swift */; };
-		0DAF415DA04A1996E8A993A3 /* AppModel+TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42564BF7AB7938F80BEE8750 /* AppModel+TestExtensions.swift */; };
 		41314E4A9013972FD3337D39 /* ActivityMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EA4FFB9DFE371C47303215 /* ActivityMonitorTests.swift */; };
-		73BB381DCEA07A46D92AACCE /* BreakTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52E08C05A890B1757851CD2 /* BreakTypeTests.swift */; };
-		E55247CB8D723D0AC3247888 /* BreakTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C14AF5BB83A30FABA91278 /* BreakTypeTests.swift */; };
 		D5394E1285A4F7CB248CD7A7 /* UserDefaultsSettingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05904807B7C490AFB22D947E /* UserDefaultsSettingsStoreTests.swift */; };
-		2DA587CD68CC9563CEDB61EA /* AppModel+TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E26EC7F3ACF74D97C3DBF /* AppModel+TestExtensions.swift */; };
 		8C69E36533AA605CCEBFBB53 /* UserDefaultsSettingsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80981ADF01428A77BD3FA03D /* UserDefaultsSettingsStoreTests.swift */; };
 		B1BF437AB6F467A4C921AF51 /* ActivityMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98194FF1A1534AB062D47D15 /* ActivityMonitorTests.swift */; };
 /* End PBXBuildFile section */
@@ -240,14 +235,7 @@
 		4376F6289C79A7218FDC6C21 /* BreakTypeTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BreakTypeTests.swift; sourceTree = "<group>"; };
 		560A18BABFB3893E0EE7C9C7 /* AppModel+TestExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "AppModel+TestExtensions.swift"; sourceTree = "<group>"; };
 		CD4454C180A73A32359A7A6A /* SleepWakeObserverTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SleepWakeObserverTests.swift; sourceTree = "<group>"; };
-		42564BF7AB7938F80BEE8750 /* AppModel+TestExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AppModel+TestExtensions.swift"; path = "EyeBreakTests/AppModel+TestExtensions.swift"; sourceTree = SOURCE_ROOT; };
-		83EA4FFB9DFE371C47303215 /* ActivityMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityMonitorTests.swift; path = EyeBreakTests/ActivityMonitorTests.swift; sourceTree = SOURCE_ROOT; };
 		E52E08C05A890B1757851CD2 /* BreakTypeTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BreakTypeTests.swift; sourceTree = "<group>"; };
-		59C14AF5BB83A30FABA91278 /* BreakTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BreakTypeTests.swift; path = EyeBreakTests/BreakTypeTests.swift; sourceTree = SOURCE_ROOT; };
-		05904807B7C490AFB22D947E /* UserDefaultsSettingsStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultsSettingsStoreTests.swift; path = EyeBreakTests/UserDefaultsSettingsStoreTests.swift; sourceTree = SOURCE_ROOT; };
-		226E26EC7F3ACF74D97C3DBF /* AppModel+TestExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "AppModel+TestExtensions.swift"; sourceTree = "<group>"; };
-		80981ADF01428A77BD3FA03D /* UserDefaultsSettingsStoreTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserDefaultsSettingsStoreTests.swift; sourceTree = "<group>"; };
-		98194FF1A1534AB062D47D15 /* ActivityMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityMonitorTests.swift; path = EyeBreakTests/ActivityMonitorTests.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,10 +264,6 @@
 				000000000000000000000020 /* EyeBreak.app */,
 				000000000000000000000021 /* EyeBreakTests.xctest */,
 				8FBC11542F780941000037BA /* Recovered References */,
-				83EA4FFB9DFE371C47303215 /* ActivityMonitorTests.swift */,
-				42564BF7AB7938F80BEE8750 /* AppModel+TestExtensions.swift */,
-				59C14AF5BB83A30FABA91278 /* BreakTypeTests.swift */,
-				98194FF1A1534AB062D47D15 /* ActivityMonitorTests.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -426,9 +410,6 @@
 				CD4454C180A73A32359A7A6A /* SleepWakeObserverTests.swift */,
 				560A18BABFB3893E0EE7C9C7 /* AppModel+TestExtensions.swift */,
 				E52E08C05A890B1757851CD2 /* BreakTypeTests.swift */,
-				05904807B7C490AFB22D947E /* UserDefaultsSettingsStoreTests.swift */,
-				80981ADF01428A77BD3FA03D /* UserDefaultsSettingsStoreTests.swift */,
-				226E26EC7F3ACF74D97C3DBF /* AppModel+TestExtensions.swift */,
 			);
 			path = EyeBreakTests;
 			sourceTree = "<group>";
@@ -681,7 +662,6 @@
 				00000000000000000000011A /* EyeBreakTests/PreferencesViewTests.swift in Sources */,
 				000000000000000000000130 /* EyeBreakTests/ReminderWindowViewTests.swift in Sources */,
 				00000000000000000000011C /* EyeBreakTests/SystemIdleTimeProviderTests.swift in Sources */,
-				79F848FF974EDF8DD9611401 /* UserDefaultsSettingsStoreTests.swift in Sources */,
 				000000000000000000000084 /* AppCoordinatorTests.swift in Sources */,
 				000000000000000000000044 /* AppSettingsTests.swift in Sources */,
 				000000000000000000000045 /* AppStateStoreTests.swift in Sources */,
@@ -701,12 +681,8 @@
 				7945D85BEFCB711AE82A6B4D /* SleepWakeObserverTests.swift in Sources */,
 				F431C215076E8BF6E86AD8A0 /* AppModel+TestExtensions.swift in Sources */,
 				41314E4A9013972FD3337D39 /* ActivityMonitorTests.swift in Sources */,
-				0DAF415DA04A1996E8A993A3 /* AppModel+TestExtensions.swift in Sources */,
-				73BB381DCEA07A46D92AACCE /* BreakTypeTests.swift in Sources */,
-				E55247CB8D723D0AC3247888 /* BreakTypeTests.swift in Sources */,
 				D5394E1285A4F7CB248CD7A7 /* UserDefaultsSettingsStoreTests.swift in Sources */,
 				8C69E36533AA605CCEBFBB53 /* UserDefaultsSettingsStoreTests.swift in Sources */,
-				2DA587CD68CC9563CEDB61EA /* AppModel+TestExtensions.swift in Sources */,
 				B1BF437AB6F467A4C921AF51 /* ActivityMonitorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
