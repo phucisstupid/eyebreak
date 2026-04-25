@@ -7,7 +7,6 @@ struct ReminderWindowView: View {
     let idleDuration: TimeInterval
     let idleThreshold: TimeInterval
     let state: ReminderPopupPresenter.PresentationState
-    let state: ReminderPopupPresenter.PresentationState
     let onSkip: @MainActor () -> Void
     let onPostpone: @MainActor () -> Void
 
