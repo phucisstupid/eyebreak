@@ -210,10 +210,6 @@ struct PreferencesIntegerFieldParser {
         return clamped(parsedValue)
     }
 
-    func normalizedText(from text: String, fallback: Int) -> String {
-        String(normalizedValue(from: text, fallback: fallback))
-    }
-
     private func clamped(_ value: Int) -> Int {
         min(max(value, range.lowerBound), range.upperBound)
     }
